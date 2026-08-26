@@ -1,0 +1,2199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BRYC Board Retreat 2026</title>
+    <link rel="stylesheet" href="https://use.typekit.net/hte4vgd.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Proxima Nova', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #f2f3f4 0%, #ffffff 100%);
+            color: #313335;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            background: linear-gradient(135deg, #00775f 0%, #087d65 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: slideDown 0.6s ease-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        header img {
+            height: 80px;
+            width: auto;
+        }
+
+        .header-text h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-text p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            background: url('data:image/svg+xml,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="45" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="2"/><circle cx="50" cy="50" r="35" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2"/><circle cx="50" cy="50" r="25" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="2"/><circle cx="50" cy="50" r="15" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="2"/></svg>') center/cover no-repeat;
+            opacity: 0.3;
+            animation: spin 20s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Tab Navigation */
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            background-color: white;
+            padding: 1rem;
+            border-bottom: 3px solid transparent;
+            border-image: linear-gradient(90deg, #001f3f, #087d65, #80bbaf, #e7f1fe) 1;
+            overflow-x: auto;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            animation: slideUp 0.6s ease-out 0.2s both;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tab-btn {
+            padding: 0.75rem 1.25rem;
+            border: none;
+            background-color: #f2f3f4;
+            color: #313335;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-family: 'Proxima Nova', sans-serif;
+            font-weight: 600;
+            border-radius: 6px;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tab-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .tab-btn:hover {
+            background-color: #e0e1e2;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .tab-btn:hover::before {
+            left: 100%;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #001f3f 0%, #087d65 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(8, 125, 101, 0.3);
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            padding: 2rem 1rem;
+            background-color: white;
+            min-height: 70vh;
+            position: relative;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .tab-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #0a52a9, #087d65, #80bbaf);
+            animation: growHeight 0.8s ease-out;
+        }
+
+        @keyframes growHeight {
+            from {
+                height: 0;
+            }
+            to {
+                height: 100%;
+            }
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Typography */
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #001f3f;
+            font-weight: 700;
+            letter-spacing: -1px;
+            position: relative;
+            padding-left: 1rem;
+            animation: slideInLeft 0.6s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #0a52a9, #087d65);
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            color: #087d65;
+            font-weight: 700;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .intro-text {
+            font-size: 1.05rem;
+            color: #676868;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        /* Budget Clarity Box */
+        .budget-clarity {
+            background: linear-gradient(135deg, #001f3f 0%, #087d65 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(8, 125, 101, 0.3);
+        }
+
+        .budget-clarity-label {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        .budget-clarity-amount {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .budget-clarity-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .budget-meta-item {
+            text-align: center;
+        }
+
+        .budget-meta-label {
+            font-size: 0.85rem;
+            opacity: 0.85;
+            margin-bottom: 0.25rem;
+        }
+
+        .budget-meta-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        /* Floating Notes Sidebar */
+        .notes-toggle {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: linear-gradient(135deg, #0a52a9, #087d65);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 76px;
+            height: 76px;
+            font-size: 2.1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 150;
+            transition: all 0.3s ease;
+        }
+
+        .notes-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        }
+
+        .notes-sidebar {
+            position: fixed;
+            left: -400px;
+            top: 0;
+            width: 400px;
+            height: 100vh;
+            background: linear-gradient(135deg, #ffffff 0%, #f2f3f4 100%);
+            box-shadow: 4px 0 12px rgba(0,0,0,0.15);
+            z-index: 200;
+            transition: left 0.3s ease;
+            overflow-y: auto;
+            border-right: 3px solid #087d65;
+        }
+
+        .notes-sidebar.active {
+            left: 0;
+        }
+
+        .notes-header {
+            background: linear-gradient(135deg, #0a52a9 0%, #087d65 100%);
+            color: white;
+            padding: 1.5rem;
+            font-weight: 700;
+            font-size: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .notes-close {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+        }
+
+        .notes-close:hover {
+            background: rgba(255,255,255,0.4);
+        }
+
+        .notes-content {
+            padding: 1.5rem;
+        }
+
+        #notesTextarea {
+            width: 100%;
+            height: 400px;
+            padding: 1rem;
+            border: 2px solid #087d65;
+            border-radius: 6px;
+            font-family: 'Proxima Nova', sans-serif;
+            font-size: 0.95rem;
+            resize: vertical;
+            background-color: white;
+            color: #313335;
+        }
+
+        #notesTextarea:focus {
+            outline: none;
+            border-color: #0a52a9;
+            box-shadow: 0 0 0 3px rgba(10, 82, 169, 0.1);
+        }
+
+        .notes-info {
+            font-size: 0.85rem;
+            color: #676868;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        /* Points Badge */
+        .points-badge {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #0a52a9 0%, #087d65 100%);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            z-index: 200;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .points-count {
+            font-size: 1.8rem;
+            color: #fff;
+        }
+
+        /* Impact Grid */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .impact-card {
+            background: linear-gradient(135deg, #e7f1fe 0%, #d3ebe7 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #0a52a9;
+            text-align: center;
+            transition: all 0.3s ease;
+            animation: popIn 0.5s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .impact-card:nth-child(1) { animation-delay: 0.1s; }
+        .impact-card:nth-child(2) { animation-delay: 0.2s; }
+        .impact-card:nth-child(3) { animation-delay: 0.3s; }
+        .impact-card:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .impact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(8, 125, 101, 0.2);
+        }
+
+        .impact-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #0a52a9;
+            margin-bottom: 0.5rem;
+        }
+
+        .impact-label {
+            font-size: 0.95rem;
+            color: #087d65;
+            font-weight: 600;
+        }
+
+        /* Agenda */
+        .agenda-item {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 2rem;
+            padding: 1.5rem;
+            border-left: 4px solid #087d65;
+            background: linear-gradient(135deg, rgba(231, 241, 254, 0.5), rgba(211, 235, 231, 0.5));
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .agenda-item:hover {
+            transform: translateX(8px);
+            box-shadow: 0 4px 12px rgba(8, 125, 101, 0.15);
+        }
+
+        .agenda-time {
+            font-weight: 700;
+            color: #0a52a9;
+            font-size: 1.1rem;
+        }
+
+        /* Collapsible Section */
+        .collapsible {
+            background: linear-gradient(135deg, #e7f1fe 0%, rgba(211, 235, 231, 0.5) 100%);
+            color: #313335;
+            cursor: pointer;
+            padding: 1.5rem;
+            width: 100%;
+            border: 2px solid #087d65;
+            border-radius: 6px;
+            text-align: left;
+            outline: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            font-family: 'Proxima Nova', sans-serif;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .collapsible:hover {
+            background: linear-gradient(135deg, #d3ebe7 0%, rgba(10, 82, 169, 0.1) 100%);
+            transform: translateX(4px);
+            box-shadow: 0 4px 12px rgba(8, 125, 101, 0.2);
+        }
+
+        .collapsible.active {
+            background: linear-gradient(135deg, #0a52a9 0%, #087d65 100%);
+            color: white;
+            border-color: #0a52a9;
+        }
+
+        .collapsible::after {
+            content: '▼';
+            float: right;
+            transition: transform 0.3s ease;
+        }
+
+        .collapsible.active::after {
+            transform: rotate(180deg);
+        }
+
+        .collapsible-content {
+            display: none;
+            padding: 1.5rem;
+            background-color: #f2f3f4;
+            border-radius: 0 0 6px 6px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #0a52a9;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        .collapsible-content.active {
+            display: block;
+        }
+
+        .collapsible-content p {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        /* Financial Cards - REORGANIZED */
+        .finance-bar {
+            background: linear-gradient(90deg, #80bbaf 0%, #d3ebe7 100%);
+            border-radius: 4px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            padding: 0 1rem;
+            animation: slideInBar 0.8s ease-out;
+            margin-bottom: 0;
+        }
+
+        @keyframes slideInBar {
+            from {
+                width: 20%;
+                opacity: 0;
+            }
+            to {
+                width: 100%;
+                opacity: 1;
+            }
+        }
+
+        .finance-bar.strong {
+            background: linear-gradient(90deg, #0a52a9 0%, #087d65 100%);
+            color: white;
+        }
+
+        .finance-amount {
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        .finance-item-wrapper {
+            margin-bottom: 2rem;
+        }
+
+        .finance-item-header {
+            display: grid;
+            grid-template-columns: 150px 1fr 150px;
+            gap: 2rem;
+            padding: 0.5rem 0 1rem 0;
+            align-items: center;
+        }
+
+        .finance-label {
+            font-weight: 600;
+            color: #313335;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #0a52a9, #087d65, #80bbaf);
+        }
+
+        .timeline-event {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .timeline-event:nth-child(odd) {
+            text-align: right;
+            padding-right: 52%;
+        }
+
+        .timeline-event:nth-child(even) {
+            text-align: left;
+            padding-left: 52%;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid #0a52a9;
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        .timeline-event:nth-child(even) .timeline-marker {
+            border-color: #087d65;
+        }
+
+        .timeline-content {
+            background: linear-gradient(135deg, #e7f1fe 0%, rgba(211, 235, 231, 0.3) 100%);
+            padding: 1.5rem;
+            border-radius: 6px;
+            border-left: 4px solid #0a52a9;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-event:nth-child(even) .timeline-content {
+            border-left: none;
+            border-right: 4px solid #087d65;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(8, 125, 101, 0.2);
+        }
+
+        .timeline-date {
+            font-weight: 700;
+            color: #0a52a9;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-event:nth-child(even) .timeline-date {
+            color: #087d65;
+        }
+
+        .timeline-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #001f3f;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-description {
+            font-size: 0.95rem;
+            color: #676868;
+        }
+
+        /* Prospect Form */
+        .prospect-intro {
+            background: linear-gradient(135deg, #d3ebe7 0%, #e7f1fe 100%);
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin-bottom: 2rem;
+            border-left: 4px solid #0a52a9;
+            animation: slideInLeft 0.6s ease-out;
+        }
+
+        .form-container {
+            background: linear-gradient(135deg, #e7f1fe 0%, rgba(211, 235, 231, 0.3) 100%);
+            padding: 2rem;
+            border-radius: 6px;
+            margin-top: 2rem;
+            border: 2px solid #087d65;
+            animation: fadeIn 0.6s ease-out 0.3s both;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #001f3f;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #087d65;
+            border-radius: 4px;
+            font-family: 'Proxima Nova', sans-serif;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #0a52a9;
+            box-shadow: 0 0 0 3px rgba(10, 82, 169, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-btn {
+            background: linear-gradient(135deg, #0a52a9, #087d65);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            font-family: 'Proxima Nova', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(10, 82, 169, 0.3);
+        }
+
+        .form-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-message {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+        }
+
+        .form-message.success {
+            background-color: #d3ebe7;
+            color: #087d65;
+            display: block;
+        }
+
+        .form-message.error {
+            background-color: #f8d7da;
+            color: #d9534f;
+            display: block;
+        }
+
+        /* Trivia Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 300;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #ffffff 0%, #f2f3f4 100%);
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 550px;
+            width: 90%;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            border: 3px solid #0a52a9;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #001f3f;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-question {
+            font-size: 1.2rem;
+            color: #313335;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .option-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .option {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            background-color: #f2f3f4;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+
+        .option:hover {
+            background-color: #e7f1fe;
+            border-color: #0a52a9;
+        }
+
+        .option input[type="radio"] {
+            margin-top: 0.25rem;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .option-text {
+            flex: 1;
+        }
+
+        .answer-feedback {
+            padding: 1rem;
+            border-radius: 6px;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+        }
+
+        .answer-feedback.correct {
+            background-color: #d3ebe7;
+            color: #087d65;
+            display: block;
+        }
+
+        .answer-feedback.incorrect {
+            background-color: #f8d7da;
+            color: #d9534f;
+            display: block;
+        }
+
+        .points-earned {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #087d65;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: space-between;
+        }
+
+        .modal-btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Proxima Nova', sans-serif;
+            transition: all 0.2s ease;
+            flex: 1;
+        }
+
+        .modal-btn.close {
+            background-color: #bfc4c8;
+            color: #313335;
+        }
+
+        .modal-btn.close:hover {
+            background-color: #9ea1a4;
+        }
+
+        .modal-btn.next {
+            background: linear-gradient(135deg, #0a52a9, #087d65);
+            color: white;
+        }
+
+        .modal-btn.next:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .trivia-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #0a52a9, #087d65);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 76px;
+            height: 76px;
+            font-size: 2.1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            z-index: 150;
+            transition: all 0.3s ease;
+        }
+
+        .trivia-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        }
+
+        /* Slider Input */
+        .slider-input {
+            width: 100%;
+            height: 16px;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #d3ebe7 0%, #087d65 100%);
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+            cursor: pointer;
+        }
+
+        .slider-input::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0a52a9, #087d65);
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            transition: all 0.2s ease;
+        }
+
+        .slider-input::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
+
+        .slider-input::-moz-range-thumb {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0a52a9, #087d65);
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            transition: all 0.2s ease;
+        }
+
+        /* Board Table */
+        .board-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .board-table th {
+            background: linear-gradient(135deg, #001f3f 0%, #087d65 100%);
+            color: white;
+            padding: 0.85rem 1rem;
+            text-align: left;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .board-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid rgba(8, 125, 101, 0.15);
+        }
+
+        .board-table tr:hover td {
+            background-color: #e7f1fe;
+        }
+
+        .status-pill {
+            display: inline-block;
+            padding: 0.2rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .status-pill.active {
+            background-color: #d3ebe7;
+            color: #087d65;
+        }
+
+        .status-pill.ending {
+            background-color: #fdf3d7;
+            color: #a07800;
+        }
+
+        .status-pill.maxed {
+            background-color: #f2f3f4;
+            color: #676868;
+        }
+
+        .board-table-wrap {
+            overflow-x: auto;
+        }
+
+        /* Placeholder */
+        .placeholder {
+            background: linear-gradient(135deg, #d3ebe7 0%, rgba(211, 235, 231, 0.3) 100%);
+            padding: 2rem;
+            border-radius: 6px;
+            text-align: center;
+            color: #087d65;
+            font-style: italic;
+            border: 2px dashed #087d65;
+        }
+
+        /* Results */
+        .results-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #e7f1fe 0%, #d3ebe7 100%);
+            padding: 2rem;
+            border-radius: 6px;
+            border-top: 4px solid #0a52a9;
+            text-align: center;
+            animation: popIn 0.5s ease-out;
+        }
+
+        .result-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #0a52a9;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-label {
+            font-size: 1.1rem;
+            color: #676868;
+        }
+
+        /* Attachments */
+        .attachment-link {
+            display: block;
+            padding: 1rem;
+            background: linear-gradient(135deg, #e7f1fe 0%, rgba(211, 235, 231, 0.3) 100%);
+            border-left: 4px solid #0a52a9;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            text-decoration: none;
+            color: #0a52a9;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .attachment-link:hover {
+            transform: translateX(8px);
+            box-shadow: 0 4px 12px rgba(8, 125, 101, 0.2);
+        }
+
+        a {
+            color: #0a52a9;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #087d65;
+        }
+
+        .text-muted {
+            color: #676868;
+        }
+
+        .highlight {
+            color: #0a52a9;
+            font-weight: 700;
+        }
+
+        .mt-3 {
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            header img {
+                height: 60px;
+            }
+
+            .header-text h1 {
+                font-size: 1.8rem;
+            }
+
+            .tabs {
+                gap: 0.25rem;
+            }
+
+            .tab-btn {
+                padding: 0.6rem 0.9rem;
+                font-size: 0.85rem;
+            }
+
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .budget-clarity-meta {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 10px;
+            }
+
+            .timeline-event:nth-child(odd),
+            .timeline-event:nth-child(even) {
+                text-align: left;
+                padding-left: 50px;
+                padding-right: 0;
+            }
+
+            .timeline-marker {
+                left: 0;
+                transform: translateX(0);
+            }
+
+            .timeline-content {
+                border-left: 4px solid #0a52a9;
+                border-right: none;
+            }
+
+            .finance-item-header {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .notes-sidebar {
+                width: 100%;
+                left: -100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Points Badge -->
+    <div class="points-badge">
+        <div>POINTS</div>
+        <div class="points-count" id="pointsCount">0</div>
+    </div>
+
+    <!-- Notes Sidebar -->
+    <button class="notes-toggle" onclick="toggleNotes()" title="Open Notes">📝</button>
+    <div class="notes-sidebar" id="notesSidebar">
+        <div class="notes-header">
+            My Notes
+            <button class="notes-close" onclick="toggleNotes()">×</button>
+        </div>
+        <div class="notes-content">
+            <textarea id="notesTextarea" placeholder="Take notes during the retreat..."></textarea>
+            <p class="notes-info">💡 Notes save automatically to your browser.</p>
+        </div>
+    </div>
+
+    <!-- Trivia Button -->
+    <button class="trivia-btn" onclick="openTrivia()" title="BRYC Trivia">🧠</button>
+
+    <!-- Trivia Modal -->
+    <div id="triviaModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">BRYC Trivia</div>
+            <div class="modal-question" id="triviaQuestion"></div>
+            <div class="option-group" id="optionGroup"></div>
+            <div class="answer-feedback" id="answerFeedback"></div>
+            <div class="points-earned" id="pointsEarned"></div>
+            <div class="modal-buttons">
+                <button class="modal-btn close" onclick="closeTrivia()">Close</button>
+                <button class="modal-btn next" id="nextBtn" onclick="nextTrivia()">Submit Answer</button>
+            </div>
+        </div>
+    </div>
+
+    <header>
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA4oAAAOJCAYAAABbGdxWAAAACXBIWXMAACxKAAAsSgF3enRNAAAgAElEQVR4nOzdfXBV5b33/49OZ8/eSU/xYSbJcN+n5BeYcjzShKRqkWqJwoHiKZJb8YGMxZyiSRl1BGxk0FBBowxSkU7NUMBoRCeIDxT0HDXeQeOtRQrnZhOqN+UMcsC2DDszbfWcQjL5x98fewcj5GGvvdZe17rWer9mHBH23utr2IT9Wd/r+l7nffHFFwIAIEhi8cRkSRcM+qnSzD8a5ecG/9o4b6saVrekz4b5ta4hfu7AWY8/0N/XO9zzAQAw4jyCIgAgn2LxRKm+DHSDA+DgH5fKv2AXdO8N+vHgUHnmx/19vV0+1wQAiBiCIgAgJ7F44gKlw54kVWf+XZr55wJJFb4XFT2fKx0gpS+D5LHMP5/19/UeGPppAACMjKAIABjSoCA48O9SEQJtNdCl7Br8bzqTAIDhEBQBIMIGLQsdCITVIghGzUBX8ljmnwNKdyO7zJUEADCNoAgAEZAZDlOqdCAcCIXTTNYEKwyEyIFlrV2SjvX39R4zWBMAwAcERQAIkSECYanoDiI/3tOXXcguMb0VAEKFoAgAFhq0f3BwIKRDCNMGOpBdyixjZaAOANiJoAgAATcoFFbry2DIURKwyXv6ch9kF+ERAIKPoAgAAROLJ6pFKET4DYTHA6LzCACBQ1AEAIMyewoHdwvZT4ioGrxs9YDSnUf2PAKAIQRFAPDRWd3CakljDJYDBN1xpYNjl+g6AoCvCIoAkCeZvYXV+jIUMmwGcOdzfRkc2esIAHlEUAQAjwwKhgP/sIwUyC+CIwDkCUERAFzILCWtEcEQCAKCIwB4hKAIAA5khs9UKx0OWUoKBNvgPY5d/X29x0wWAwA2ISgCwAhi8USpvlxKWiOGzwA261Y6NO7o7+vtMlsKAAQbQREAzpLpGtaJ5aRA2O2UtEN0GwHgHARFAJGXGUIzsM+QriEQTXQbAWAQgiKASMosKa0Rew0BnOtzpTuNA93GzwzXAwC+IygCiAyWlALIEUtUAUQOQRFAqA06vqJG0jiz1QAIgW5JbUovUT1mthQAyB+CIoDQicUTA8GQ/YYA8onQCCC0CIoAQoFwCMAwQiOAUCEoArDWoD2HdSIcAggOQiMA6xEUAVhlUDhkzyEAG7ynL0Mj01MBWIOgCCDwBh1lUSemlQKw106lA2Ob6UIAYDQERQCBFIsnLtCX4ZBzDgGEycA5jW39fb1dhmsBgCERFAEESuY4izoxlAZANBxXemlqG/sZAQQJQRGAcZmlpXWZf9h3CCCq3lM6MLaZLgQACIoAjInFE3ViaSkAnG1gaer6/r7eA6aLARBNBEUAvsp0DxeLIy0AIBvdktaLqakAfEZQBOALuocA4ApdRgC+IigCyBu6hwCQF3QZAeQdQRGA52LxRI3SAZHuIQDkz+dKT0xdz8RUAF4jKALwRObcw4HuIZNLAcBf7ykdGHeYLgRAOBAUAbgSiycmKx0QbzddCwBAx5VeltrGslQAbhAUAeSE5aUAEGgDw29WsiwVQC4IigCyllleWqd0QGR5KQDY4T2lA2OX6UIA2IOgCGBUTC8FgFA4rnRgbDNdCIDgIygCGBb7DwEglI7ry2mp7GMEMCSCIoBzxOKJakkrxf5DAAgzjtcAMCyCIoAzYvFEndLLSwmIABAtz4nBNwAGISgCGAiIK8WAGgCIuueUPlqjy3QhAMwiKAIRRkAEAAyDSalAxBEUgYjJHHGxOPMPE0wBACMhMAIRRVAEIoKACABwgcAIRAxBEQg5AiIAwEMERiAiCIpASBEQAQB5RGAEQo6gCIQMAREA4CMCIxBSBEUgRJhiCgAwhMAIhAxBEQgBAiIAICDek1TX39d7zHQhANwhKAIWi8UTNZLWi4AIAAiW55TuMB4zXQiA3BAUAQvF4olqpTuI08xWAgDAiJ6TtLi/r/cz04UAcIagCFgkFk+USmoTAREAYI/PlV79sp7ACNiDoAhYIBMQV0q63WwlAADk7HOlu4ttpgsBMDqCIhBgHHUBAAih40oPvOkyXQiA4REUgYDKTDJdLwIiACCc3lO6w3jAdCEAzkVQBAImM6hmvaQKw6UAAOAHBt4AAURQBAIisw9xvaS5hksBAMBvnys97Gal6UIApBEUAcMG7UN8yHQtAAAYdlzp7uIO04UAUUdQBAxiHyIAAENi/yJgGEERMCCzD3GlOA8RAICR/ELSSvYvAv4jKAI+yiwzXS/OQwQAIFucvwgYQFAEfBKLJxYr3UVkmSkAAM6xHBXwEUERyLNYPDFZUps47gIAAC+wHBXwAUERyJPMMtOVku41XAoAAGHzuaQ6pqMC+UNQBPIgFk/UKN1FZJkpAAD5857SgfGY6UKAsDnfdAFAmMTiidJYPNEl6dciJAIAkG/TJP1nLJ5YaboQIGzoKAIeyfwltVgERAAATDiudHexy3QhQBgQFAGXGFYDAECgMOwG8ABBEcgRw2oAAAgsht0ALhEUgRzE4olqpbuI48xWAgAARrBT6cBIdxFwiGE2gAOxeOKCWDyxXtK7IiQCABB0cyUdy0wjB+AAHUUgSxx5AQCA1ThKA3CAjiIwikwXcYc48gIAAJtNk3QgFk8sNl0IYAM6isAI6CICABBKdBeBURAUgSFkJpqul3S76VoAAEBeMBkVGAFBETgLE00BAIgUJqMCQ2CPIpDBRFMAACKJyajAEOgoApJi8cRkSTtEQAQAIMqek7SY7iJARxFQLJ5YKSkpQiIAAFF3u9KTUatNFwKYRkcRkRWLJ0qV7iJWGC4FAAAEz6r+vt6VposATCEoIpJi8USd0lNNOfYCAAAMp1tSDcdoIIoIioiUzLEXbUpvXAcAABjN50rvW2wzXQjgJ4IiIoNjLwAAgAsco4FIYZgNIiEzsIZjLwAAQK7mKj3oZrLpQgA/0FFEqGWWmu6QNM10LQAAIDQYdIPQIygitDIH57aJgTUAAMB77yk96IalqAgllp4ilGLxxHpJvxYhEQAA5Mc0Scc4cxFhRUcRocLZiAAAwACWoiJ0CIoIDZaaAgAAg1iKilBh6SlCITPVlKWmAADAFJaiIlToKMJqTDUFAAABtKS/r3e96SIANwiKsFbmHKMu0UUEAADBs1NSHUtRYSuWnsJKsXhisaSkCIkAACCY5ko6kLmxDViHoAirxOKJC2LxRJukJ03XAgAAMIpxkrpi8USd6UIAp1h6Cmtw9AUAALDYL/r7ehebLgLIFkERVuDoCwAAEAIcoQFrsPQUgcfRFwAAICSmiX2LsAQdRQRW5uiL9ZJuN10LAACAhz6XtLi/r7fNdCHAcAiKCCT2IwIAgAhg3yICi6CIwOF8RAAAECHsW0QgsUcRgZIZH835iAAAICqmKX2EBvsWESh0FBEYmfMR2Y8IAACi6HOlO4tdpgsBJIIiAiAztGaH0nfUAAAAouxfGHKDIGDpKYzKDK3pEiERAABAkp7NrLICjKKjCGMYWgMAADCsnZLqGHIDU+gowgiG1gAAAIxortJDbkpNF4JoIijCd7F4YqWkZ03XAQAAEHAVkg4wERUmEBThq8ya+4dM1wEAAGCJMUp3FmtMF4JoYY8ifMFkUwAAANeYiArf0FFE3mVCYpcIiQAAAG48G4sn1psuAtFARxF5xWRTAAAAzz3X39dbZ7oIhBtBEXlDSAQAAMibbknVHJ+BfGHpKfKC4y8AAADyqkLpITcXmC4E4URQhOcyIZHjLwAAAPKL4zOQNwRFeCqzwZqQCAAA4I9xSncWCYvwFEERnsmckXiv6ToAAAAiZuCsxWrThSA8CIrwRCYk3m66DgAAgIgaI+ndzBYgwDWmnsKVQWckVhguBQAAAGn/0t/X22a6CNiNjiJyRkgEAAAIpGdj8cRi00XAbnQUkRNCIgAAQOA919/XW2e6CNiJjiIcy0zV6hIhEQAAIMhuz8yRAByjowhHBoXEMYZLAQAAQHboLMIxOorIGiERAADASnQW4RgdRWSFkAgAAGC99yTV9Pf1fma6EAQfQRGjIiQCAACERrekasIiRsPSU4yIkAgAABAqFZK6MhPsgWERFDEsQiIAAEAoERYxKoIihkRIBAAACDXCIkZEUMQ5CIkAAACRQFjEsAiK+ApCIgAAQKQQFjEkgiLOICQCAABEEmER5yAoQhIhEQAAIOIIi/gKgiIIiQAAAJAIixiEoBhxhEQAAAAMQliEJIJipBESAQAAMATCIgiKUUVIBAAAwAgqJO0wXQTMIShGECERAAAAWZgWiyfaTBcBMwiKEUNIBAAAgAO3Exaj6bwvvvjCdA3wSWad+TEREgEAAODMc/19vXWmi4B/6ChGRCYkdomQCAAAAOfoLEYMQTECBoXECsOlAAAAwF63x+KJlaaLgD9YehpyhEQAAAB47F/6+3rbTBeB/KKjGH5tIiQCAADAO8/G4ok600UgvwiKIZZZRz7XdB0AAAAInWdj8USN6SKQPyw9DalMSLzddB0AAAAIrc8lVff39R4wXQi8R0cxhGLxxGIREgEAAJBfYyR1Zc7pRsjQUQyZzHrxZ03XAQAAgMj4XFJpf1/vZ6YLgXfoKIZIZp04IREAAAB+GugsXmC6EHiHjmJIZFr+XUr/QQUAAAD81q30nkU6iyFARzEECIkAAAAIgApJ600XAW8QFC2XafG3iZAIAAAA827PTN+H5QiKFsuExC6l794AAAAAQXB7ZsAiLEZQtNt6ERIBAAAQPM8SFu3GMBtLZVr6nJUIAACAoPpc6eE2B0wXAucIihbirEQAAABY4nNJk/v7eo+ZLgTOsPTUMpyVCAAAAIuMkbSDMxbtQ1C0SOYYjDbTdQAAAAAOVEjaYboIOENQtMSgCaccgwEAAADbTOPYDLsQFC1ASAQAAEAI3B6LJxabLgLZISjagWMwAAAAEAZPZmZuIOAIigEXiydWimMwAAAAEB5tmdkbCDCOxwgwjsEAAABASB1X+tiMz0wXgqHRUQyozF2W9abrAAAAAPJgnJiEGmgExQDKDK/ZIYbXAAAAILyYhBpgBMVg6lL6LgsAAAAQZrdntlshYAiKAZO5q8KEUwAAAETFswy3CR6G2QQIw2sAAAAQUZ9LKmW4TXAQFAMicxclaboOAAAAwJDu/r5eOosBwdLTAMgMr+kyXQcAAABgUAXDbYKDoBgMXWLCKQAAAMBwm4AgKBoWiyfWi+E1AAAAwACG2wQAexQNYngNAAAAMKTjkiYz3MYcOoqGZO6SrDddBwAAABBA4yTtMF1ElBEUDcgMr2kT+xIBAACA4UyLxRMrTRcRVSw9NSAWT+yQNNd0HQAAAIAF/ld/Xy/dRZ/RUfRZLJ5YLEIiAAAAkK22WDxRarqIqKGj6KPMvsSk6ToAAAAAy3T39/UyCdVHdBR9ktmXSMscAAAAcK4ic6wcfEJQ9E+b0tObAAAAADh3byyeqDFdRFQQFH3AvkQAAADAE+xX9Al7FPOMfYkAAACAp9iv6AM6innEvkQAAADAc+xX9AFBMb/axL5EAAAAwGv3xuKJatNFhBlLT/MkFk/USXrWdB0AAABASH0uqbS/r/cz04WEER3FPMjsS6QdDgAAAOTPGLHNK28IivnRpvQbFwAAAED+TMucMACPERQ9ltlYW2G6DgAAACAinsys6IOH2KPoocyG2ndN1wEAAABETLekavYreoeOokc4CgMAAAAwpkLSStNFhAlB0TttYl8iAAAAYMq9sXiixnQRYcHSUw9wFAYAAAAQCByZ4RE6ii7F4olScRQGAAAAEARjlF7pB5cIiu61iSWnAAAAQFDMzaz4gwsERRcyZ7ZMM10HAAAAgK9Yn1n5hxyxRzFHmbNakqbrAAAAADCk9/r7eqtNF2ErOoq5azNdAAAAAIBhTcusAEQOCIo5iMUTK5U+qwUAAABAcK1kCWpuWHrqEEtOAQAAAKuwBDUHdBSdazNdAAAAAICssQQ1BwRFB1hyCgAAAFiJJagOsfQ0Syw5BQAAAKzGElQH6Chmr810AQAAAAByxhJUBwiKWWDJKQAAABAKLEHNEktPR5F5I/2n6ToAAAAAeIIlqFmgozi6NtMFAAAAAPAMS1CzQEdxBJk30JOm6wAAAADgqc8llfb39X5mupCgoqM4jMyS05WGywAAAADgvTFi5eCICIrDW6/0GwgAAABA+MyNxRM1posIKpaeDiHzhvm16ToAAAAA5NVxSZNZgnouOopnicUTFyjdTQQAAAAQbuPEdrMhERTPtVLpNwwAAACA8Ls3Fk9MNl1E0LD0dJDMGyRpug4AAAAAvuru7+slLA5CR/Gr2kwXAAAAAMB3FZyt+FV0FDM4MxEAAACINM5WHISgqDMDbI6J4zAAAACAKNvZ39fLkRli6ekAzkwEAAAAMDcWT1SbLiIIIt9RzLwR3jVdBwAAAIBAON7f11tqugjT6ChyZiIAAACAL42LxRMrTRdhWqSDYmaATYXpOgAAAAAEyuJYPFFqugiTIrv0lAE2AAAAAEYQ6cE2Ue4oMsAGAAAAwHAiPdgmkh1FBtgAAAAAyEJ3f1/vZNNFmBDVjuJK0wUAAAAACLyKzFyTyIlcRzEWT9RJetZ0HQAAAACs8Lmk0v6+3s9MF+KnSHUUMwNsOA4DAAAAQLbGKIIrEiMVFCUtFgNsAAAAADhzb9SOy4hMUMz8xkZyfTEAAAAA19pMF+CnyARFpdvFdBMBAAAA5GJalI7LiMQwG47DAAAAAOCByByXEZWO4krTBQAAAACwXkXmFIXQC31HMRZP1Ej6tek6AAAAAIRCJI7LiEJHkeMwAAAAAHhljCIwJDPUQTEWTyyWNM50HQAAAABCZXHmjPbQCm1QzPzGrTRdBwAAAIDQGaOQr1wMbVBUuh3McRgAAAAA8uH2zFntoRTKoJjpJoZ+3TAAAAAAo0LbVQxlUFT6N4xuIgAAAIB8mps5sz10Qnc8Rqb9+5+m6wAAAAAQCe/19/VWmy7Ca2HsKK40XQAAAACAyJgWxq5iqDqKdBMBAAAAGBC6rmLYOoptpgsAAAAAEDnTYvFEjekivBSajmKm3fuu6ToAAAAARNLx/r7eUtNFeCVMHcWVpgsAAAAAEFnjYvFEnekivBKKjiLdRAAAAAABEJquYlg6iitNFwAAAAAg8kLTVbS+o0g3EQAAAECAhKKrGIaO4krTBQAAAABARii6ilZ3FOkmAgAAAAgg67uKtncUV5ouAAAAAADOYn1X0dqOIt1EAAAAAAFmdVfR5o7iStMFAAAAAMAwrO4qWtlRpJsIAAAAwALWdhVt7SiuNF0AAAAAAIzC2q6idR1FuokAAAAALGJlV9HGjuJi0wUAAAAAQJbGxeKJGtNFOGVVRzEWT5RK+k/TdQAAAACAA+/19/VWmy7CCds6iitNFwAAAAAADk3LbKGzhjUdRbqJAAAAACxmVVfRpo7iStMFAAAAAECOpsXiicmmi8iWFUExFk9cIMm6DaAAAAAAMIg1gzmtCIpKf0HHmC4CAAAAAFy4PbOlLvACHxQz3URrkjcAAAAAjGCl6QKyEfigqPSSU7qJAAAAAMKgJtMMCzQbguJK0wUAAAAAgEfGyIIVk4EOirF4ok7SONN1AAAAAICHCIou1ZkuAAAAAAA8NibTFAus87744gvTNQwpFk9US3rXdB0AAAAAkAfH+/t6S00XMZwgdxTrTBcAAAAAAHkyLtMcC6RABsXM2SK3m64DAAAAAPIosHsVAxkURTcRAAAAQPjNzTTJAieoQTGwyRoAAAAAPLTSdAFDCVxQzEz/GWO6DgAAAADwQU0snrjAdBFnC1xQFN1EAAAAANExRgHceheo4zE4EgMAAABABAXuqIygdRTrTBcAAAAAAD4L3FEZgQmKHIkBAAAAIMICtQUvMEFRdBMBAAAARFegjsogKAIAAABAMNSZLmBAIIbZxOKJGkm/Nl0HAAAAABj0eX9fbyCOyghKR7HOdAEAAAAAYNiYzLnyxhkPipl1uHNN1wEAAAAAAVBnugApAEFRAflCAAAAAEAATAvCUBuCIgAAAAAEi/GjMowGxcwQm3EmawAAAACAgKkzXYDpjmKd4esDAAAAQNAYH2pjLCgyxAYAAAAAhlVj8uImO4p1Bq8NAAAAAEE21+RQG4IiAAAAAARTnakLGwmKsXiiWgyxAQAAAICR1Jm6sKmOYp2h6wIAAACALcZlmmy+8z0oxuKJC2R4YyYAAAAAWKLOxEVNdBRrJI0xcF0AAAAAsE1NptnmKxNBsc7ANQEAAADARmNkYEWmr0ExM951mp/XBAAAAADL1fl9Qb87iuxNBAAAAABnpvl9pqLfQXGxz9cDAAAAgDDwtenmW1CMxROTxdmJAAAAAJCLOj8v5mdHsc7HawEAAABAmFRkmm++ICgCAAAAgB3q/LqQL0ExFk9wdiIAAAAAuOPbPkW/OopMOwUAAAAAd8b5tfyUoAgAAAAA9vDlJIm8B0WWnQIAAACAZ3xpwvnRUaSbCAAAAADeGJNpxuUVQREAAAAA7GJ3UGTZKQAAAAB4zu6gKLqJAAAAAOC1vC8/JSgCAAAAgH3sDIosOwUAAACAvLEzKIpuIgAAAADkS16XnxIUAQAAAMBOdgVFlp0CAAAAQN5V5+uF89VRpJsIAAAAAPk1LhZPTM7HCxMUAQAAAMBedfl4Uc+DYibRsuwUAAAAAPIvL026fHQU6/LwmgAAAACAc+Vl+Wk+giLLTgEAAADAP9Vev6CnQTEWT5RKGuflawIAAAAARlTn9Qt63VGkmwgAAAAA/qqIxRMXePmCXgfFOo9fDwAAAAAwOk+bdp4FxUyCrfDq9QAAAAAAWQtmUBTLTgEAAADAlGovX8zLoFjt4WsBAAAAALI3JhZPeNa8o6MIAAAAAOFQ7dULeRIUMwc8jvHitQAAAAAAOQlcR5FuIgAAAACYNS5ztr1rBEUAAAAACA9PspnroMixGAAAAAAQGNVevIgXHUW6iQAAAAAQDNVevIgXQbHag9cAAAAAALg3JhZPVLt9EYIiAAAAAIRLtdsXcBUUM8dijHNbBAAAAADAM663B7rtKFa7LQAAAAAA4KmKzNDRnBEUAQAAACB8qt08maAIAAAAAOFT7ebJOQfFzCSdMW4uDgAAAADIC1f7FN10FKvdXBgAAAAAkDfjYvFEaa5PJigCAAAAQDhV5/pEN0FxmovnAgAAAADyqzrXJ+YUFDP7EwEAAAAAwVWd6xNz7SjmfEEAAAAAgC9y3qdIUAQAAACA8KrO5Um5BkX2JwIAAABA8FXn8iTHQZH9iQAAAABgjcm5PCmXjmJOFwIAAAAA+K4iFk9c4PRJuQTF6hyeAwAAAAAwo9rpEwiKAAAAABBu1U6f4CgoxuKJyZLGOL0IAAAAAMAYx9sHnXYU2Z8IAAAAAHZxfGqF06BY7fQCAAAAAACznJ5eQUcRAAAAAMKv2smDsw6KmZGqFU6rAQAAAAAY56jp56SjSDcRAAAAAOyUt6BY7awOAAAAAEBAjIvFE6XZPpigCAAAAADRkHVXkaWnAAAAABAN3gbFTItyTK7VAAAAAACMq872gdl2FOkmAgAAAIDdpmX7QIIiAAAAAERELJ7IKttlGxSrcy8FAAAAABAQngZFOooAAAAAYD9vgiKDbAAAAAAgNDzrKNJNBAAAAIBwyGqgDUERAAAAACIkm4E22QTFavelAAAAAAAConS0B9BRBAAAAIBocddRjMUTF4hBNgAAAAAQJtWjPWC0jiLdRAAAAAAIF9d7FKu9qQMAAAAAEBBjMqtHhzVaUCz1rhYAAAAAQECM2FX8mpsnAwAAAHCmqnxSVo87deq0Dn9yNM/VIMKqJXUN94ujBcUKLysBAAAAwmpsSZFKioo0YcIE/d3Xv6HyinJddOGF+odLLlFFZaXr1+/s6NCf//xn/eWvf9XB7oP677/9l44cOaKTPT06cbLHg/8DREzpSL943hdffDHkL2QOYUzmoSAAAADAalXlkzRhwgRd+o+XqqysTLfU1pouSdva27U/mdTvD/9eRz85SjcSo3mvv6+3erhfHCko1kj6dZ6KAgAAAKxQWJBQ1eQKXfady1RVWRmIUJitbe3t6up6T8kD+7X/4Eemy0HA9Pf1njfcr40UFFdKeihPNQEAAACBNXF8mSoqyjXnh3OsCoaj2dDSot/85gN9sHs3y1UhSf9ff1/vsaF+YaSguEPS3DwWBQAAAATGxPFluu6661RbW+vJnsKg6+zoUNtzbYTGaLumv6+3a6hfGCkoHhDDbAAAABBiY0uKdMtNN0cmHA6H0BhZq/r7elcO9QsjBcWhfwFWe/6ZVtMlREZX13tnfvwfR/5Dp/72N6aSeWT2zBmqvXW+6TJC7+jRo/r00z+c+e/kgf2SxPt4GIUFCT32yCO66MILTZfi2NGjR/VQ86OmywidwoKEfvXUU6bLcKz9xa168+1O02XkVWFBQt+/6nu65667NWPWLNPlBM6Glha98uoren/3HtOlIP+e6+/rrRvqF4YMikw8Da/+vl7TJUBSdzKp3x86pK6u93Ti5Akmkzm0cMECbdi00XQZkTfwPt6fTOpPf/qjjhw5EvlBCTa/N6dfew0fCj225J67tWbtWtNlONKdTKp6+nSdOh3OzwsD3cP7fvpTFRUXmy4n8LqTSf1qw6/04isvh/Y9geEnnw4XFKslvZvfmmACQTHYBsZa//v//XftP9DNN+Vh2PxhPAo6Ozq0b98+ffz/PlZ398HI3QR5Y+cOKzsUYQ8Ifps4vky/+/hj02U4FtYbBlXlkzT3+rla3tRkuhQr9aRSat28WRuf3syKkvD5vL+v94KhfmG4oLhSTDwNJYKiXQb2C0Txw/ZICIp2GfiAsWfvb/V/PvhN6IOIrQFBkhbVN6h1yxbTZYTC88+0Wjcpc0NLi+6976emy/BUVfkkLVm8xLrfiyBb3dxMYAyfC/v7ej87+yeHC4ptkm73oSj4jKBor4HlH2++/dI2VkEAACAASURBVFbkvzkTFO22rb1dr//r6/q3tzpCGxptXHI4oLR0XOS/x7g1e+YM7XztddNlONKTSmniJZeE5s8kATH/CIyhMuTk0/OHeXBpXksB4FhFZaU2bNqoY8eO6/lnWjV75gzTJQE5uaW2Vi+0b9Vf//IX/eKJn4fyvbyptVXdSTu3+q95bLXpEqxWWJDQ5s1Pmy7DsaVLFociJI4tKdIvnvi59uzdR0jMs+VNTTp27LiW3HO3CgsSpsuBO6VD/eRwQXFy/uoA4NYttbXa+drr2vfhbi1csIBv0LDWorvu0s7XXtcfjx/TwgULNLakyHRJnjh1ulcNDfWmy8jJLbW1unrqFNNlWKt+4ULrhqRsa2/XS9t3mC7DlcKChJbcc7eOHTuuRXfdZbqcSFmzdq0OHzqkm2+oMV0Kclc61E8OFxTH5K8OAF4Z6DIePnSIwAirFRUXn+mYr2p6MBSBcf/Bj7ShpcV0GTlZ98Q6vp/kYOL4MiuXHC97YLnpElyZPXOGDh86ZOXXPiyKiov1QvtW7ftwt6rKJ5kuB84N2SQ8JyhmJp4CsMjAh+zDhw6FchkfomVgOVMYAuMDK1aoJ5UyXYZjFZWVunXeTabLsE7Tgw+aLsGxRfUN1u4xmzi+TM8/06qdr71uXRc3rCoqK7Vn7z794omfc7PJLtlNPY3FEzWSfu1HRfAfw2yiobOjQ0uWLg3tpFSG2UTLovoGq8/wsnGwiZQebnLFd6+wNkT47eYbavRC+1bTZTjS2dGh6+bauVww6H8P9KRSenfXLh09elSffvoHnTh5QqmTJyVJh4984uj7WWFBQhMnjJckTZgwQX/39W+ovKJcF114YaD3YfakUpo//9ZQHrcSRv19veed/XNDBcWV4miM0CIoRktYR90H/QMCvGf7Bw4bj0qQwnlcQj4UFiR0+NAh67pa3770UutuKE4cX6Yn160L1Fml3cmkdu/erYPdB5U8sN9xEHRrbEmRxpeV6VsTvqXq6mm6Zvr0QL0XN7S06IEVK6y92Rch5xyRMVRQbBNHY4QWQTF6wthdJChGl60fOMaWFOnYseOmy8jJlCsu1/6DH5kuI9BWNT1o3UHuyxob9eQvnzJdhiM331CjdU+uNx6CBp8N233wYCC77hPHl6miolzf+95VunHePKNfM5s71xFzzhEZQwXFLknT/KsJfiIoRlNPKqU777xDb77daboUTxAUo83W7qKt79vuZFKXXznVdBmBVVU+SXv27jNdhiPdyaSqp0+35oZLYUFCjz3yiNFppp0dHXr11e364DcfWHnj9eqpU3TZdy5TbW2tKiorfb22jZ3riPqX/r7etsE/MdTU01JfSgHgm6LiYu187XUtuedu06UArhUVF2vXO+9a935u3bJFnR0dpstwrKKyUgsXLDBdRmA1P9JsugTHGhrqrQmJE8eXqWvXLiMhsTuZ1KL6BpWWjtN1c2vUumWLtYHn/d179OQvn9LlV07Vty+9VMsaG30ZtLWovsHar1kElZ79E0MFxXH5rwOACWvWrtWqJvum8gFDWbN2rd7YucOqyXpNK+xanjhg1SMPWz+BNh9uvqEmUHvlsrGhpcWapcSzZ87Q7z7+2PcO2OrmZk254nJdfuVUtW7ZEsilpW4c/uSonvzlU/qf40o1/dpr8naMz7b29lDOSQix0rN/4itBMRZPnPMAAOGyvKnJug/XwHBmzJqlw4cOaeL4MtOlZGX/wY+0rLHRdBmOFRUXa1nj/abLCJTCgoTWPbnedBmO9KRSemDFCtNlZGVV04O+Tgse6B5eeNFFeqj5UWvCtFvv796je+/7qUpLx3naZexJpaw/nzOCSs/+ibM7iuc8AED4zJg1Sy9v3UpYRCikl6K+Y80hz5taW9WdTJouw7FFd91lzdfYD/cvXWp8qIpTd955R+CXnBYWJPTGzh2+DQfqTiY19/o5Z7qHQf/65MuJkz168pdPaeIll2hRfYPr71FLlywOXSc2AkrP/gmCIhBRM2bN0q+esmviHTCcouJi7dm7T7NnzjBdyqhOne7V0vuWmi4jJxs3bjJdQiBUlU+ybsrptvb2wA80mzi+TC9v3erLct7BATHoXxc/nTrdq9YtW3T5lVM19/o5OQXGbe3temn7jjxUhzw7Z/shQRGIsFtqa9mziFDZ+drrVoTF93fvydu+oHyqqKzUzTcw5t62ATY2LAOcOL5Mu955J+8hkYCYvTff7tTlV07VovqGrJek9qRS+snddg0aw5fO3oZIUAQibnlTEx/8ECo7X3tdV0+dYrqMUT2wYoUvUwe9tu7J9ZFetr5wwQLrBtgEfRngQEjM51LenlRKi+obCIg5aN2yRRMvuSSr/dXz598a2eW7IVE6+D++co4iZyiGH+coYjg2Hapt63l08E9PKqXp114b+LHsN99Qoxfat5ouw7HVzc16qPlR02X4bmxJkfb+dq9VexODftj57Jkz8j60ZnVzsx5fty4QAWZsSZFKir6cIFw5uWrYxyYP7D/z48NHPglM/WseW61bamvP+bUNLS26976fGqgKHvpf/X29Z9YNnx0UD0iqMFEV/EFQxHB6UilNvOSSQPxFNBqCIrLRk0rpiu9eEehOiiQ9/0zrkB+6gs6mm0te+cUTPzd66HsugnzYeb5DYncyqYaGet/fp4UFCU2cMF6Vk6v0zW/+vcrKynTN9Ome3GDoTib1+0OHtD+Z1J/+9EcdOXLEyJ/D2TNnaPPmp8/8P3Unk6qePt2KzxAY0ar+vt6VA/9xdlD8YqhnIDwIihiJLXcDCYrIVmdHh26aPz/QH17GlhTp2LHjpstwLOidKq9VlU/Snr37TJfhyKL6hsCeY5fvkOjn//vYkiJVlJdryhXf1XX//M++n/sopf887tu3T3v2/lbdBw/6coOssCChxx55RIvuuiuSN45CiqAYZQRFjGb6tdfo/d17TJcxIoIinLBhmaSt7+nbaudHZrrhvg93GwkAuQpyh+fqqVO065138/LafnURr546RZd95zLV1tYG8n3R2dGh/93ZqTfeeCPvHeWxJUWBX7mBrL3X39dbPfAfZ4JiLJ6YLMm+g53gCEERownyh4sBtn6ohjlzr58T+AEWtgURya4l627Y+D0nqB2efA6uyfdexKrySZp7/VwtvPNOq/apdieTam9v9yU0wnpfCYqDp55e4H8tAIKmorJSt867yXQZgKc2b35aY0uKRn+gQQ0N9aZLcKyouFj3L7XzTMhsjS0p0qpHHjZdhiOrm5sjFRJ7UinNvX6OHmp+1POQOLakSAsXLNC+D3drz959Wt7UZFVIlNJ/r69Zu1a/+/hjvbFzh2bPnBHpycUY0eTB/zE4KJb6WweAoFr1yMP8JYJQKSou1prHVpsuY0T7D36U1fj5oFne1KSJ48tMl5E3yxrvtyoY9KRSenzdOtNlnKOwIJGXkNidTGr6tdd6vmJg4vgyrWp6UMeOHdeGTRut6/YPZ8asWdr52us6fOiQltxzd+BvoMF3Ywb/B0ERwDmKiovpKiJ0bqmt1eyZM0yXMaJNra1Wnq3Y9OCDpkvIi6rySdZNOQ3iOXaFBQm9vHWr5yGxs6ND1dOne7qcsqp8kp5/plW/+/hjLW9q8ux1g6aouFhr1q7VsWPHtarpQQIjzojFE2dWmZ4/0gMBRJdtS62AbGze/HSgu+WnTvdq/vxbTZfhmA0h3KnCgoQ2btxkugxHNrS0BHIY2WOPPKIZs2Z5+pqrm5t13dwaz0LxQEDcs3eflcfVuLG8qYnAiMHOLD8dHBSr/a8DQFAVFReH7oMfYEO3/P3de7ShpcV0GY4FPYQ7deu8m6xabtiTSmnN2sdNl3GOJffc7XlXdlF9g2eTjMeWFGlV04ORDIhnGwiMCxcsCNWfZeSOjiKAYdXeOt90CYDnbNiDu2bt49YtQS0qLlb9woWmy/DE2JIi66acLl2yOHBHFMyeOUNr1q719DXnXj/Hs/MRFy5YoL2/3RvqJaa52LBpow4fOsTN4ugqHfgBU08BDOuW2lqWoSB0bOgqnjjZo6VLFpsuw7E1a9eGYrBN0AcfnW1be3vgzrOcOL5Mmzc/7elrenXMTVX5JO37cLc2bNpo1aAiPxUVF2vna6/r+Wda+RwQPaUDPxgcFCv8rwNA0F01darpEgDP2dBVfGn7Dm1rbzddhmO2D7a5euoU65YgNj/qzTJMrxQWJPTkunWehjAvQmJhQUJL7rlbe/bus2pZsUm31NZq72/36uYbakyXAgNYegpgRHN+OMd0CYDnbOgqSsELANmwebBNYUFC654I3tESI1lU3xC4Q9TrFy70dHiNFyFx4vgyvbx1q+dLYaOgqLhY3/veVabLgH++Osxm8BhUABjMtjvrQLZ+sugnpksY1eFPjmpRfYPpMhyzdbCNbQNsupNJz/breeXqqVM8DWNehMSbb6jR7z7+2PPJq1HRnUzqgRUrTJcB/5zJhV/L/HvyMA8EfDPlistNl5C1yslVkqRvjPmGqior9Q+XXGLVhwunqsonaf/Bj0yXAXiqorJSV0+dEsjjBAZ78ZWX9ZNFP7Hqe8xAxzZoIWYkNg6waWioN13CVxQWJLR164uevZ7bkFhYkND9S5cGdljNaEvLL7744kCE24aG+sCdzQl/fG30hwD+sCmIDFVrYUFCEyeM17Rp1fqnGTMC8c3dK5WTq6z6/TFtdXOzdr6203QZWZkwYYL+7uvfkCSVV5Trogsv1DXTp0dmwMO8G+cFPiieOt2rhoZ67dm7z3QpjmzYtFFvvv1W4CZxDse2ATbLGhsD9335sUce8ex7x+rmZtch8eWtW43/XdzZ0aF9+/bp00//oOSB/TrZ05PTn4mJ48tUWFigyslVKq8o19SpU325eRTE9xnyrnTgB+d98cUXisUT1ZLeNVYOfNPfF9w7QrG4fcuURjK2pEhXTZ2qxsb7reoEDGVDS4vuve+npss4Y+GCBYG+87+ovsGqTspQxpYUaXxZmS77zmWhu/FxtgsvusiKu+Wrmh4MbGdkONva2/WjHwf/yIyrp07Rrnfs+RjUnUyqevr0QL1vvfwarm5udnVO4sTxZdr1zjtGbnh1dnTo1Ve3K3lgf94DVmFBQlWTK3TZdy5TbW2t5581gvg+gz/6+3rPk74MiislPWS2JPiBoGjG7Jkz9PCqh60NjN3JpC6/MjjTTwmK/issSOj7V31PtbfOD92+Va9G7udbYUFChw8dsq7bO/3aawLdtS0sSKhr1y6rvj8H7Wvq5Xuzs6NDN82fn3M4qSqfpNde/1df/5x0dnSo7bk2fbB7t9EO+sAN6rrb6zy5ufftSy8N3KAk+GMgKDL1FPDBm2936vIrp+q22vnWHaItyaoPUMiPU6d79ebbnfrRjxeqtHScVjc3W/leHsoPZv3AdAlZOXW6V/Pn32q6DMfWPbEu0INt6hcutOp73IaWlkCFREm6f+lST4JZTyqlO1zsh5s9c4b27N3nS0jsTia1qL5BpaXjdN3cGr20fYfxZdYnTvbope07dN3cGn370ktdfZ8O4jRd+Gdg0ClBEfDRS9t3aPq116qzo8N0KY6F4RBteOPEyR491PyoJl5yiVY3N5sux7VFd91luoSsvb97j3VnK1ZUVgb2KJKJ48usOi6hJ5UK3PTJqvJJni2Jvn7OD3MOW7NnztDO1173pI6RdHZ0aO71c3T5lVPVumWL8XA4nMOfHD3zffq22vnqTiazfm5nR0foVsXAscnSl0Gx1FwdQLQc/uSobpo/37qwWFhYYLoEBMyp0716qPlRffvSS617P5+tqnyS6RKytuyB5dZ1czds2qixJUWmyzhH04MPmi7BkaVLFgduv1jzI97cLFpU35Dznj4/QuK29nZNueJyXTe3xoql6gNOne7VS9t36PIrp2ru9XNGDYw9qZSWLF3qU3UIOoIiYMCp073WhcXCr3/ddAkIqMOfHNV1c2u0rLHRdCk5GzjyxgYnTvZo6ZLFpstwLGhTRWfPnGHVfttt7e16afsO02V8xeyZ3gy62tbennMHK98hsTuZ1PRrr9GPfrzQ+umf2WyDWbpkMUtOcQZLTwFDTp3u1R0N9dZ0Br414VumS0DAPfnLpzT3+jmmy8hJdfU00yU48tL2HVbdaJKkW2prdfXUKabLkJQevrJ589Omy3Bk2QPLTZfwFV59DXtSKf3k7rtzeu7E8WV5+33sSaW0qL5Bl185NXB7Qt16afsOTbzkknNu7gXxZgSMKZUIioBRJ0726M477zBdBuCZN9/utDIs2tRZGmDj8rB1T6wzXYKk9AAbm6bHLqpvCNxeuFvn3eTJ13D+/FtzWk6bzyMwtrW364rvXhHqfXqnTvfqyV8+pSlXXK7Ojg71pFKBuxkBo0ollp4Cxr35dqd1wymAkdgaFm0b2HT4k6NaVN9gugxHKiortXDBAqM12DbAJoiDRQoLElr1yMOuXyfXCa6FBQm98MILnofEnlRKt9XO149+vDBwwTxf9h/8SNfNrdEV370iMv/PyN5AUBxntAog4tpf3Gq6BMBTb77dad2exTLLgqIkvfjKy46mGQbBqkceNjrYxrYBNkHsHHvRTXQzwfVXTz3l+ZEmnR0dmn7ttZFdeklIxFC+ZroAAOkP1T2plFVLoYDRPPnLp/RPM7wZduGHsSVjTZfg2KnTvWpoqNeevftMl5K1ouJiLWu8X/fe91Pfr23bAJtljY2BGyziVTcx1wmuS+652/Pfw9XNzXp83TpfJsqOLSlSSVGRiktKznzP+caYb6hqUPDt6nrvzI//48h/6NTf/qbDRz4J3MRbhNoFEkERCIzWzZs9O4sKCIqmFU3WBMXq6mmBW+KXjf0HP9KGlharzoNcdNddeu65Nl+nSNo2wKY7mdSm1lbTZZzDi25irkNTrp46xfNlw4vqG/L6576qfJIqJ1epunqarpk+Pauv3XBBuDuZ1O7du/Wb33yg7u6DgbuJgFCZLBEUgcDYs/e3pksAPLf/4Eda3dxsxU2Qiy++2HQJOXtgxQrdOG+eVasSNm7cpMuvnOrb9e5futSqr09DQ33gOkhedRObH33U8XPGlhRp69YXXV97sLnXz/H8TMTCgoS+f9X39INZP/D85k1FZaUqKivPvG5PKqXWzZvV+c6u0E1mRTCcH4snJpsuAoCUOnnSdAlAXrRvtWMPri2dz6GcOt1r3QRlPwfbVJVPsuJmxYANLS2BPLPvn38wy3XYXt3cnFMnbM1jqz0L+j2plKZfe42nIXHi+DKtanpQhw8d0s7XXvelw19UXKzlTU3a9c672vfhbi1csMDo/l+Ez/nKrEEFYFYQPxQM9t9/+y/TJcBShz85at2ZfzaycYKyX4Ntmh9pzvs1vOJmyEu+NTbe7+r5PamUNj692fHzbr6hxrN9iemQeK1nHbiq8kl6/plW/e7jj7W8qclY17qislIbNm3UsWPHtarpQQIjPME5igCycuTIEdMlwGJtz7WZLiErVeWTTJfgyrIHlqsnlTJdRtaKiovVcMedeb3GzTfUWNUtvvPOOwK35FRK7w90O2n0oRU/czxdc2xJkdY9ud7VdQcMhEQv9vYNBMQ9e/cFbkDS8qYmAiM8QVAEAOTdB7t3my4hEk6c7NFDK35mugxHljc15S2gFxYkPAsZftjW3u75njmv1LsM9D2plF585WXHz/Nyyemdd97hOiQWFiS0qunBQAbEsw0ERtNnl8JK0ySCIoAsHT7yiekSYLETJ3usO+/PVq1btli31DdfS0NtGmDTk0pp2QPLTZcxpLElRa5D0UMrfua4U3r11CmehTEvBtdcPXWKDh86ZNV+V0nasGmj9n242/oVE/AfQRFAVoK4FAp2eePf/s10CaOaMGGC6RI8EcRD2kcyY9Ys3XxDjaevadsAm6VLFgf20PNbbrrZ1fNz7Saue2Kdq+sOWNbY6CokFhYk9Isnfq5d77xrzY2Hs1VUVobm+xv8c74y52QAwHBsG5CBYPr00z+YLmFUf/f1b5guwROHPzmqZY2NpstwZN2T61VYkPDs9WwaYNPZ0ZHTuYJ+qXXZ1WvdvNnxzcaFCxa43hMppf/+evKXT+X8/Injy9S1a5dV55QOJdezKxFtTD0FAiLIS0KOHuVQX7iXPLDfdAmRsqm11arlvkXFxbrfo06obQNsgtwB9mKIjdNJp16d19iTSuknd9+d8/OvnjpFu955x5PAalKQlzUj2Fh6CgREcUmJ6RKGtWfvb02XAMChU6d71dBQb7oMR7wYbOPllEw/LKpv8GQKZ77MuHa6q+dvaGlxvKT21nk3ebLE8/o5P8x528TsmTOsXmo62Pz5twZ2WTOCjaAIBMSUK75ruoRhdR88aLoEhEDQzwoNo/0HP9KGlhbTZTjidsnossb7rflw351M5rR3z08L73Q37fSVV19x9HivuonLGhtz/p4ze+YM7Xztddc1BMGGlhbPzoxE9BAUgYC47p//2XQJQ+pOJrkTCVjsgRUrrDpb0c1gm6rySVbtJWtoqA/0oLCrp05xFbq7k0nHIcWLbmJ3MqlNra05PTdMIbEnldIDK1aYLgOWisUTpQRFIAC82AOSL+0MsgGsdup0r5YuWWy6DEdyHWyzceOmPFSTH6ubmwPfZXe77PRXG37l6PFedRNzDeBhColSeslpkG9EIPBKv2a6AgDuDzLOpzfeeMN0CQBcemn7Ds1pbw/8AeEDioqLVb9woaNplV5NyfRDTyqlx9d5c/RDPrld6fLm2285evz3r/qe625irgF84vgy30PitvZ2/eWvf9XB7nO3d1RXT9PFF1+c81CmZY2NLDmFawRFwLCq8kmB/fDWnUwGesgCgOwte2B5YL/XDGXN2rV64403svoeNLakyJNOlF9s6PRMHF/mKnh3dnQ43rbw8Cp3v4c9qZTjCatS+v2z6513XF07GxtaWvRWx1s6+snRUd/XrVu2nPnxxPFlqqgo15wfzsnqz7CbpbfAYCw9BQwqLEgEeqnU2rWPmy4BgEdOnOzRovoG02U40vTgg1k9zqYBNrYMF6moKHf1/Lbn2hw9vqp8kuuO8EMrfpbTnvqnN27K2/uns6NDc6+fowsvukj33vdTvfl2p+MbsIc/OaqXtu/Qj368UKWl43Rb7fwRj74J+t5X2IOgCBj08tatgV0q1ZNK6d/e6jBdBkIkyGeFDgj7WY+tW7aos8OeP9e31NZq9swZIz7GpgE2PamU1lhyA27OD+e4ev4Hu3c7evzc6+e6ul5PKpXTBNkl99ydlzM3t7W3a8oVl+u6uTV68+1Oz4LbiZM9emn7Dl1+5VTNvX7OOYFxUX1D4Pe+wh7nS7rAdBFA1BQWJPSLJ34e6AOhWzdv5o4kEEJNK5pMl+DI5s1PjzjYJsirMs62dMlia6ZIu1mmnMuyU7fHcDy04meO/86qKp+kNWvXurru2bqTSU2/9hr96McL8x7Y3ny7U5dfOVWL6hvUk0qps6PjK0tWAbfOlzTZdBFAlIwtKdLLW7cG/g54Lvs8gJFMmDDBdAlQ+mzFZY2NpsvI2sBgm6HYNMBmW3u7Xtq+w3QZWXHb/X/11e2OHj975gxXSz9z7SZ6fZNhQ0uLqqdP931pceuWLbriu1doydKlvl4X4cfSU8BHN99Qo72/3RvoTqKUnhpny11v2OPSf7zUdAmjOnzkE9Ml+GJTa+uIe5yCZs3atZo4vuwrP2fbAJvmRx81XULWKidXuXr+B7/5wNHjfzDrB66ul8sKGK9vMsy9fo7uve+nxlbinDjZw/A5eI6gCPhg9swZ2vfhbr3QvjXwAxdsGdsO+7gdte+HqCy3PnW6V0vvs6v7cPZgmzWPrQ7899MBi+obrPoQX+5ikE1PKuX4/9XtChunK2C8Oq9RSv//fvvSS/Xm252evB4QJARFIE/GlhRp4YIF2vfhbu187XVrlkctXbI4Mh+W4Z+xJUWB/zNgU4fNC+/v3qMNLS2my8ja4ME2V0+dYs1RH93JpHX7xm6cNy/n5776yiuOHn/11Ck5X0tKL+l1ugLm1nk3eXKToSeV0vRrr7XqJgDgBOcoAh6qKp+kyslVuvHGGwK/vHQonR0d1uyhgV2umjrVdAmj+v2hQ6ZL8N2atY/rxnnzrOnMPbzqYXUfPKh1T9iz6qGhod50CY4UFiRcvR9+43DZ6WXfuSzna0lS+4tbHT2+sCChDZs2urqmREhENBAUgRwMbPSvnFylb37z71VWVmbN3e2RsBEe+dLYeL/pEka1P2IdRSm9r2npksV6od3Zh21TKiortfPXOwLfnR6wrLHRuqMKJk4Y7+r5R44ccfT4f5ox8vEno/k/H/zG0eNvnXeTq+sNmD//VkIiQo+giMB4/plW0yUM65rp0625456r22rn85ce8sKLg7T98Kc//dF0CUa8tH2H5rS3W3Ozy4b3kpRecrqpNbh/rw3H7SAbJ8G4sCDhavXNhpYWx1slvNibuKi+wffJpoAJBEUEhi0fUsJoQ0sLS06RN0sWLzFdQlacdkLCpPnRR/ke7LGl9y21cr/3N7/59zk/d1t7u6PHV02uyPlakvRWx1uOHu/2GA4p/f9o255TIFcMswEirrOjQw+sWGG6DITU7JkzrAkgUTkaYyiHPzmqRfUNpssIjQ0tLdZ2nMrKykZ/0DCOHnW2KsXt/sTugwcdPd7tMRw9qZSWPbDc1WsANiEoAhHWk0rppvnzrbzrjeArLEho8+anTZeRlc6Ojsj/OWjdsiVyk1/zoSeVsvrmm5sbOx//v48dPb7KxTLizo4OR9NOCwsSro/heGjFzzhjGJFCUAQiamBiW9Q/HCN/HnvkEWv29u7bt890CYFg24TOIIryEUNOl29fM316ztf6353Ozi38/lXfy/laUvrvzBdfednVawC2OV9Sl+kiAPiLsd7It4ULFri+e++nPXt/a7qEVQAOEAAAIABJREFUQNh/8CMta2w0XYa1trW3W73fe2Cid65O9mTfbRtbUuTqRtLvD//e0ePdLjt9aMXPInsDANFFRxGIGEIi8m32zBmenFPmJ6cj9sNsU2urelIp02VYKer715wsyywpKnJ1Laf7E2+cN8/V9egmIooIikCEdHZ0aOIllxASkTezZ87QztdeN12GI+xP/KpTp3s1f/6tpsuwzqL6Buv3r02YMCHn53Z2dPh2LclZKJ04vsxV93J1czPfIxBJBEUgIlY3NzO4Bnm15J67rQuJktT2XJvpEgLn/d17tKGlxXQZ1ujs6AjFkQl/9/Vv5PzcP//5z75dy+kxHBUV5TlfS5I639nl6vmArQiKQATcVjtfDzU/SkhEXowtKdLzz7Rqzdq1pkvJyQe7d5suIZDWrH2cJahZWrJ0qekSjPvLX//q6PHlLsKb02M4/sf/+J85X6snlbL2qBPALYIiEGKdHR369qWXWj1cAcF28w012vvbvdaclXg2pyP2o+TEyR4tXbLYdBmBt6yxMTTL+d2Et4PdzvYMXnThhTlf69NP/+Do8W6O4Xj1lVdyfi5gO4IiEFKL6ht03dya0HyAQbDMnjlD+z7crRfat1pzBMZQftnylOkSAu2l7Tsc7z2Lku5kUptaW02X4Rk34c1PJ06ecPR4N8dwOA3AQIgcICgCIbOtvV2lpeNCsV8GwTK2pEhL7rlbfzx+TDtfe10VLu7SB0FPKsW00yywrHJ4DQ31LOnPkZtVCKmTJx093s3NrOSB/Tk/F7BZf1/vZ18zXQQA72xoadEDK1bwwQWeKCxIqGpyhS77zmWqra21PhierXXzZv6sZOHwJ0e1qL7BuiNP8m1DS4v2H/zIdBmB4bTL55fCgoSr5586ddqjSgD7EBSBEFl0111adNddWt3crJ2v7eRDDEZ09uHalZOrJEnV1dP0D5dcErpgeLaNT282XYI1XnzlZf1k0U9C/57IVk8qpQdWrDBdRqA47fL5ZeKE8a6ez/YNRNnXJH1muggA3lre1KTlTU3a1t6u9he36s23O02XFCkbNm2k+xJwq5ubGWLjwKnTvWpoqNeevftMlxIId955B91og0728GcX8MP5kg6YLgJAftxSW6udr72ufR/u1uyZM0yXAwQG3UTn9h/8SKubm02XYdy29nZuvhnGTR7AHwyzASKgorLyTGC8euoU0+UARtFNzN3j69ZF+mzFnlRKyx5YbroMAPAFQRGIkIrKSu165109/0yrJo4vM10O4LueVEqPr1tnugxrnTrdq/nzbzVdhjFLlyzmJkMAjC0pMl0CEHafSwRFIJJuqa3V7z7+WEvuudv1RDjAJkuXLGZvmUvv796jbe3tpsvwXWdHh17avsN0GZBUUkRQBPLsgERQBCJtzdq16tq165zpl0AYbWtv54O+R5Y9sDxyS1A5T3JkhV//uukShnT4yCeuns/qG0TZ+WLqKRBpFZWV2rN3H91FhBp7y7x14mSPHlrxM9Nl+GZRfQPHJIziWxO+ZbqEIbldQVBYWOBRJYB9zu/v62XqKQCtWbtWL2/dyt1ThNKdd97B3jKPtW7Zos6ODtNl5F13MqkXX3nZdBmh42b5cnFJiaPHu+l+D5wvC0QRS08BnDFj1izteucdjtJAqKxubuY4gzyJwnLMhob6yOxr/ctf/2q6hKyMLRnr6PHv7tqV87XKK8pzfi5gO4IigK8oKi7Wztde15J77jZdCuBaZ0eHHmp+1HQZoXX4k6Na1thouoy8WdbYqP0HPzJdhm8Odh/M+blOA5WbUPrNb/69o8fvTyZzvtaN8+bl/FzAYl0SQRHAMNasXatVTQ+aLgPIWXcyqZvmzzddRuhtam1Vt4sP4kHVk0ppU2ur6TKscdGFFzp6vJtQWlbmbIvEn/70x5yvVVRczPnDiKyBoNhttAoAgbS8qUm/eOLnDLmBdXpSKd12222RWTJo0qnTvWpoqDddhufmz781cu+f//7bf+X83Isvvti3a91SW+vo8d0uQqkkzbh2uqvnA7YaCIpMPgUwpEV33aWXt24lLMIaPamUpl97LVMqfbT/4Efa0NJiugzPbGhp0fu795guw3dHjhzJ+bkzZs3y7VqSNLYk+7MUD39y1NVAm+VNTfwdiEhi6SmAUc2YNUv3R2BoBexHSDTngRUrQnG2Yk8qpTVrHzddhpWchLeTPe6mEI93uPz01VdecXW9W+fd5Or5gGUOSARFAFla3tTEnkUEGiHRrFOne3XnnXeYLsO1pUsWR/YoFbeDe0qKsg+KJ072uLqxcNl3LnP0+Lc63sr5WpK06pGH6SoiSj6TvgyKnKUIYFTLm5p08w01pssAzkFIDIY33+50dT6eadva2/XS9h2my7DWhAkTHD3ezbEV/zTD2TFO3Qfd7VMsKi6mq4jIYY8iAEdeaN+qqvJJpssAziAkBsuyB5ZbuwS1+VGOUnET9C/9x0sdPd7NsRUzZs1ytNT1xMke1/toVz3ysKNrArZj6SkAxzZu3MQSHARCZ0eHJl5yCSExQE6c7NFDK35mugzHFtU38D6SdPRo7l8Dp8dW/Pv//fecryVJFeXOzm50u/y0qLhYax5b7eo1ABv09/V2SdLXMv9NRxHGLapvMF2CZ6qrp0lKjwt3OgnOBhWVlapfuFBP/vIp06UgwlY3N+vxdesid4SBDVq3bNGNN95gzfe/zo4OtW7ZYrqMQPj00z/k/Nxbamv1ox8vzPrx+w+4O53tB7N+oDff7sz68W++3ameVEpFxcU5X/OW2lp1db3H+wWRcN4XX3yhWDxRLeld08Ug//r7gvuBKhYPb4dqbEmRSoqKVDm5SuUV5Zo6daoqKitNl+XalCsudz38IBcLFyzQhk0bfb8uguO22vnsJQu4qvJJ2rN3n+kysmLqe1kQuf19c/q13Pfhbld/H1540UWObhZ59fcH7xmEWX9f73kSS08BX5w42aP9Bz9S65Ytuve+n+ryK6eqtHScbqudr86ODtPl5WzJ4iWmS0DEdCeT+vallxISLbD/4Eda1thouoxRLWts5AP/IG6PrXA60Kbd5fCj71/1PUePf/GVl11db8Brr/+rJo53ttQWsMTxgR8QFAFDTpzs0Uvbd+i6uTUqLR2n1c3Npkty7JbaWgbbwDfLGhtVPX06+8gssqm1Vd0uBpb8/+3df2xU553v8U9W1WgmtE3aSh4u2i0WoLJcmtjOXSgh6cYJ3HCTvQne/CJYKXVKgSJaBUholMZdoAxBKbv8UEDUTpy1CYIkTXNtaMuCDBluUsIGCWMCS1kFandbhC1ti++9MKP5h/vHnCGO8a8z55x5zo/3S0IxeOacL6i1/Tnf5/k+pXDkSNp0Cb7i9NiKu+6629brne5TrH1yvq3XX7maceUBRlkyqUOHDxMWEUZdhQ/+Qvp0wyIAMy5e6tXq1PpABka6ivBa+4EDmjF9mja/so39iAFz5WpGvz171nQZsMnJ4fSPPvaYrde/f/RY0feS8g8s7U4ibWxqcmUyL2ERYUdHEfCRQmCcMX1aYMbLz6ut5ZskPNHb06Oli5fowbk1LA0ESuhUZ/FnDpYlk7a/Jzg9tmLJdxfZev2VqxnXJvOWJZP6+MwZPXC/vXMdAR/rKnxAUAR86MSp05o8ZUpg9i/Wzre39AcYyYZUSpOnTGGyIGBAx8kTjt5/t83lp06PrVi4aJHtI5uadu50dVl02959Wlv/IkdHIQy6Ch/0D4pHSl8HgKFcuZrR4/ODMexm4SJ7T3OBoWxIpVRePl6rU+tZZgoY4rSD/+ijj9h6/f/+4DeOVtGUJZN68rHHbb9vyZLFRd9zMC/U1yt96JC+OXOGq9cdCd1MeIWOIuBjQQmLZclkyb8xIjx6e3o+ExAvXnI2dRGAc285mEY6e84cW/sGr1zNqOnVV4u+nyStXfcT2908LybzVlRV6dDh9/TG602eD3t74P7ZOv7hUbXt3cdgObjpZOGD/kHxsoFCAIzgytWMVqxc6fs9i7Pvm2W6BARMZ0eHnqqdr8lTphAQAZ/Z98t9jt5/98yZtl7ftrfN0f2K7SpufmWbJw9j59XW6thHx/XrtlY9cP9s15akjhtbpoULFlwPiIUzKBsaGl25PqB+mbB/UDw5yAsB+MC58xe0csVy02UM68G/+zvTJSBAZt13r6bdOVNvv9vKElPAhzodDLSRpLpv19l6/YlTpx3vGVy77ie2J6BK0neXLPbsYezsOXPUtnef/vynP2nrP/2jHrh/tu1hP5MnTtATj9Tojdeb1NXVrR2NDdcDYkFFVZUWLljgZumAbrp27ZokKRZPrJG02mg18Fwu698fyGJxNoCP5PiHR2/45uAn5eXjS9IVWrhggXY0Nnh+H3hnx/bteubZ50yXgRJ44/UmzautNV3GkGZMn8ZU3SE4/Z5j93vCA/fPVtteZ53MDamUVqfW237fHbd/Xcc+Ou7o3na9tXu3/vTnPw86Zba6+h595Stf0ew5c0Z9vd6eHk3/xnRWZ8CRXDZzU+Hjz/X7czqKgM/9w+p/cPxN1EsVt9+ui5faTZeBAFi6bJne+cU7js9QA+CdX//qV46C4gP3/w9bk4sLQ23Kksmi7/lCfb3a9rbZDv8nTp3W3IcfKun3WLcfoJQlk3p+1Q95CAfXsEcRCJD9B9t9vVfxryf/tekSECB79rzJKHnAx9oPH3L0/u8t/Z6t17t1vmFDQ2NRX1v2H2zX3Icfcnx/k5YuW8ZgGzjR3f83BEUgYJxOhvPSHT5eFgv/KUsm9dK6dabLADCE948ec/RwsqKqyvZE7Dff+bnjB6IVVVVavHBhUe8NQ1hksA0c6Or/m+tBMZfNsPQUCIBjH/2r6RKGdO8sJp/CnqXLlnEGGOBjTh9OPvboY7Ze71ZX8eWNG4vurAU9LDLYBg58pnHIOYpAwFw4f8F0CUNysq8E0fXqq68VNakQgPecLj9dumyZ7f9/u9FVlKS9+35Z9PL2/QfbNeu+e3293WM4xU6AReR9pnH4uQGfPCLpntLVAsCucz4OilJ+clzUJwhuSKUcnwlWrEmTJmnX7j1G7l2ssmRSL7+0Qd/6TnFLxQB45/2jx9TZ0eFoqM2S7y6yNYm00FV0Ot26LJnUz7ZtK/pry/tHj2nWffdp165dvp44PhgG28ANA4MiAMCh3//+P4yF5ROnTuuu7du1dNkyI/cv1rzaWu375T69/W6r6VIADLB7925HQWnhokX66aZNts5Mbdq5U99b+j3HAW1eba1OdHRo8yvbinr/ufMXVD1rll5aty5wX1eXLlumlpbmyD+8hS3p/r8ZuPSUfYoAHJk0aZLpEiLvRz/+cSCXS23avIWlUoAPvfXztx29vyyZ1JOPPW77fSufXenovgUvb9zoaC/0lasZPfPsc4FcispgGzgxMCgy+RQIgM6ODtMlDOkLn/+i6RIi78rVjB5+6H+aLsO2smRSr/FDDeA7Fy/16q3dux1dY+26n9jeL/j+0WOO71vQtnef48FZ7x89pslTpmhDKuVKTaXwX8aN0+SJE0yXgeD4TNOQjiIQQEHbK4HSO3HqtJ5ftcp0GbbNnjOHaX2ADzW+5mz6abFdxed/9IJrXbxXX33NcWi6cjWj1an1mjF9mmsh1isbUilN/8Z03882gH/ksplhp57SUQSAkGhsavJ193koOxobeAIO+ExhqI0TxUzivHipVytXLHd034KyZFKHDh925evLiVOn9a3vLPRlYNyQSqm8fLxWp9br4qVe0+UgODoH/gEdRSBgih31jei5cjWjJUsWmy6jKJs3bTJdAoABNm78qaP3lyWTWvLdRbbf9/a7ra6FsUJY/ObMGa5crxAYb5s6VRtSKWN7GDs7OrR08RICIpy4oWH4maA4sN0IwH8mT5pougQECEtQAbjlV/9ywHEQeqG+vqiOnptLUPNh8T3Hexb7O3f+glan1mvylCma+/BD2rF9u2vXHkpvT482pFKadd+9mnbnTDXt3ElAhBM3NAwHdhSlQdqOAPyDqaKwK8hLUO+4/eumywBgKZxv6FT9iy/afs/FS72aP/9Jx/fur23vPtcfSF25mtH+g+165tnnFIsnNGP6NC1dvERv7d7tOOh2dnRox/bteqp2vm6bOlV/Ob5cq1Pr9f7RYy5Vj4i7oWE42DmKdBUBH7vrrrtNl4CAKSxBPfbRcdOl2NbQ0KjqWbNsnb8GwDtvvvNzrV33E5Ulk0VfY15trXa/uUf7D7bbet/7R4/p+VWr9PLGjUXfe6AdjQ366lf/yvY5j6N14tRpnTh1Wk07d0qSxo0t09iyMiXHjtW4seMkSV+85Yu6o9+QunT6yPWPL166qJ5Ll3Tuk/N8HYTXbugoDhYUT0q6x/taANg15uZE4A78hT8UlqC6+QNWKVRUVWnxwoVFH5YNwF2FruKOxgZH13n11dc0ecoU2+Fn8yvbdEdVlebV1jq6f38v1Ndr2rRpWrFypecTQi9e6s0vDz112tP7AEUYfo/iUC8C4A/FjBYHCoK6BPXljRtZggr4yJvv/NzxMsqyZFIvrVtX1Hu/9/3vu/61bPacOTp0+LCeeKTG1esCQZHLZtID/2ywoHjDiwCYN+bmhNau+4npMhBgQZ6C2tDQyMRfwCfc2qu4dNmyoqaPXrma0VNPPeX6hNGyZFK7du/RG6832T7GAwgjOopAQCxeuNDRnpBSuXjpoukSMIygTkGtqKoquvsAwH1udBUlac+eN4t6CHTu/AXNuu8+T46jmFdbq4/+9aNQT14ec3OClRro78hgf3hDUMxlM5ylCPjMN2fOCMzesp5Ll0yXgBEEdQlqsd0HAO67cjWjRYu+6/g6ZcmkfratuD3I585fcKWGwZQlk9rR2KDjHx4N3dedJx6p0bmzZ7V33y/pnKJg0EbhYB1FSer2sBAANkyeOEF79rxpugyESJCXoBbbfQDgvv0H29V+4IDj68yrrS26e7f/YLvmPvyQ4xqGUlFVpUOH39MbrzcFvgP3wP2zdfzDo9q1e4/KkkmVJZN6ftUPTZcFfxi0UThUUOzyrg4AozV54gQdOnw4EEtOC04wyS0QgroE1ckADADuq/9xvSvXcXJuqtdhUcqH2WMfHdev21r1wP2zPb2Xm8bcnLgeENv27lNFv2M4pPxKjaAHYLjCVlBk+Slg2BOP1OjjM2cCFRKDuJwxyoK8BDVIP6gBYXbi1GltSKVcuZaTpZClCItSfjpq2959Ov7hUS1csMC3SzcnT5ygtfUv6tzZs4MGxP4aGhpLWBl8ytbS0y7v6gAwnHFjy/TG603atXuP6VJs++3Zs6ZLgA1BXoL66quv+fYHNCBqfrppkytDZcqSSb3mYMLx/oPtmjF9micDbgaqqKrSjsYGdXV1643Xm/TA/bONf00aN7ZMTzxSo1+3terjM2f0Qn39qB42V1RVhXpwD0Y22NEYEh1FwDfGjS3T2voX1dXV7epBwqWUTg86NAs+FuQlqC+/tMF0GQCUf+g0f/6Trlxr9pw5+uHKlUW//8Sp055NQx3KvNpate3dp66ubv26rVULFywoyXLOMTcn9M2ZM7TiB9/X8Q+PqqurW7t279HsOXNsX2vtup8YD7owpm+oT3xuiD/v8qYOAP2NuTmhv737LtU+OT+w4bC/f//k302XgCI0NjWptrZ22KVJfjSvtlb7frlPb7/baroUIPLeP3pMO7Zv19Jlyxxf64X6/L7H1an1Rb3/3PkLmjxlin6+p7jQ5MTsOXM+c8/2Awd0/Phxnfm3M/rkk090qbdXFy/12r7u5IkTNGbMzaqqvENf/epfadq0aa7+3QqDbZ559jnXronAGLJBeNO1a9cG/UQsnhj8Ewi0XDZjuoQhxeLRmGQ4eeIEVVTcrrvuutuVb6h+8qUvf1lXrnr/v7GFCxZoR2OD5/cp1tLFS9S0c6fpMmy54/av69hHx02XYVtvT4+mf2N6UT94oTTeeL3J1w/CZkyfxhAul4y5OaFzZ8+6trd+7sMPaf/Bdkf1/HDlyuvB02/e2r172M9/5StfKXnQ5f8PkbQ1l80sH+wTQ3UUpfzBi/d4Uw8QXv2Xm0yaNElf+PwXdXvF7fryl77k6x+WnGo/cKAkIRHeKCxBDcp5nQWFPU0Pzq0xXQoQeYUlqIcOv+fK9dr27nMUFq9czWh1ar3O/NsZX+779+PPBA0NjZp250zTZaC0uob6xHBBsUsERZSQn7udGNkvfvGu6RLgUFCXoM6eM0cLFywIXBcXCKP3jx5z9aGT07AoSW+/26rOqVO1edOmknfogqYw2Iavp5Ey5NLToYbZSOxTBGDDB7/5wHQJcCjIU1B3NDZo8sQJpssAoPxDp/YDB1y7XtvefY6PxDl3/oIenz8/kMO7So3BNpFTVFBMu18HgDDq7OjQufMXTJcBFwR1Cqokbd60yXQJAJR/6LRi5UpXJ4+6ERavXM1o8yvbNGP6tECeIVsqhcE2iIS+XDYz6BmKEh1FAC7YuPGnpkuAixqbmgL5Q1RhCSoA886dv6BFi77r6jXdCItS/oHYtDtnauniJSU9RiNIHn3ssaLPs0SgDHsk4pBBMZfNdLleCoBQ+tW/uLfECOaxBBWAG/YfbHd9hULb3n2uPRBq2rlT078xXRtSKVeuFxZLFy/R5ClTGFAXDcUFRQunZwMY1oZUim8mIRTkJai7du3iSTjgE5tf2aYd27e7es0djQ1aW/+iK9e6eKlXq1PrNWP6tBGPqwi7DamUysvHq2nnTr6vR0fXcJ8cKSgO+2YAaHjtVdMlwCNBXYJaUVWlxQsXmi4DgOVHP/6xq8NtJOmF+nr9uq3VtYdCJ06d1re+szCSgbEQEFen1nMmbfQ46igO+2YA0bYhleKbSohduZrRU089ZbqMory8ceNnzjQFYM6Vqxk9Pn++6/sBZ8+Zo/ShQ64uNy8ExtumTg31ktTenh49v2oVATHictlMerjPExQBFI1uYvidO39BSxcvMV1GURoaGlmCCvjElasZzbrvPtfDYkVVlQ4dPuzKkJv+zp2/oNWp9SovH6+li5cEcnXFYNoPHNDchx/S5ClTtPmVbQTEaOse6QUERQBFWbp4Cd9gIqJp507Xl42VQkVVlX64cqXpMgBYzp2/4ElYLEsm1bZ3n9bWv+j6w6GLl3rVtHOnpt05UzOmT9OGVCpwk1I7Ozr0/KpVum3qVD04t0b7D7azBxHSKHLesEHROldjxLQJIFo6Ozr05js/N10GSmhFQAPXC/X1+ubMGabLAGA5d/6C5s9/0pNrv1Bf7/pS1P5OnDqt1an1+svx5Zp13716ftUq33Ya2w8cuB4Op905U5tf2cZ5xxjIWVAc7UUARMuSJYt5GhkxQV6CumfPmyxBBXzk/aPHNPfhhzy5dkVVlT4+c8bzM1XfP3pMm1/Zpml3zlR5+XjNffghbUiljAXH9gMHtCGV0tyHH1J5+Xg9OLeGcIiRjJjxPjfKi8x1XguAMHh+1SqdOHXadBkwoGnnTj366COaPWeO6VJsKUsm9dK6dXrm2edMlwLAsv9gu+Y+/JDa9u7z5Po7Ghv0vaXf05Iliz3/nnXxUq8uXmrX/oPtWp1arzE3JzR50kRVVd6hr371rzRhwgTdO2uWypJJx/fq7OjQb8+e1YmODv3xj3/QJ598wvdkFMu1oAgAaj9wQJtf2Wa6DBi0YuVKfXzmjOkybFu6bJne+cU7ev/oMdOlALB4HRYrqqp07KPj2pBK6aebNpVsJcyVqxmdOHV60AA3bmyZxpaVSZLGfP7z+tqkrw15nY6TJ65/fKm31xdzAcaNLdMXxnyeTmXw9eWyma6RXkRQBDAqvT09enz+fNNlwLDCEtQdjQ2mS7Ftz543Nf0b033xwxaAvP0H23Xb1Kk6dPiwKx23wbxQX6+FixZp5YrlevvdVk/uMVr57uOnX4OC8vBqzM0JPfnY49rR2KDOjg5Nu3Om6ZLgzKjy3Yh7FK202ee0GgDB1dvTo1n33ce+REgK7hTUsmRSL7+0wXQZAAbwahpqf2XJpHbt3qPjHx51/SiNsFu4YIHOnT17/QFhRVWV53tA4bn0aF40mmE2El1FINLmz3+SZSb4jKBOQZ1XW6snHqkxXQaAAQph0euHUBVVVWrbu4/AOAoP3D9bxz88qh2NDTd0e9eu+4nGjS0zVBlc4E5H0ZIuvg4AQTb34YcCszQGpRPkKaibNm/hBxzAh86dv6DH588vyYoFAuPgxtyc0BOP1Oj4h0fVtnefKqqqBn1dWTKp51f9sMTVwUWuBkU6ikAEzX34Ie0/2G66DPgUS1ABuO3K1YwenFujDalUSe7XPzA+8UhNZI/SGTe2TCt+8H2dO3tWu3bvGTIg9rd02TLdcfvXS1AdXDaqQTYSHUUAg+jt6dFtU6cSEjGiIC9BZY8N4F+rU+s9O2txMBVVVdq1e4/+/Kc/aW39i5EJQN+cOUNb/+kf1dXVrZc3brQ9UKihodGjyuChUTcARxUUc9nMZUndRZcDIDDaDxzQrPvuY08iRiXIS1B3NDZo8sQJpssAMITCRFQvh9wM5oX6eh376LiOf3hUCxcsCN1S9ckTJ2jFD76vP3R36dDh97R02bKir8Vgm0BKj/aFo+0oSiw/BUJvx/btenz+fEIibAnqElRJ2rxpk+kSAAzj3PkLmjxlinZs317ye1dUVWlHY4O6urr167ZWLVywILAPl+64/eta8YPv6/iHR/XxmTNFdQ+HwmCbwEmP9oV2guKoLwogWHp7evRU7Xw98+xzHIGBogR1CersOXN4Gg743JWrGT3z7HN6qtbcWb6z58zRjsYGfXzmjP7Q3aW19S/qgftn+zYgTZ44QU88UqOt//SP+kN3l459dFwvb9w4qr2HdjHYJnBG3fz7nBcXBRAcb+3ered/9AKHkMORwhLUwjlbQbKjsUEf/OYDOumVDztdAAAf7UlEQVSAz739bqs6p07V5k2bNHvOHGN1lCWTeqG+/vrvOzs6dPToUZ3qPKWOkyd07pPzJX3oOm5smSZOmKCvTfqaqqvv0b2zZrnWLRytpcuWqaWlWSdOnS7pfWFbt7WlcFRGHRRz2Uw6Fo/mJCggjHp7erRo0XcZWAPXNO3cqUcffcToD3DF2rVrl6pnzaKjDvjcufMX9ODcGi1csMA3D6Yqqqpu6NT19vTovUOHdOHCBf3+9/+hi5cuqufSJUmyHSTH3JzQ5EkTJUmTJk3SFz7/Rd1ecbu+/KUvaV5trXt/EYcaGho17c6ZpsvA8NJ2XmynoyhJnZIqbL4HgM8sXbxEb77zc34ohutWrFypj8+cMV2GbRVVVVq8cKE2v7LNdCkARqFp50598JsPVP/ii74KSwVlyaTtunp7ekreCXRTYbBN086dpkvB0GytELWzR1FinyIQaBtSKZWXj1fTzp2ERHgiyFNQX964MTIj8YEwOHf+gr71nYWa+/BDJZ+M6oUgh8SCRx99xHQJGF7azosJikDI9fb06PlVq1RePl6rU+vZiwjPBXkKakNDY2QP3AaCav/Bdk2eMkXPr1plupTI6u3p0dLFS/Tg3BrTpWAYuWzG044iA22AgOjs6NBTtfM1ecoUbX5lGwERJRXUKagVVVX6YUBrB6LsytWMNr+yTeXl440cpRFlG1IpTZ4yhSWn/nfE7htsBcVcNtMlqdvuTQCURm9PjzakUrpt6lRNu3Om3n63lSWmMCLIS1BfqK/XN2fOMF0GgCJcvNSrZ559TjOmT9Nbu3ebLifUCttZVqfW87NGMKTtvsFuR7GomwDwTiEczrrvXv3l+HKtTq1nzD98IchLUPfseZMlqECAnTh1Wt/6zkICowf6B0RWKwVK2u4bigmKLD8FDHtr924tXbxEt02dej0cvn/0mOmygBsEdQlqWTKpl9atM10GAIf6B8YNqZTpcgKr8FCagBhcuWwmbfc9do/HkOgoAiU18CBfDrNFkBSWoPrlvDM7li5bpnd+8Q4PYYAQOHHqtE6cOq2G117VvMef0LPPPReKKaNe6+zo0M92/IwjtYKvs5g32Q6KuWzmZCye6JN0SzE3BDC4zo4O/fbsWZ3o6NAf//gHffLJJ7YP5QX8qGnnTj366COaPWeO6VJs27PnTU3/xnSengMhcfFSrza/sk2NTU3627vv0g+WfT+QX5u8tmP7dh6UhUu6mDcV01Es3Gxuke8FIqMQ/gouXLig3//+PyRJFy9dVM+lS7py5Sp7ChF6K1au1KHDhwP3BL8smdTLL23Qt76z0HQpAFx05WpG+w+2a//Bdo0bW6Z5jz+h2tpaVVRVmS7NmPYDB9Tc0qwPjh7l4Vj4pIt5003Xrl2z/aZYPLFc0uZibggAAAD40eSJE/Tggw9GJjS2HzigX/ziXX3wmw94aB1uX8plM5ftvqnYoFgpqcP2GwEAAIAAmDxxgu6+6+7ALp0fyo7t2/Wb33xA5zA6OnPZTGUxbywqKEpSLJ64LPYpAgAAIOTG3JzQHZUV+pv/9jf677NnByo4vrV7t9LpIwzEi66tuWxmeTFvdBIUW8U+RQAAAETQHbd/XZMmTdLU/zpVEyZM0LzaWtMl6a3du3Wio0O/PfdbXTh/geWkkKS/z2UzrcW80UlQZJ8iAAAAYBk3tkxjy8pUVXmHJKm6+h5J0l9PmeLKnsf2Awf0n//5n/rTn/+sU52n9H//3//RJ598oku9vSwjxVCK2p8oOQuK7FMEAAAAbLrj9q+P6nVMRodDRe9PlBwERYl9igAAAADgU0XvT5Skv3B486LWuwIAAAAAPOUoqzkNimmH7wcAAAAAuCyXzaSdvJ+gCAAAAADhcsTpBRwFxVw20yWp22kRAAAAAADXON4i6LSj6EoRAAAAAADXpJ1ewI2g6LgIAAAAAIAr+nLZzEmnF3EcFHPZDB1FAAAAAPAHV/KZGx1FyYXNkgAAAAAAx9JuXMStoEhXEQAAAADM81VHMe3SdQAAAAAAxenMZTOX3biQK0HR2izJMRkAAAAAYI5rKz3d6ihKdBUBAAAAwCRfBkX2KQIAAACAGa4ci1HgWlDkmAwAAAAAMMbVPOZmR1GS2ly+HgAAAABgZL4OinQVAQAAAKD00m5ezO2gmHb5egAAAACA4bW5dSxGgatBMZfNdEnqdPOaAAAAAIBhpd2+oNsdRUlq9uCaAAAAAIDBub4F0IugmPbgmgAAAACAG3VaKztd5XpQtM7u6Hb7ugAAAACAGzR7cVEvOooS008BAAAAoBTSXlzUq6DY7NF1AQAAAAB53daKTtd5EhRZfgoAAAAAnvNsJadXHUWJ5acAAAAA4KVmry7sZVBMe3htAAAAAIgyz5adSh4GxVw20yqpz6vrAwAAAECEebqC08uOosTyUwAAAADwQrOXFycoAgAAAECweLrsVPI4KLL8FAAAAABc53lDzuuOokRXEQAAAADc1Oz1DW66du2apzeIxROVkjo8vQkAAAAAREN3Lpsp9/omnncUrbWz3V7fBwAAAAAioCQrNkux9FRi+SkAAAAAuKG5FDcpVVBsLtF9AAAAACCsOr2edlpQkqDI8lMAAAAAcKy5VDcqVUdRoqsIAAAAAE6UbEsfQREAAAAA/O9ILpvpKtXNShYUrb9UZ6nuBwAAAAAh0lzKm5WyoyhJW0p8PwAAAAAIg5KeJFHqoMgxGQAAAABgT0sum7lcyhuWNChaf7m2Ut4TAAAAAAKu5A23UncUJYbaAAAAAMBo9eWymfAHResv2Vfq+wIAAABAADWbuKmJjqJEVxEAAAAARqPZxE0JigAAAADgT525bOakiRsbCYrWX5YzFQEAAABgaMaOFzTVUZQ4UxEAAAAAhmPseEGTQZGhNgAAAAAwuJKfndifsaBo/aWNJWQAAAAA8LFmkzc32VGUGGoDAAAAAAN157KZtMkCjAZF6y/fbbIGAAAAAPAZ4/NcTHcUJR/8IwAAAACAjzSbLsAPQbHZdAEAAAAA4BNGh9gUGA+K1j9Ci+k6AAAAAMAHmk0XIPkgKFqaTRcAAAAAAIYZH2JT4IugaP1jdJquAwAAAAAM8s38Fl8ERYtv/lEAAAAAoMT65KOVln4Kiq3K/+MAAAAAQNS0+mGITYFvgqL1j9Jsug4AAAAAMMBXKyxvunbtmukarovFE+WSfme6DgAAAAAooSO5bKbadBH9+aajKEm5bKZL0hHTdQAAAABACTWbLmAgXwVFi69argAAAADgoe5cNtNsuoiBfBcUc9lMq6Ru03UAAAAAQAk0my5gML4Liha6igAAAACiwJfZx69BsVkclQEAAAAg3Fr8dCRGf74MihyVAQAAACACfNlNlHx2PEZ/HJUBAAAAIMR8dyRGf77sKErXj8poMV0HAAAAAHjAt91EycdB0dJsugAAAAAAcFm3ddqDb/k6KOaymbSkI6brAAAAAAAXrTFdwEh8HRQtzaYLAAAAAACX9OWymWbTRYzE90HR+kfsNl0HAAAAALjA13sTC3wfFC1rTBcAAAAAAA71iaDoHqur2Ge6DgAAAABwoNU6M973AhEULYFI3gAAAAAwhDWmCxitoAVFuooAAAAAgqjFOis+EAITFK0WLV1FAAAAAEG0xnQBdgQmKFqaTRcAAAAAADa1BambKAUsKFr/uC2m6wAAAAAAGwK3MvKma9euma7Bllg8US7pd6brAAAAAIBROJLLZqpNF2FXoDqKEl1FAAAAAIGyxnQBxQhcR1GiqwgAAAAgEALZTZQC2FGU6CoCAAAACIQ1pgsoViA7ihJdRQAAAAC+FthuohTQjqJEVxEAAACAr60xXYATge0oSnQVAQAAAPhSoLuJUoA7ihJdRQAAAAC+tMZ0AU4FuqMo0VUEAAAA4CuB7yZKAe8oSnQVAQAAAPjKGtMFuCHwHUWJriIAAAAAXwhFN1EKQUdRoqsIAAAAwBfWmC7ALaHoKEp0FQEAAAAYFZpuohSSjqJEVxEAAACAUWtMF+Cm0HQUpetdxZOSbjFcCgAAAIDoCFU3UQpRR1G63lXcYroOAAAAAJFSZ7oAt4UqKFq2SOozXQQAAACASGixGlahErqgmMtmLouuIgAAAIDSWGO6AC+ELiha6CoCAAAA8NrWMHYTpZAGRauruNx0HQAAAABCq08h7SZKIQ2KkpTLZpoldZuuAwAAAEAobbEaVKEU2qBooasIAAAAwG3dCvlclFAHxVw20yrpiOk6AAAAAITKmjB3EyXppmvXrpmuwVOxeKJa0num6wAAAAAQCt25bKbcdBFeC3VHUZJy2UxaUovpOgAAAACEQp3pAkoh9B1FSYrFE+WSfme6DgAAAACBdiSXzVSbLqIUQt9RlCTrbJO1pusAAAAAEGh1pgsolUgERcsW5c86AQAAAAC7WqwGVCREJihaU4k4LgMAAACAXX2KWJaITFCUpFw20yyp03QdAAAAAAJlS9iPwxgoEsNs+uO4DAAAAAA2ROI4jIEi1VGUrh+X0Wa6DgAAAACBUGe6ABMi11GUrh+XcVLSLYZLAQAAAOBfkTkOY6DIdRSl68dlbDFdBwAAAABfqzNdgCmRDIqWLZK6TRcBAAAAwJfWRuk4jIEiGxQ5LgMAAADAELoV8RWIkQ2KkpTLZlolHTFdBwAAAABfWR614zAGiuQwm/6swTa/M10HAAAAAF+I7ACb/iLdUZSuD7ZZa7oOAAAAAL5QZ7oAP4h8ULQw2AYAAABApAfY9EdQFINtAAAAADDApj+CosUabNNmug4AAAAARkR+gE1/kR9m05812OakpFsMlwIAAACgdNpy2UyN6SL8hI5iP9Z65DWGywAAAABQOn1iG9oNCIoD5LKZLZI6TdcBAAAAoCTWMMDmRiw9HUQsnqiU1GG6DgAAAACe6sxlM5Wmi/AjOoqDyGUzJyVtNV0HAAAAAE/VmS7ArwiKQ1sjzlYEAAAAwmqt1SDCIFh6OoxYPFEt6T3TdQAAAABwVbekSo7DGBodxWHkspm0OFsRAAAACJs6QuLwCIojq1N+ZC4AAACA4NtqNYQwDJaejkIsnqiR9L9M1wEAAADAkT5J5XQTR0ZHcRRy2UyrWIIKAAAABB1LTkeJjuIoxeKJWyV1SbrFcCkAAAAA7GvLZTM1posICjqKo2Q9eagzXQcAAAAA2/rEz/K2EBRtYAkqAAAAEEgsObWJpac2sQQVAAAACBSWnBaBjqJNLEEFAAAAAoMlp0UiKBaBJagAAABAILDktEgExeLVKf+EAgAAAID/bLUaPCgCQbFILEEFAAAAfKtb0hrTRQQZQdEB6wlFi+k6AAAAAHwGS04dIig6t1z5JxYAAAAAzNuay2bSposIOo7HcEEsnqiW9J7pOgAAAICI68xlM5WmiwgDOoousJ5YrDVdBwAAABBxdaYLCAs6ii6KxRMnJVWYrgMAAACIoBW5bGaL6SLCgqDoolg8USkpLekWw6UAAAAAUXIkl81Umy4iTFh66qJcNnNSjOEFAAAASqlPUo3pIsKGoOgyq93dZroOAAAAICI4CsMDBEVv1IkjMwAAAACvbbXONofL2KPoEY7MAAAAADzVKamabqI36Ch6hCMzAAAAAM/0iSWnnqKj6LFYPJGWdI/pOgAAAIAQeTqXzTSbLiLMCIoei8UTt0rqEkdmAAAAAG5oyWUzdaaLCDuWnnrMaofXma4DAAAACIFuSctNFxEFBMUSsCYxbTVdBwAAABBwNexLLA2CYonkspnlyk9mAgAAAGDfilw2c9J0EVFBUCytGuUnNAEAAAAYvZZcNrPFdBFRQlAsoVw206V8WAQAAAAwOp1iX2LJERRLjPMVAQAAgFHjvERDOB7DEM5XBAAAAEbEeYmG0FE0p0b58b4AAAAAbtRCSDSHjqJBsXiiUlKH6ToAAAAAn+nMZTOVpouIMjqKBlnjfZ82XQcAAADgI31iAKRxBEXDrHZ6i+k6AAAAAJ+osU4LgEEERX9YrvzYXwAAACDKVlinBMAw9ij6RCyeKJd0UtIthksBAAAATGjJZTN1potAHh1Fn7Da66zFBgAAQBR1Kr/KDj5BUPQRq83OcBsAAABESZ/y+xIvmy4EnyIo+gzDbQAAABAxDK/xIfYo+lQsnjgpqcJ0HQAAAICHnrYaJfAZOor+Va18Gx4AAAAIoxZCon/RUfSxWDxRKSktJqECAAAgXDpz2Uyl6SIwNDqKPpbLZk6K6U8AAAAIl27lV8/BxwiKPme149eargMAAABwARNOA4KlpwERiyeaJX3bdB0AAACAA3+fy2ZaTReBkdFRDI7lyh9ECgAAAATR04TE4KCjGCCxeOJWSScljTddCwAAAGBDSy6bqTNdBEaPoBgwTEIFAABAwBzJZTPVpouAPSw9DRhrEmqN6ToAAACAUegUP7sGEkExgHLZTFrS06brAAAAAIbRJ6maCafBRFAMKOvYjK2m6wAAAAAGQUgMOIJigOWymeWSWkzXAQAAAAxQZ22ZQkAxzCYEYvHESUkVpusAAAAAlD8Go9l0EXCGjmI4VIszFgEAAGDeWkJiONBRDAnrjMUucWwGAAAAzOCsxBChoxgS1kbhauU3DgMAAACl1EZIDBeCYohYG4arRVgEAABA6XRKqjNdBNxFUAwZKywuN10HAAAAIqFTHIMRSuxRDKlYPFEn6Z9N1wEAAIDQ6pNUTkgMJzqKIWVNm1phug4AAACEUp/oJIYaHcWQi8UTzZK+bboOAAAAhEYhJJ40XQi8Q1CMAMIiAAAAXFRFSAw/lp5GgDWquMV0HQAAAAi8pwmJ0UBHMUJi8URa0j2m6wAAAEAgPW3NwUAE0FGMlhrlRxgDAAAAdhASI4agGCHWVKpqERYBAAAweoTECCIoRgxhEQAAADa0EBKjiaAYQYRFAAAAjEKLNRQREURQjCjCIgAAAIZBSIw4pp5GXCyeuFVSl6RbDJcCAAAAfyAkgo5i1PXrLPYZLgUAAADmERIhiaAISdahqdUiLAIAAEQZIRHXERQhibAIAAAQcYREfAZBEdcRFgEAACKJkIgbEBTxGYRFAACASCEkYlAERdyAsAgAABAJhEQMiaCIQREWAQAAQo2QiGERFDEkKyxWSuo0XQsAAABcQ0jEiG66du2a6Rrgc7F44lZJaUkVhksBAACAM4REjAodRYwol81cVn4ZKp1FAACA4CIkYtQIihgVwiIAAECgrSUkwg6WnsIWlqECAAAEztO5bKbZdBEIFjqKsIXOIgAAQKAQElEUgiJsy2Uzl3PZTKWkFtO1AAAAYEiERBSNoIiiWevcCYsAAAD+0idCIhxijyIci8UTzZK+bboOAAAAqE9StXUeNlA0OopwzOosrjBdBwAAQMQREuEagiJckctmtkh62nQdAAAAEdUtQiJcxNJTuCoWT9RJ+mfTdQAAAERIp/Ih8bLpQhAeBEW4LhZPVCp/1uIthksBAAAIO0IiPMHSU7jOWvJQrfw6eQAAAHijJZfNVBIS4QWCIjxhhcVK5Z9yAQAAwF0t1kBBwBMERXgml810Kd9ZJCwCAAC4ZwUhEV4jKMJT1lKIakkthksBAAAIg6etafOApxhmg5KJxRPNkr5tug4AAIAA4oxElBQdRZSMtUSCsxYBAADs4YxElBwdRZRcLJ6okdQsjs8AAAAYCcdfwAg6iii5XDbTKo7PAAAAGEmLCIkwhI4ijInFE7dKSkuqMFwKAACA32zNZTPLTReB6KKjCGP6TURtM1wKAACAnzxNSIRpdBThC7F4YoukZ0zXAQAAYBCTTeEbdBThC9ZTMyaiAgCAqOqUVElIhF/QUYSvxOKJSuX3LTIRFQAAREWbpDqG1sBPCIrwHYbcAACACGFoDXyJpafwnX5DbloMlwIAAOCVPjG0Bj5GRxG+FosnlkvabLoOAAAAF3VLqmE/IvyMoAjfi8UT1ZJaxb5FAAAQfEeUD4nsR4SvsfQUvpfLZtKSKpWfBgYAABBUW3PZTDUhEUFAUEQg5LKZLrFvEQAABBP7ERE4LD1F4LBvEQAABAj7ERFIBEUEEvsWAQBAAHA+IgKLoIjA4rxFAADgY2tz2cwa00UAxSIoIvBi8cQWSc+YrgMAAED5/Yg11jA+ILAIigiFWDxRI6lZLEUFAADmdCofErtMFwI4RVBEaMTiiXLl9y2yFBUAAJTaVqaaIkwIiggdlqICAIAS6lN+YE2r6UIANxEUEUosRQUAACXAUlOEFkERocVSVAAA4CGWmiLUCIoIPZaiAgAAFzHVFJFAUEQksBQVAAC44IjyIfGy6UIAr/2F6QKAUrA2mJcr/wUeAADArrW5bKaakIiooKOIyInFE8slbTZdBwAACIRu5buIJ00XApQSHUVETi6b2SKpSvlJZQAAAENpkVRJSEQU0VFEZMXiiVslrRGDbgAAwGdxNiIij6CIyGPQDQAA6IeBNYBYegr0H3TTZrgUAABgTp+kFQysAfLoKAL9xOKJOklbRHcRAIAo6VS+i9hluhDAL+goAv3ksplmSZXiGA0AAKJibS6bqSQkAp9FRxEYgnWMxhrRXQQAIIw6lR9Yw0RTYBAERWAYsXiiXPlBN/eYrQQAALhobS6bWWO6CMDPCIrAKNBdBAAgFOgiAqNEUARGie4iAACBRhcRsIGgCNhEdxEAgEChiwgUgaAIFIHuIgAAvtcnaQtdRKA4BEXAgVg8UaN8YKS7CACAfxxRvovYZboQIKg4RxFwIJfNtEoql9RiuBQAAJDvIq7IZTPVhETAGTqKgEti8US18t3F8WYrAQAgktqU7yJeNl0IEAYERcBFsXjiVknLJa02XQsAABHRrXxATJsuBAgTgiLggVg8USlpixh2AwCAl9YqP7CGLiLgMoIi4KFYPFGnfGBk2A0AAO45Imk5R14A3iEoAh6zlqOukfSM4VIAAAi6PuUDYrPpQoCwIygCJWINu9kiqcJwKQAABNFWSWtYZgqUBkERKLFYPLFc+Q4jy1EBABgZy0wBAwiKgAEsRwUAYEQsMwUMIigCBjEdFQCAQTHNFDCMoAj4QCyeqFE+MI43XQsAAAa1Kd9F7DJdCBB1BEXAJ6zlqMutX+xfBABESbekulw2kzZdCIA8giLgM7F4olz5/YvfNlsJAACeYx8i4FMERcCn2L8IAAg59iECPkZQBHyO/YsAgJBpUf48xC7ThQAYGkERCIhYPFGnfGBk/yIAIIiOKB8Q06YLATAygiIQIAy8AQAEEINqgAAiKAIBZAXGLWLgDQDAv7qV7yA2my4EgH0ERSDAmJAKAPChPuUD4hbThQAoHkERCAErMDaLCakAAHP6lF/twiRTIAQIikCIxOKJauU7jARGAECpEBCBECIoAiFEYAQAlMhW5ZeZEhCBkCEoAiFGYAQAeISzEIGQIygCEUBgBAC4hIAIRARBEYgQAiMAoEgERCBiCIpABBEYAQCjUBhS00xABKKHoAhEGIERADAIppgCICgCuH4O4xpJ3zZbCQDAIAIigOsIigCuIzACQCR1K7//sNl0IQD8g6AI4AaxeOJWScutX7cYLgcA4I1O5buHzaYLAeA/BEUAQ7ICY53ygXG82WoAAC45onwHMW26EAD+RVAEMCqxeKJO+dDI4BsACCaOuAAwagRFALZYk1LrxD5GAAgCBtQAKApBEUBRrME3y5UPjexjBAB/Yf8hAEcIigAcsfYx1ig/LZV9jABgVpvyATFtuhAAwUZQBOAaa1nqcklzDZcCAFFSWF7azP5DAG4hKAJwnbUstU4crwEAXmJ5KQDPEBQBeIppqQDgqj5JrcoHxJOmiwEQXgRFACXB8BsAcKRT+eWlrUwvBVAKBEUAJUeXEQBGhe4hAGMIigCM6ddlrBETUwGggO4hAOMIigB8IRZP1CjfZWRiKoAo6tan3cMuw7UAAEERgL9Y5zLWWb8qjBYDAN5rUb5z2Gq6EADoj6AIwLdi8USl8oGRpakAwoSlpQB8j6AIIBCspamFX0xNBRA03fo0HHYZrgUARkRQBBA41tTUGrGfEYC/FfYdNjO1FEDQEBQBBJa1n7HQZSQ0AvCDwpEWzblsJm24FgAoGkERQCgQGgEYVAiHDKUBEBoERQChQ2gEUAKEQwChRlAEEGqERgAuYs8hgMggKAKIFKanArCpU1JahEMAEUNQBBBZsXiiWp+GRs5pBFDQpnw45CgLAJFFUAQASbF4olyfhsZ7zFYDoMSu7zeUlM5lM5cN1wMAxhEUAWAAa19jtfKhsVp0G4Ew6tSnw2hYUgoAAxAUAWAEsXiiUvnAWC0G4gBB1a38ctK08uGQriEADIOgCAA29dvbWC2pwmgxAIbSp0+DYZquIQDYQ1AEAAf6LVOtFkNxANOO6NNgmDZbCgAEG0ERAFxkDcWptn5Vio4j4CWCIQB4hKAIAB4a0HGsFsERKFafpJMiGAJASRAUAaCErODYfzhOpaRbDJYE+FVh+MxJsccQAEqOoAgAhllTVQvhkeWqiKrCMtJCMGQqKQAYRFAEAB+yJqtWKx8cK8WQHITLEeUD4UlJJ+kWAoD/EBQBIAAGLFklPCJICIUAEEAERQAIMKvzWCmp3PrvPSbrQaR1S+rSp8tHuwiFABBcBEUACBnriI5y5buPhY8JkHBLYfroSeWDYaFTyJ5CAAgRgiIARMSAAFlYysrUVQylU9Jl5TuEXdYvAiEARARBEQBQWMJaCI/l+nQpKyEy3PqHQVn/vcySUQAAQREAMCzr+I5CiOz/33IxUMfvCkHwpPXfLtEZBACMAkERAOBIv4msUn5Zq/RpV1Jif6QXCvsEpU9DYCEQKpfNpM2UBQAIC4IiAKAkBgTK/h9LnwZMKZqdyiP9Pr4e+Czpwp+zJBQAUCoERQCAr/UbwtPfYH8m3RhAS2VguOuv0PG7jo4fAMDv/j/3jk9Or/t2YwAAAABJRU5ErkJggg==" alt="BRYC Logo">
+        <div class="header-text">
+            <h1>Board Retreat</h1>
+            <p>August 27, 2026 • Year 18</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab(event, 'agenda')">Agenda</button>
+            <button class="tab-btn" onclick="switchTab(event, 'state-of-bryc')">State of BRYC</button>
+            <button class="tab-btn" onclick="switchTab(event, 'financials')">Financials</button>
+            <button class="tab-btn" onclick="switchTab(event, 'fy27-plan')">FY27 Plan</button>
+            <button class="tab-btn" onclick="switchTab(event, 'board')">Board</button>
+            <button class="tab-btn" onclick="switchTab(event, 'prospects')">Prospect Work</button>
+            <button class="tab-btn" onclick="switchTab(event, 'attachments')">Attachments</button>
+        </div>
+
+        <!-- AGENDA TAB -->
+        <div id="agenda" class="tab-content active">
+            <h2>Thursday, August 27 Agenda</h2>
+            
+            <div class="agenda-item">
+                <div class="agenda-time">8:30–9:00</div>
+                <div>
+                    <h3 style="margin-top: 0;">Arrival & Breakfast</h3>
+                    <p>Coffee and light breakfast as you arrive.</p>
+                </div>
+            </div>
+
+            <div class="agenda-item">
+                <div class="agenda-time">9:00–9:20</div>
+                <div>
+                    <h3 style="margin-top: 0;">Welcome & Introductions</h3>
+                    <p>Board and team member introductions. Remarks from Josh and Jonathan on the year ahead.</p>
+                    <p style="font-weight: 700; color: #001f3f; margin-bottom: 0.5rem; margin-top: 1rem;">Board of Directors</p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.35rem 1.5rem; font-size: 0.95rem;">
+                        <div>Lisa Adamek</div>
+                        <div>Jessica Baghian</div>
+                        <div>Karen Breaux</div>
+                        <div>Regina Davis</div>
+                        <div>Jonathan Earle</div>
+                        <div>Carissa Graves</div>
+                        <div>Dave Luecke</div>
+                        <div>Mikki Mathews</div>
+                        <div>Chaunda Mitchell</div>
+                        <div>Natalie Robertson</div>
+                        <div>Mike Rolfsen</div>
+                        <div>Lauren Tarver</div>
+                        <div>Garrett Temple</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="agenda-item">
+                <div class="agenda-time">9:20–10:00</div>
+                <div>
+                    <h3 style="margin-top: 0;">State of BRYC</h3>
+                    <p>Overview of who we are, what we do, and what we're building this year.</p>
+                </div>
+            </div>
+
+            <div class="agenda-item">
+                <div class="agenda-time">10:00–10:45</div>
+                <div>
+                    <h3 style="margin-top: 0;">Fundraising Goal & Current Position</h3>
+                    <p>FY27 fundraising priorities, current financial position, and why this year matters.</p>
+                </div>
+            </div>
+
+            <div class="agenda-item">
+                <div class="agenda-time">10:45–11:30</div>
+                <div>
+                    <h3 style="margin-top: 0;">FY27 Fundraising Plan</h3>
+                    <p>Calendar of initiatives, parlor meetings, and what we're asking of you.</p>
+                </div>
+            </div>
+
+            <div class="agenda-item">
+                <div class="agenda-time">11:30–1:00</div>
+                <div>
+                    <h3 style="margin-top: 0;">Work Time & Lunch</h3>
+                    <p>Prospect sourcing, identifying donors, and securing commitments. We'll eat during this time, share out who you entered, and close by 1:00.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- STATE OF BRYC TAB -->
+        <div id="state-of-bryc" class="tab-content">
+            <h2>State of BRYC</h2>
+            <p class="intro-text">
+                BRYC is an <span class="highlight">18-year-old</span> college and career readiness nonprofit serving lower-income students in Baton Rouge. We work with Fellows across grades 8–12 through in-school programming, after-school fellowships, and alumni support.
+            </p>
+
+            <div class="impact-grid">
+                <div class="impact-card">
+                    <div class="impact-number" id="counter1">0</div>
+                    <div class="impact-label">Students Served This Year</div>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-number" id="counter2">0</div>
+                    <div class="impact-label">Alumni in Community</div>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-number" id="counter3">0</div>
+                    <div class="impact-label">Schools Represented</div>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-number" id="counter4">0</div>
+                    <div class="impact-label">Persistence Rate</div>
+                </div>
+            </div>
+
+            <h3>Our Impact</h3>
+            <p>
+                Our alumni persistence rate is <span class="highlight">77%</span>, compared to just <span class="highlight">14%</span> for low-income students nationally. We serve 1,000+ students across 57 schools in 7 parishes. This year, we're deepening school partnerships, expanding mentorship, and building the tools to scale what works.
+            </p>
+
+            <div class="placeholder mt-3">
+                <strong>📄 One-Pager (Draft)</strong><br>
+                <a href="https://docs.google.com/document/d/placeholder" target="_blank">View the full one-pager →</a>
+            </div>
+        </div>
+
+        <!-- FINANCIALS TAB -->
+        <div id="financials" class="tab-content">
+            <h2>Fundraising Goal & Current Position</h2>
+            
+            <!-- BUDGET CLARITY -->
+            <div class="budget-clarity">
+                <div class="budget-clarity-label">CURRENT POSITION • AS OF AUG 25, 2026</div>
+                <div style="display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; margin-bottom: 0.5rem;">
+                    <div>
+                        <div class="budget-clarity-amount" style="margin-bottom: 0.25rem;">$2.39M</div>
+                        <div style="font-size: 0.9rem; opacity: 0.85;">Liquid • Chase $724K + Reserves $1.67M</div>
+                    </div>
+                    <div>
+                        <div class="budget-clarity-amount" style="margin-bottom: 0.25rem;">$3.71M</div>
+                        <div style="font-size: 0.9rem; opacity: 0.85;">Total • incl. Endowment $1.32M</div>
+                    </div>
+                </div>
+                <div class="budget-clarity-meta">
+                    <div class="budget-meta-item">
+                        <div class="budget-meta-label">Avg. Monthly Burn</div>
+                        <div class="budget-meta-value">~$255K</div>
+                    </div>
+                    <div class="budget-meta-item">
+                        <div class="budget-meta-label">Liquid Runway</div>
+                        <div class="budget-meta-value">~9 mo</div>
+                    </div>
+                    <div class="budget-meta-item">
+                        <div class="budget-meta-label">Runway incl. Endowment</div>
+                        <div class="budget-meta-value">~15 mo</div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="intro-text">
+                Our <span class="highlight">FY27 operating budget is $3,021,269</span>. We are projected to raise between <span class="highlight">$2.68M (conservative)</span> and <span class="highlight">$3.32M (optimistic)</span>. We need major fundraising wins to close the gap and avoid difficult decisions.
+            </p>
+
+            <h3 style="margin-top: 2rem;">Adjust & Forecast</h3>
+            <p class="intro-text">
+                Move the slider to see how different revenue targets impact our runway. Every $50K matters.
+            </p>
+
+            <div style="width: 100%; padding: 1.5rem; background: linear-gradient(135deg, #e7f1fe 0%, rgba(211, 235, 231, 0.3) 100%); border-radius: 8px; border-left: 4px solid #0a52a9;">
+                <label style="display: block; margin-bottom: 1rem; font-weight: 700; color: #001f3f;">
+                    What if we raise: <span id="customAmount" style="color: #0a52a9;">$3.00M</span>?
+                </label>
+                <input type="range" min="2400000" max="3600000" step="50000" value="3000000" class="slider-input" oninput="updateCalculator(this.value)">
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+                    <div>
+                        <div class="scenario-label">Budget Gap</div>
+                        <div class="scenario-value" id="customGap">-$50K</div>
+                    </div>
+                    <div>
+                        <div class="scenario-label">Liquid Runway</div>
+                        <div class="scenario-value" id="customRunway">~9 mo</div>
+                    </div>
+                    <div>
+                        <div class="scenario-label">Runway incl. Endowment</div>
+                        <div class="scenario-value" id="customTotalRunway">~14 mo</div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="intro-text" style="color: #d9534f; margin-top: 2rem; font-weight: 600;">
+                <strong>The reality:</strong> Running consecutive deficits is not sustainable. We have ~9 months of liquid runway (~15 including endowment) before we need to make hard decisions about program scope and staffing. This retreat is about creating the urgency and strategy to close that gap.
+            </p>
+
+            <h3>Financial Trend: FY24–FY26</h3>
+            
+            <!-- FY24 -->
+            <div class="finance-item-wrapper">
+                <div class="finance-item-header">
+                    <div class="finance-label"><strong>FY24</strong></div>
+                    <div class="finance-bar strong">
+                        <div class="finance-amount">Strong: $6.1M raised</div>
+                    </div>
+                    <div class="finance-amount">Healthy</div>
+                </div>
+                <button class="collapsible" onclick="toggleCollapse(event)">View Context</button>
+                <div class="collapsible-content">
+                    <p><strong>A banner year.</strong> We had major gifts, strong board giving, and successful grant awards. Assets grew to comfortable levels, and we were positioned for expansion.</p>
+                </div>
+            </div>
+
+            <!-- FY25 -->
+            <div class="finance-item-wrapper">
+                <div class="finance-item-header">
+                    <div class="finance-label"><strong>FY25</strong></div>
+                    <div class="finance-bar">
+                        <div class="finance-amount">Deficit: Major expansion</div>
+                    </div>
+                    <div class="finance-amount">~18 mo</div>
+                </div>
+                <button class="collapsible" onclick="toggleCollapse(event)">View Context</button>
+                <div class="collapsible-content">
+                    <p><strong>Strategic investments.</strong> We made a deliberate choice to invest in growth. We expanded our Airline campus operations and launched comprehensive in-school programming across multiple high schools. Both initiatives require upfront staffing and program costs. We funded this through reserves, knowing it would create a short-term deficit but position us for long-term impact and revenue growth.</p>
+                </div>
+            </div>
+
+            <!-- FY26 -->
+            <div class="finance-item-wrapper">
+                <div class="finance-item-header">
+                    <div class="finance-label"><strong>FY26</strong></div>
+                    <div class="finance-bar">
+                        <div class="finance-amount">Deficit: Continued growth</div>
+                    </div>
+                    <div class="finance-amount">~15 mo</div>
+                </div>
+                <button class="collapsible" onclick="toggleCollapse(event)">View Context</button>
+                <div class="collapsible-content">
+                    <p><strong>Growth continues, runway tightens.</strong> FY26 continued the investments we started in FY25. Staff salaries, program costs, and operational expenses grew with scale. However, major gifts we'd anticipated (Connor Group, others) didn't materialize at expected levels. We ran another deficit and drew down assets. Current runway is tight: 15–18 months depending on revenue scenarios.</p>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 3rem;">Where We Stand Now</h3>
+            
+            <div class="impact-grid">
+                <div class="impact-card">
+                    <div class="impact-number">$2.68M</div>
+                    <div class="impact-label">Conservative Forecast<br><span class="text-muted" style="font-size: 0.85rem;">-$341K gap</span></div>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-number">$3.32M</div>
+                    <div class="impact-label">Optimistic Scenario<br><span class="text-muted" style="font-size: 0.85rem;">+$299K surplus</span></div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <!-- FY27 PLAN TAB -->
+        <div id="fy27-plan" class="tab-content">
+            <h2>FY27 Fundraising Plan</h2>
+            <p class="intro-text">
+                We're building predictable, repeatable fundraising initiatives. This is how we'll engage you, steward donors, and generate the revenue we need.
+            </p>
+
+            <h3>Fundraising Calendar</h3>
+
+            <div style="background: linear-gradient(90deg, #0a52a9 0%, #087d65 100%); color: white; padding: 1.25rem 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap;">
+                <div style="font-weight: 700; font-size: 0.85rem; letter-spacing: 1px; white-space: nowrap; background: rgba(255,255,255,0.18); padding: 0.4rem 0.9rem; border-radius: 50px;">ONGOING • ALL YEAR</div>
+                <div style="flex: 1; min-width: 250px;">
+                    <strong>1-on-1 Cultivation.</strong> Lucas &amp; Josh set up meetings between board members and prospects. You cultivate relationships throughout the year — this runs alongside everything below.
+                </div>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-event">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Friday, October 9</div>
+                        <div class="timeline-title">Breakfast Parlor</div>
+                        <div class="timeline-description">Early morning gathering. ~30 current & prospective donors. Casual, intimate, low-cost.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-event">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Friday, November 12</div>
+                        <div class="timeline-title">Breakfast Parlor</div>
+                        <div class="timeline-description">Rinse and repeat of the October model. ~30 donors &amp; prospects. New guest list.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-event">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Tuesday, February 5</div>
+                        <div class="timeline-title">Breakfast Parlor</div>
+                        <div class="timeline-description">Rinse and repeat. ~30 mixed group. Board invites, we execute.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-event">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">March–April (TBD)</div>
+                        <div class="timeline-title">The Prom (Gala)</div>
+                        <div class="timeline-description">Fancy event for all donors. Stewardship + major ask. Board committee required. Must be profitable.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-event">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">Tuesday, April 22</div>
+                        <div class="timeline-title">BRYC Birthday Party & Giving Day</div>
+                        <div class="timeline-description">Year 18 celebration. Virtual + in-person. Annual giving push. All hands on deck.</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 3rem;">Previous Parlor Meetings</h3>
+            <p class="intro-text">
+                This model works. We've run parlor meetings before, and they've generated relationships, commitments, and major gifts.
+            </p>
+
+            <button class="collapsible" onclick="toggleCollapse(event)">April 2024 & May 2024 Results</button>
+            <div class="collapsible-content">
+                <div class="results-grid">
+                    <div class="result-card">
+                        <div class="result-number">14</div>
+                        <div class="result-label">Attendees<br><span class="text-muted">April 2024</span></div>
+                    </div>
+                    <div class="result-card">
+                        <div class="result-number">30+</div>
+                        <div class="result-label">Attendees<br><span class="text-muted">May 2024</span></div>
+                    </div>
+                </div>
+                <p style="margin-top: 1rem;">Both events were high-quality, low-stress gatherings. Donors felt welcomed. Relationships deepened. Some led to follow-up meetings and major gifts. This is what we're repeating in October, November, and February.</p>
+            </div>
+
+            <h3 style="margin-top: 3rem;">Sponsorship Opportunities</h3>
+            <div class="placeholder">
+                Sponsorship menu (with dollar amounts and recognition details) — coming soon.<br><br>
+                <strong>Examples:</strong> Event sponsorships, program sponsorships, room naming opportunities, and more.
+            </div>
+
+            <h3 style="margin-top: 3rem;">Board Member Expectations</h3>
+            <div class="placeholder">
+                Your role and specific commitments for this year — being finalized and will be shared at the retreat.
+            </div>
+        </div>
+
+        <!-- BOARD TAB -->
+        <div id="board" class="tab-content">
+            <h2>Our Board</h2>
+
+            <div class="impact-grid">
+                <div class="impact-card">
+                    <div class="impact-number">13</div>
+                    <div class="impact-label">Current Members</div>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-number">21</div>
+                    <div class="impact-label">Total Seats</div>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-number">8</div>
+                    <div class="impact-label">Open Seats</div>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-number">3</div>
+                    <div class="impact-label">Terms Ending Jun 2027</div>
+                </div>
+            </div>
+
+            <p class="intro-text">
+                Our bylaws allow up to <span class="highlight">21 board members</span>. We have 13 today, with three terms ending June 2027. Growing this board — with members who bring networks, capacity, and giving power — is one of our most important levers for closing the fundraising gap.
+            </p>
+
+            <button class="collapsible" onclick="toggleCollapse(event)">Current Members &amp; Terms</button>
+            <div class="collapsible-content">
+            <p style="font-size: 0.9rem; color: #676868;">Term policy: up to 3 consecutive 3-year terms (9-year maximum).</p>
+
+            <div class="board-table-wrap">
+            <table class="board-table">
+                <thead>
+                    <tr>
+                        <th>Member</th>
+                        <th>Role</th>
+                        <th>Term</th>
+                        <th>Term Ends</th>
+                        <th>Status</th>
+                        <th>Renewable?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Lisa Adamek</td><td>Past Chair</td><td>3 of 3</td><td>Jun 2027</td><td><span class="status-pill ending">Ending Soon</span></td><td>No — max terms</td></tr>
+                    <tr><td>Jessica Baghian</td><td></td><td>2 of 3</td><td>Jun 2027</td><td><span class="status-pill ending">Ending Soon</span></td><td>Yes</td></tr>
+                    <tr><td>Karen Breaux</td><td>Vice Chair</td><td>2 of 3</td><td>Jun 2029</td><td><span class="status-pill active">Active</span></td><td>Yes</td></tr>
+                    <tr><td>Regina Davis</td><td></td><td>1 of 3</td><td>Jun 2028</td><td><span class="status-pill active">Active</span></td><td>Yes</td></tr>
+                    <tr><td>Jonathan Earle</td><td>Chair</td><td>2 of 3</td><td>Jun 2029</td><td><span class="status-pill active">Active</span></td><td>Yes</td></tr>
+                    <tr><td>Carissa Graves</td><td></td><td>2 of 3</td><td>Jun 2029</td><td><span class="status-pill active">Active</span></td><td>Yes</td></tr>
+                    <tr><td>Dave Luecke</td><td>Secretary</td><td>3 of 3</td><td>Jun 2029</td><td><span class="status-pill active">Active</span></td><td>No — max terms</td></tr>
+                    <tr><td>Mikki Mathews</td><td>Treasurer</td><td>3 of 3</td><td>Jun 2028</td><td><span class="status-pill active">Active</span></td><td>No — max terms</td></tr>
+                    <tr><td>Chaunda Mitchell</td><td></td><td>3 of 3</td><td>Jun 2028</td><td><span class="status-pill active">Active</span></td><td>No — max terms</td></tr>
+                    <tr><td>Natalie Robertson</td><td></td><td>1 of 3</td><td>Jun 2029</td><td><span class="status-pill active">Active</span></td><td>Yes</td></tr>
+                    <tr><td>Mike Rolfsen</td><td></td><td>1 of 3</td><td>Jun 2028</td><td><span class="status-pill active">Active</span></td><td>Yes</td></tr>
+                    <tr><td>Lauren Tarver</td><td></td><td>1 of 3</td><td>Jun 2029</td><td><span class="status-pill active">Active</span></td><td>Yes</td></tr>
+                    <tr><td>Garrett Temple</td><td></td><td>2 of 3</td><td>Jun 2027</td><td><span class="status-pill ending">Ending Soon</span></td><td>Yes</td></tr>
+                </tbody>
+            </table>
+            </div>
+            </div>
+
+            <button class="collapsible" style="margin-top: 2rem;" onclick="toggleCollapse(event)">Board Prospects</button>
+            <div class="collapsible-content">
+            <p class="intro-text">
+                People we've identified as potential future board members. Know someone who belongs on this list? Add them below or grab Josh or Lucas today.
+            </p>
+
+            <div class="board-table-wrap">
+            <table class="board-table">
+                <thead>
+                    <tr>
+                        <th>Prospect</th>
+                        <th>Title / Organization</th>
+                        <th>Connection to BRYC</th>
+                        <th>Notes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td style="white-space: nowrap;"><a href="https://www.linkedin.com/in/chris-ciesielski-7a78536/" target="_blank">Chris Ciesielski</a></td><td>CEO, NFP Insurance</td><td>Dear friend of Lucas and Josh; previous senior mentor. Already asked to consider.</td><td>Significant board experience — just finished chairmanship at Woman's Hospital. Would do the work and set a good culture.</td></tr>
+                    <tr><td style="white-space: nowrap;"><a href="https://www.linkedin.com/in/rudy-comeaux-mba-cm-lean-39b37677/" target="_blank">Rudy Comeaux</a></td><td>President, Infrastructure Group at Lemoine Construction</td><td>Close friend of Lucas and Josh; previously volunteered on construction projects.</td><td>A doer — understands what's expected of an engaged board member. Would ensure continued Lemoine support and help with industry.</td></tr>
+                    <tr><td style="white-space: nowrap;"><a href="https://www.linkedin.com/in/joshuadescant" target="_blank">Josh Descant</a></td><td>CEO, Rev</td><td>Friend of Josh.</td><td>Connection to Ascension and Iberville parishes.</td></tr>
+                    <tr><td style="white-space: nowrap;"><a href="https://www.latech.edu/directory/cami-geisman.php" target="_blank">Cami Geisman</a></td><td>EVP for External Affairs, Louisiana Tech</td><td>Close friend of Josh and Lucas; partnered with BRYC while at the UL System.</td><td>Great connection to state funding.</td></tr>
+                    <tr><td style="white-space: nowrap;"><a href="https://www.linkedin.com/in/joseph-hollins-3a372371/" target="_blank">Joseph Hollins</a></td><td>Senior Corporate Relations Adviser, Shell</td><td>Friend of Josh; wife is a BRYC alum (Casey Paulin-Hollins '10).</td><td>Very well connected in the community. Member of the LCTCS Board of Directors.</td></tr>
+                    <tr><td style="white-space: nowrap;"><a href="https://www.linkedin.com/in/lawheelislockridge/" target="_blank">Lee Ann Lockridge</a></td><td>Former LSU Law Professor &amp; Dean (recently retired)</td><td>Previous mentor; incredibly engaged volunteer with Fellows and alumni.</td><td>Generous supporter along with her husband Eric (attorney, Jones Walker). Someone we trust to care about this.</td></tr>
+                    <tr><td style="white-space: nowrap;"><a href="https://www.northwesternmutual.com/financial/advisor/chris-mcghee/" target="_blank">Chris McGhee</a></td><td>Financial Advisor, Northwestern Mutual</td><td>Close friend of Josh.</td><td>Well connected.</td></tr>
+                    <tr><td style="white-space: nowrap;"><a href="https://www.linkedin.com/in/adonica-duggan/" target="_blank">Adonica Pelichet Duggan</a></td><td>CEO, Baton Rouge Alliance for Students</td><td>Oldest daughter went through BRYC her senior year; friend of Josh and Lucas.</td><td>Incredibly connected in the Baton Rouge / education community.</td></tr>
+                    <tr><td style="white-space: nowrap;"><a href="https://www.linkedin.com/in/quintintaylor" target="_blank">Quintin Taylor</a></td><td>Chancellor, River Parishes Community College</td><td></td><td>Connection to Ascension and industry.</td></tr>
+                    <tr><td style="white-space: nowrap;"><a href="https://www.csrsinc.com/leadership/travis-woodard%2C-pe" target="_blank">Travis Woodard</a></td><td>Principal &amp; Chief Business Development Officer, CSRS</td><td>Friend of Josh.</td><td>Inquired about joining the board years ago.</td></tr>
+                    <tr><td style="white-space: nowrap;">Laurie Aronson</td><td></td><td></td><td></td></tr>
+                    <tr><td style="white-space: nowrap;">Wendy Lipsey</td><td></td><td></td><td></td></tr>
+                    <tr><td style="white-space: nowrap;">Tyler Litt</td><td></td><td></td><td></td></tr>
+                    <tr><td style="white-space: nowrap;">Hayden Moore</td><td></td><td></td><td></td></tr>
+                </tbody>
+            </table>
+            </div>
+            </div>
+
+            <div class="form-container">
+                <h3 style="margin-top: 0;">Suggest a Board Prospect</h3>
+                <form id="boardProspectForm" onsubmit="submitBoardProspect(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="bpFirstName">First Name *</label>
+                            <input type="text" id="bpFirstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="bpLastName">Last Name *</label>
+                            <input type="text" id="bpLastName" name="lastName" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bpTitleOrg">Title / Organization</label>
+                        <input type="text" id="bpTitleOrg" name="titleOrg" placeholder="e.g., CEO of ...">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bpAssociation">Association to BRYC</label>
+                        <input type="text" id="bpAssociation" name="association" placeholder="How do they know us?">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bpNotes">Notes</label>
+                        <textarea id="bpNotes" name="notes" placeholder="Why would they be a strong board member?" style="height: 80px;"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bpRecommender">Recommender</label>
+                        <select id="bpRecommender" name="recommender">
+                            <option value="">Select your name...</option>
+                            <option value="Carissa">Carissa</option>
+                            <option value="Chaunda">Chaunda</option>
+                            <option value="Dave">Dave</option>
+                            <option value="Garrett">Garrett</option>
+                            <option value="Jessica">Jessica</option>
+                            <option value="Jonathan">Jonathan</option>
+                            <option value="Karen">Karen</option>
+                            <option value="Lauren">Lauren</option>
+                            <option value="Lisa">Lisa</option>
+                            <option value="Mike">Mike</option>
+                            <option value="Mikki">Mikki</option>
+                            <option value="Natalie">Natalie</option>
+                            <option value="Regina">Regina</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="form-btn">Add Board Prospect</button>
+                    <div class="form-message" id="boardFormMessage"></div>
+                </form>
+            </div>
+
+            <a href="https://docs.google.com/spreadsheets/d/1bmmJnYHJI3roGIhttsvy9Mv1hUembQgxk218FimYVJM/edit?usp=sharing" class="attachment-link" target="_blank" style="margin-top: 1.5rem;">
+                → Board of Directors Tracker (terms, prospects, work plan)
+            </a>
+        </div>
+
+        <!-- PROSPECT WORK TAB -->
+        <div id="prospects" class="tab-content">
+            <h2>Prospect Sourcing</h2>
+            <div class="prospect-intro">
+                <strong>Your job today:</strong> Add at least 10 prospects to our list. These are people you know who might support BRYC. You decide their names, contact info, your confidence level, and next steps. During work time, you'll add them via the form below. We'll share out who you entered.
+            </div>
+
+            <p class="intro-text">
+                Our current prospect list has 275+ names, but most need qualification. You likely know people we don't know or haven't yet approached. We need your network.
+            </p>
+
+            <a href="https://docs.google.com/spreadsheets/d/1kv1hQb5XWzK5x0YxZvTYeD5bgFb00yXjmr8BOEc0Evs/edit?usp=sharing" class="attachment-link" target="_blank">
+                → View the current prospect list (Fundraising HQ)
+            </a>
+            <p style="font-size: 0.95rem; color: #676868; font-style: italic; margin-bottom: 1rem;">Don't worry about duplicates — add anyone who comes to mind, and we'll clean up the list afterwards.</p>
+
+            <div class="form-container">
+                <h3>Add a Prospect</h3>
+                <form id="prospectForm" onsubmit="submitProspect(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="status">Status *</label>
+                        <select id="status" name="status" required>
+                            <option value="">Select a status...</option>
+                            <option value="Current">Current Donor</option>
+                            <option value="Prospect">Prospect</option>
+                            <option value="Lapsed">Lapsed Donor</option>
+                            <option value="Unknown">Unknown</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="boardConnect">Board Connection *</label>
+                        <select id="boardConnect" name="boardConnect" required>
+                            <option value="">Select a board member...</option>
+                            <option value="Carissa">Carissa</option>
+                            <option value="Chaunda">Chaunda</option>
+                            <option value="Dave">Dave</option>
+                            <option value="Garrett">Garrett</option>
+                            <option value="Jessica">Jessica</option>
+                            <option value="Jonathan">Jonathan</option>
+                            <option value="Karen">Karen</option>
+                            <option value="Lauren">Lauren</option>
+                            <option value="Lisa">Lisa</option>
+                            <option value="Mike">Mike</option>
+                            <option value="Mikki">Mikki</option>
+                            <option value="Natalie">Natalie</option>
+                            <option value="Regina">Regina</option>
+                            <option value="Elin">Elin</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="staffLead">Staff Lead *</label>
+                        <select id="staffLead" name="staffLead" required>
+                            <option value="">Select a staff lead...</option>
+                            <option value="Elin">Elin</option>
+                            <option value="Josh">Josh</option>
+                            <option value="Lucas">Lucas</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="level">Level</label>
+                        <select id="level" name="level">
+                            <option value="">Select a level...</option>
+                            <option value="Mid-Level">Mid-Level</option>
+                            <option value="Major">Major</option>
+                            <option value="Annual">Annual</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="realisticProjection">Realistic Projection</label>
+                        <input type="text" id="realisticProjection" name="realisticProjection" placeholder="e.g., $5K, $25K, $100K">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">Notes</label>
+                        <textarea id="notes" name="notes" placeholder="Any additional context..." style="height: 80px;"></textarea>
+                    </div>
+
+                    <button type="submit" class="form-btn">Add Prospect</button>
+                    <div class="form-message" id="formMessage"></div>
+                </form>
+            </div>
+        </div>
+
+        <!-- ATTACHMENTS TAB -->
+        <div id="attachments" class="tab-content">
+            <h2>Resources & References</h2>
+            
+            <h3>Spreadsheets & Data</h3>
+            <a href="https://docs.google.com/spreadsheets/d/1kv1hQb5XWzK5x0YxZvTYeD5bgFb00yXjmr8BOEc0Evs/edit?usp=sharing" class="attachment-link" target="_blank">
+                → Fundraising HQ (Full tracker with revenue, prospects, and giving history)
+            </a>
+            
+            <div class="placeholder" style="margin-top: 1rem;">
+                <strong>📋 Donor List</strong><br>
+                Clean list of all donors (last 3 years) — coming soon.
+            </div>
+
+            <div class="placeholder" style="margin-top: 1rem;">
+                <strong>📊 Prospect List (Full)</strong><br>
+                All 275+ prospects in our pipeline — available via Fundraising HQ.
+            </div>
+
+            <h3>External Resources</h3>
+            <a href="https://projects.propublica.org/nonprofits/organizations/262477597" class="attachment-link" target="_blank">
+                → BRYC on ProPublica (Public financial data)
+            </a>
+
+            <a href="https://jwhllc.github.io/test-finances/" class="attachment-link" target="_blank">
+                → Financial Dashboard (Internal tool — historical trends)
+            </a>
+
+            <h3>Documents</h3>
+            <div class="placeholder" style="margin-top: 1rem;">
+                <strong>📄 BRYC One-Pager</strong><br>
+                Our pitch deck for donors — draft available on State of BRYC tab.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbygXJ_eoSeBlGLl08-0LbELZzuWQZGlONx780AwkXjOFHlsS8Qx2bwWlnuermAsP7ni/exec';
+        const BOARD_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxeYNOB0bzaxvnjj38wdMwLZM3ZhwJn4cTRRkEO-z_ygUvTupdk0DCf08cLunoTc0XcvQ/exec';
+
+        let points = 0;
+        let currentTriviaIndex = 0;
+        let triviaAnswered = false;
+
+        const trivia = [
+            {
+                question: "When was BRYC founded?",
+                options: ["2006", "2008", "2010", "2012"],
+                correct: 1
+            },
+            {
+                question: "What's our alumni persistence rate?",
+                options: ["55%", "65%", "77%", "85%"],
+                correct: 2
+            },
+            {
+                question: "How many students do we serve annually?",
+                options: ["500+", "750+", "1,000+", "1,500+"],
+                correct: 2
+            },
+            {
+                question: "Our persistence rate is how many times higher than low-income national average?",
+                options: ["3x", "5x", "7x", "9x"],
+                correct: 2
+            },
+            {
+                question: "How many schools do we partner with?",
+                options: ["25", "40", "57", "75"],
+                correct: 2
+            },
+            {
+                question: "What year does BRYC turn 18?",
+                options: ["2024", "2025", "2026", "2027"],
+                correct: 2
+            }
+        ];
+
+        // Notes functionality
+        function toggleNotes() {
+            const sidebar = document.getElementById('notesSidebar');
+            sidebar.classList.toggle('active');
+        }
+
+        const notesTextarea = document.getElementById('notesTextarea');
+        notesTextarea.addEventListener('input', () => {
+            localStorage.setItem('bryc-notes', notesTextarea.value);
+        });
+
+        window.addEventListener('load', () => {
+            notesTextarea.value = localStorage.getItem('bryc-notes') || '';
+        });
+
+        // Tab switching
+        function switchTab(evt, tabName) {
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(tab => tab.classList.remove('active'));
+
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+            evt.currentTarget.classList.add('active');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            if (tabName === 'state-of-bryc') {
+                setTimeout(startCounters, 300);
+            }
+        }
+
+        // Animated Counters
+        let countersStarted = false;
+        function startCounters() {
+            if (countersStarted) return;
+            countersStarted = true;
+            animateCounter('counter1', 1087, 2000);
+            animateCounter('counter2', 1047, 2000);
+            animateCounter('counter3', 57, 1500);
+            animateCounter('counter4', 77, 2000);
+        }
+
+        function animateCounter(elementId, target, duration = 2000) {
+            const element = document.getElementById(elementId);
+            if (!element) return;
+
+            const start = 0;
+            const increment = target / (duration / 16);
+            let current = start;
+
+            const counter = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(counter);
+                }
+                
+                if (elementId === 'counter4') {
+                    element.textContent = Math.floor(current) + '%';
+                } else {
+                    element.textContent = Math.floor(current).toLocaleString();
+                }
+            }, 16);
+        }
+
+        // Collapsible
+        function toggleCollapse(event) {
+            const button = event.target;
+            const content = button.nextElementSibling;
+
+            button.classList.toggle('active');
+            content.classList.toggle('active');
+        }
+
+        // Financial calculator
+        // Anchored to Aug 25, 2026 position: $2.39M liquid, $3.71M incl. endowment, ~$255K avg monthly burn
+        function updateCalculator(value) {
+            const amount = parseInt(value);
+            const budget = 3021269;
+            const liquid = 2394449;
+            const totalAssets = 3714449;
+            const burn = 255000;
+            const gap = amount - budget;
+            const liquidMonths = Math.round((liquid + gap) / burn);
+            const totalMonths = Math.round((totalAssets + gap) / burn);
+
+            document.getElementById('customAmount').textContent = '$' + (amount / 1000000).toFixed(2) + 'M';
+            document.getElementById('customGap').textContent = gap >= 0 ? '+$' + (gap / 1000).toFixed(0) + 'K' : '-$' + (Math.abs(gap) / 1000).toFixed(0) + 'K';
+            document.getElementById('customRunway').textContent = '~' + Math.max(0, liquidMonths) + ' mo';
+            document.getElementById('customTotalRunway').textContent = '~' + Math.max(0, totalMonths) + ' mo';
+        }
+
+        // Prospect Form
+        async function submitProspect(event) {
+            event.preventDefault();
+
+            const form = document.getElementById('prospectForm');
+            const formMessage = document.getElementById('formMessage');
+            const submitBtn = event.target.querySelector('button[type="submit"]');
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+
+            try {
+                const formData = new FormData(form);
+                const params = new URLSearchParams(formData);
+
+                const response = await fetch(WEB_APP_URL, {
+                    method: 'POST',
+                    body: params
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    formMessage.textContent = '✓ Prospect added! Add another whenever you\'re ready.';
+                    formMessage.classList.remove('error');
+                    formMessage.classList.add('success');
+                    form.reset();
+                } else {
+                    formMessage.textContent = '✗ Something went wrong. Please try again.';
+                    formMessage.classList.remove('success');
+                    formMessage.classList.add('error');
+                }
+            } catch (error) {
+                formMessage.textContent = '✗ Error submitting. Check your connection and try again.';
+                formMessage.classList.remove('success');
+                formMessage.classList.add('error');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Add Prospect';
+            }
+        }
+
+        // Board prospect form
+        async function submitBoardProspect(event) {
+            event.preventDefault();
+
+            const form = document.getElementById('boardProspectForm');
+            const formMessage = document.getElementById('boardFormMessage');
+            const submitBtn = event.target.querySelector('button[type="submit"]');
+
+            if (BOARD_WEB_APP_URL.indexOf('PASTE') === 0) {
+                formMessage.textContent = '✗ Form endpoint not set up yet — see Josh.';
+                formMessage.classList.remove('success');
+                formMessage.classList.add('error');
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+
+            try {
+                const params = new URLSearchParams(new FormData(form));
+                const response = await fetch(BOARD_WEB_APP_URL, { method: 'POST', body: params });
+                const result = await response.json();
+
+                if (result.success) {
+                    formMessage.textContent = '✓ Board prospect added — thank you!';
+                    formMessage.classList.remove('error');
+                    formMessage.classList.add('success');
+                    form.reset();
+                } else {
+                    formMessage.textContent = '✗ Something went wrong. Please try again.';
+                    formMessage.classList.remove('success');
+                    formMessage.classList.add('error');
+                }
+            } catch (error) {
+                formMessage.textContent = '✗ Error submitting. Check your connection and try again.';
+                formMessage.classList.remove('success');
+                formMessage.classList.add('error');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Add Board Prospect';
+            }
+        }
+
+        // Trivia
+        function openTrivia() {
+            document.getElementById('triviaModal').classList.add('active');
+            showTrivia();
+        }
+
+        function closeTrivia() {
+            document.getElementById('triviaModal').classList.remove('active');
+            triviaAnswered = false;
+        }
+
+        function showTrivia() {
+            const triviaBit = trivia[currentTriviaIndex];
+            document.getElementById('triviaQuestion').textContent = triviaBit.question;
+
+            const optionGroup = document.getElementById('optionGroup');
+            optionGroup.innerHTML = '';
+
+            triviaBit.options.forEach((option, index) => {
+                const label = document.createElement('label');
+                label.className = 'option';
+                label.innerHTML = `
+                    <input type="radio" name="trivia-option" value="${index}">
+                    <div class="option-text">${option}</div>
+                `;
+                optionGroup.appendChild(label);
+            });
+
+            document.getElementById('answerFeedback').className = 'answer-feedback';
+            document.getElementById('answerFeedback').style.display = 'none';
+            document.getElementById('pointsEarned').style.display = 'none';
+            document.getElementById('nextBtn').textContent = 'Submit Answer';
+            triviaAnswered = false;
+        }
+
+        function nextTrivia() {
+            if (!triviaAnswered) {
+                const selected = document.querySelector('input[name="trivia-option"]:checked');
+                if (!selected) return;
+
+                const triviaBit = trivia[currentTriviaIndex];
+                const isCorrect = parseInt(selected.value) === triviaBit.correct;
+
+                const feedback = document.getElementById('answerFeedback');
+                const pointsEarned = document.getElementById('pointsEarned');
+
+                if (isCorrect) {
+                    feedback.textContent = '✓ Correct!';
+                    feedback.className = 'answer-feedback correct';
+                    points += 50;
+                    document.getElementById('pointsCount').textContent = points;
+                    pointsEarned.textContent = '+50 points!';
+                    pointsEarned.style.display = 'block';
+                } else {
+                    feedback.textContent = '✗ Not quite. ' + triviaBit.options[triviaBit.correct] + ' is the correct answer.';
+                    feedback.className = 'answer-feedback incorrect';
+                }
+
+                feedback.style.display = 'block';
+                document.getElementById('nextBtn').textContent = 'Next Question';
+                triviaAnswered = true;
+            } else {
+                currentTriviaIndex = (currentTriviaIndex + 1) % trivia.length;
+                showTrivia();
+            }
+        }
+
+        // Initialize
+        updateCalculator(3000000);
+    </script>
+</body>
+</html>
