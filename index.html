@@ -2066,7 +2066,8 @@
             </table>
             </div>
 
-            <div style="background: linear-gradient(135deg, #e7f1fe 0%, rgba(211, 235, 231, 0.3) 100%); border-radius: 8px; padding: 1.5rem 2rem; margin-top: 1.5rem; border-left: 4px solid #0a52a9;">
+            <div style="background: linear-gradient(135deg, #d3ebe7 0%, rgba(8, 125, 101, 0.1) 100%); border-radius: 8px; padding: 1.5rem 2rem; margin-top: 1.5rem; border: 2px solid #087d65; border-left: 8px solid #087d65;">
+                <div style="display: inline-block; background: #087d65; color: white; font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; padding: 0.3rem 0.8rem; border-radius: 50px; margin-bottom: 0.75rem;">FEEDBACK</div>
                 <h4 style="margin-top: 0; margin-bottom: 0.25rem; color: #001f3f;">Give Feedback on a Prospect</h4>
                 <p style="font-size: 0.9rem; color: #676868; margin-bottom: 1.25rem;">Share your read on anyone from the list above. Josh gets notified right away.</p>
                 <form id="prospectFeedbackForm" onsubmit="submitProspectFeedback(event)">
@@ -2112,8 +2113,23 @@
                     </div>
 
                     <div class="form-group" id="fbNameGroup">
-                        <label for="fbName">Your name</label>
-                        <input type="text" id="fbName" name="submitterName" placeholder="So Josh knows who to follow up with">
+                        <label for="fbName">Your Name</label>
+                        <select id="fbName" name="submitterName">
+                            <option value="">Select your name...</option>
+                            <option value="Lisa">Lisa</option>
+                            <option value="Jessica">Jessica</option>
+                            <option value="Karen">Karen</option>
+                            <option value="Regina">Regina</option>
+                            <option value="Jonathan">Jonathan</option>
+                            <option value="Carissa">Carissa</option>
+                            <option value="Dave">Dave</option>
+                            <option value="Mikki">Mikki</option>
+                            <option value="Chaunda">Chaunda</option>
+                            <option value="Natalie">Natalie</option>
+                            <option value="Mike">Mike</option>
+                            <option value="Lauren">Lauren</option>
+                            <option value="Garrett">Garrett</option>
+                        </select>
                     </div>
 
                     <button type="submit" class="form-btn">Submit Feedback</button>
