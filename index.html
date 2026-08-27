@@ -2219,7 +2219,106 @@
             <a href="https://docs.google.com/spreadsheets/d/1kv1hQb5XWzK5x0YxZvTYeD5bgFb00yXjmr8BOEc0Evs/edit?usp=sharing" class="attachment-link" target="_blank">
                 → View the current prospect list (Fundraising HQ)
             </a>
-            <p style="font-size: 0.95rem; color: #676868; font-style: italic; margin-bottom: 1rem;">Don't worry about duplicates — add anyone who comes to mind, and we'll clean up the list afterwards.</p>
+
+            <a href="#" class="attachment-link" onclick="event.preventDefault(); toggleProspectUpdateTool();" id="prospectUpdateToggleLink">
+                → Add notes to an existing prospect
+            </a>
+
+            <div class="form-container" id="prospectUpdateModule" style="display: none; border-color: #0a52a9;">
+                <h3 style="margin-top: 0;">Update an Existing Prospect</h3>
+                <p style="font-size: 0.9rem; color: #676868; margin-bottom: 1rem;">Search the current list to add notes, claim someone, or set an action step.</p>
+                <div class="form-group">
+                    <label for="prospectSearchInput">Search by name</label>
+                    <input type="text" id="prospectSearchInput" placeholder="Start typing a first or last name..." oninput="searchProspects(this.value)" autocomplete="off">
+                </div>
+                <div id="prospectSearchStatus" style="font-size: 0.85rem; color: #676868; font-style: italic;"></div>
+                <div id="prospectSearchResults" style="margin-top: 0.5rem; max-height: 240px; overflow-y: auto;"></div>
+
+                <div id="prospectUpdateFormWrap" style="display: none; margin-top: 1.5rem; border-top: 2px solid #e7f1fe; padding-top: 1.5rem;">
+                    <p style="font-weight: 700; color: #001f3f; font-size: 1.1rem;" id="prospectUpdateName"></p>
+                    <p style="font-size: 0.85rem; color: #676868; margin-bottom: 1rem;" id="prospectUpdateCurrent"></p>
+                    <form id="prospectUpdateForm" onsubmit="submitProspectUpdate(event)">
+                        <input type="hidden" id="puRowIndex" name="rowIndex">
+
+                        <div class="form-group">
+                            <label for="puYourName">Your Name</label>
+                            <select id="puYourName" name="yourName">
+                                <option value="">Select your name...</option>
+                                <option value="Carissa">Carissa</option>
+                                <option value="Chaunda">Chaunda</option>
+                                <option value="Dave">Dave</option>
+                                <option value="Garrett">Garrett</option>
+                                <option value="Jessica">Jessica</option>
+                                <option value="Jonathan">Jonathan</option>
+                                <option value="Karen">Karen</option>
+                                <option value="Lauren">Lauren</option>
+                                <option value="Lisa">Lisa</option>
+                                <option value="Mike">Mike</option>
+                                <option value="Mikki">Mikki</option>
+                                <option value="Natalie">Natalie</option>
+                                <option value="Regina">Regina</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="puBoardConnect">Board Connection</label>
+                            <select id="puBoardConnect" name="boardConnect">
+                                <option value="">Select a board member...</option>
+                                <option value="Carissa">Carissa</option>
+                                <option value="Chaunda">Chaunda</option>
+                                <option value="Dave">Dave</option>
+                                <option value="Garrett">Garrett</option>
+                                <option value="Jessica">Jessica</option>
+                                <option value="Jonathan">Jonathan</option>
+                                <option value="Karen">Karen</option>
+                                <option value="Lauren">Lauren</option>
+                                <option value="Lisa">Lisa</option>
+                                <option value="Mike">Mike</option>
+                                <option value="Mikki">Mikki</option>
+                                <option value="Natalie">Natalie</option>
+                                <option value="Regina">Regina</option>
+                                <option value="Elin">Elin</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="puType">Type</label>
+                            <select id="puType" name="type">
+                                <option value="">Select a type...</option>
+                                <option value="Mid-Level">Mid-Level</option>
+                                <option value="Major">Major</option>
+                                <option value="Annual">Annual</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="puRealisticAsk">Realistic Ask</label>
+                            <input type="text" id="puRealisticAsk" name="realisticAsk" placeholder="e.g., $5K, $25K, $100K">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="puNotes">Board Contact Notes</label>
+                            <textarea id="puNotes" name="notes" style="height: 80px;"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="puActionStep">Action Step</label>
+                            <select id="puActionStep" name="actionStep">
+                                <option value="">Select an action step...</option>
+                                <option value="Ask for gift directly.">Ask for gift directly.</option>
+                                <option value="Invite to my BRYC House.">Invite to my BRYC House.</option>
+                                <option value="Connect Lucas/Josh.">Connect Lucas/Josh.</option>
+                                <option value="Discuss with Lucas/Josh.">Discuss with Lucas/Josh.</option>
+                                <option value="Invite to Oct parlor mtg.">Invite to Oct parlor mtg.</option>
+                                <option value="Invite to Nov parlor mtg.">Invite to Nov parlor mtg.</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="form-btn">Save Update</button>
+                        <div class="form-message" id="puFormMessage"></div>
+                    </form>
+                </div>
+            </div>
 
             <div class="form-container">
                 <h3>Add a Prospect</h3>
@@ -2647,6 +2746,132 @@
             document.getElementById('customGap').textContent = gap >= 0 ? '+$' + (gap / 1000).toFixed(0) + 'K' : '-$' + (Math.abs(gap) / 1000).toFixed(0) + 'K';
             document.getElementById('customRunway').textContent = '~' + Math.max(0, liquidMonths) + ' mo';
             document.getElementById('customTotalRunway').textContent = '~' + Math.max(0, totalMonths) + ' mo';
+        }
+
+        // Toggle visibility of the Update an Existing Prospect module
+        function toggleProspectUpdateTool() {
+            const module = document.getElementById('prospectUpdateModule');
+            const link = document.getElementById('prospectUpdateToggleLink');
+            const isHidden = module.style.display === 'none';
+            module.style.display = isHidden ? 'block' : 'none';
+            link.textContent = isHidden ? '→ Hide the update tool' : '→ Add notes to an existing prospect';
+        }
+
+        // Search & update existing prospects
+        let prospectCache = null;
+        let prospectCacheLoading = false;
+
+        async function ensureProspectCache() {
+            if (prospectCache || prospectCacheLoading) return;
+            prospectCacheLoading = true;
+            document.getElementById('prospectSearchStatus').textContent = 'Loading current list...';
+            try {
+                const res = await fetch(WEB_APP_URL);
+                const data = await res.json();
+                prospectCache = data.prospects || [];
+                document.getElementById('prospectSearchStatus').textContent = '';
+            } catch (e) {
+                document.getElementById('prospectSearchStatus').textContent = "Couldn't load the list right now — try again in a moment.";
+                prospectCache = [];
+            }
+            prospectCacheLoading = false;
+        }
+
+        async function searchProspects(query) {
+            const resultsEl = document.getElementById('prospectSearchResults');
+            const wrap = document.getElementById('prospectUpdateFormWrap');
+            wrap.style.display = 'none';
+
+            if (query.trim().length < 2) {
+                resultsEl.innerHTML = '';
+                return;
+            }
+
+            await ensureProspectCache();
+
+            const q = query.trim().toLowerCase();
+            const matches = prospectCache.filter(p =>
+                (p.first || '').toLowerCase().includes(q) || (p.last || '').toLowerCase().includes(q)
+            ).slice(0, 15);
+
+            if (matches.length === 0) {
+                resultsEl.innerHTML = '<div style="padding: 0.5rem; color: #676868; font-size: 0.9rem;">No matches — this may be a new prospect. Add them below instead.</div>';
+                return;
+            }
+
+            resultsEl.innerHTML = '';
+            matches.forEach(p => {
+                const row = document.createElement('div');
+                row.style.cssText = 'padding: 0.6rem 0.8rem; border-bottom: 1px solid #e7f1fe; cursor: pointer; font-size: 0.95rem;';
+                row.onmouseover = () => row.style.background = '#e7f1fe';
+                row.onmouseout = () => row.style.background = 'white';
+                row.textContent = (p.first || '') + ' ' + (p.last || '');
+                row.onclick = () => selectProspect(p);
+                resultsEl.appendChild(row);
+            });
+        }
+
+        function selectProspect(p) {
+            document.getElementById('prospectSearchResults').innerHTML = '';
+            document.getElementById('prospectSearchInput').value = (p.first || '') + ' ' + (p.last || '');
+            document.getElementById('puRowIndex').value = p.row;
+            document.getElementById('prospectUpdateName').textContent = (p.first || '') + ' ' + (p.last || '');
+
+            const currentBits = [];
+            if (p.boardConnect) currentBits.push('Board Connect: ' + p.boardConnect);
+            if (p.realisticAsk) currentBits.push('Ask: ' + p.realisticAsk);
+            if (p.notes) currentBits.push('Notes: ' + p.notes);
+            document.getElementById('prospectUpdateCurrent').textContent = currentBits.length
+                ? 'Currently on file — ' + currentBits.join(' · ')
+                : 'Nothing on file yet for this person.';
+
+            document.getElementById('puBoardConnect').value = p.boardConnect || '';
+            document.getElementById('puType').value = p.type || '';
+            document.getElementById('puRealisticAsk').value = p.realisticAsk || '';
+            document.getElementById('puNotes').value = p.notes || '';
+            document.getElementById('puActionStep').value = '';
+
+            document.getElementById('prospectUpdateFormWrap').style.display = 'block';
+        }
+
+        async function submitProspectUpdate(event) {
+            event.preventDefault();
+            const form = document.getElementById('prospectUpdateForm');
+            const formMessage = document.getElementById('puFormMessage');
+            const submitBtn = event.target.querySelector('button[type="submit"]');
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Saving...';
+
+            try {
+                const params = new URLSearchParams(new FormData(form));
+                const response = await fetch(WEB_APP_URL, { method: 'POST', body: params });
+                const result = await response.json();
+
+                if (result.success) {
+                    formMessage.textContent = '✓ Updated — thank you!';
+                    formMessage.classList.remove('error');
+                    formMessage.classList.add('success');
+                    prospectCache = null; // force a fresh pull next search
+                    setTimeout(() => {
+                        document.getElementById('prospectUpdateFormWrap').style.display = 'none';
+                        document.getElementById('prospectSearchInput').value = '';
+                        formMessage.textContent = '';
+                        formMessage.className = 'form-message';
+                    }, 1800);
+                } else {
+                    formMessage.textContent = '✗ Something went wrong. Please try again.';
+                    formMessage.classList.remove('success');
+                    formMessage.classList.add('error');
+                }
+            } catch (error) {
+                formMessage.textContent = '✗ Error saving. Check your connection and try again.';
+                formMessage.classList.remove('success');
+                formMessage.classList.add('error');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Save Update';
+            }
         }
 
         // Prospect Form
