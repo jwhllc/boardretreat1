@@ -1310,22 +1310,45 @@
                 <div>
                     <h3 style="margin-top: 0;">Welcome</h3>
                     <p>Brief orientation to materials and links. Board &amp; team introductions: name, hometown, role or passion. CEO Designate remarks — reminding ourselves why we're here.</p>
-                    <p style="font-weight: 700; color: #001f3f; margin-bottom: 0.5rem; margin-top: 1rem;">Board of Directors</p>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0.35rem 1.5rem; font-size: 0.95rem;">
-                        <div>Lisa Adamek</div>
-                        <div>Jessica Baghian</div>
-                        <div>Karen Breaux</div>
-                        <div>Regina Davis</div>
-                        <div>Jonathan Earle</div>
-                        <div>Carissa Graves</div>
-                        <div>Dave Luecke</div>
-                        <div>Mikki Mathews</div>
-                        <div>Chaunda Mitchell</div>
-                        <div>Natalie Robertson</div>
-                        <div>Mike Rolfsen</div>
-                        <div>Lauren Tarver-Tatman</div>
-                        <div>Garrett Temple</div>
+                    <div style="background: white; border: 2px solid #087d65; border-radius: 8px; padding: 1.25rem; margin-top: 1rem;">
+                        <p style="font-weight: 700; color: #001f3f; margin-bottom: 0.75rem;">Introductions — type them in as we go</p>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem; margin-bottom: 0.75rem;">
+                            <select id="introName" style="padding: 0.6rem; border: 2px solid #087d65; border-radius: 4px; font-family: 'Proxima Nova', sans-serif; font-size: 0.95rem; background: white;">
+                                <option value="">Who's up?</option>
+                                <optgroup label="Board">
+                                    <option>Lisa Adamek</option>
+                                    <option>Jessica Baghian</option>
+                                    <option>Karen Breaux</option>
+                                    <option>Regina Davis</option>
+                                    <option>Jonathan Earle</option>
+                                    <option>Carissa Graves</option>
+                                    <option>Dave Luecke</option>
+                                    <option>Mikki Mathews</option>
+                                    <option>Chaunda Mitchell</option>
+                                    <option>Natalie Robertson</option>
+                                    <option>Mike Rolfsen</option>
+                                    <option>Lauren Tarver-Tatman</option>
+                                    <option>Garrett Temple</option>
+                                </optgroup>
+                                <optgroup label="Team &amp; Guests">
+                                    <option>Lucas Spielfogel</option>
+                                    <option>Josh Howard</option>
+                                    <option>Myeisha Anderson</option>
+                                    <option>Elin Hawkinson</option>
+                                    <option>Judith Roberson</option>
+                                </optgroup>
+                            </select>
+                            <input type="text" id="introHometown" placeholder="Hometown" style="padding: 0.6rem; border: 2px solid #087d65; border-radius: 4px; font-family: 'Proxima Nova', sans-serif; font-size: 0.95rem;">
+                            <input type="text" id="introPassion" placeholder="Role or passion" style="padding: 0.6rem; border: 2px solid #087d65; border-radius: 4px; font-family: 'Proxima Nova', sans-serif; font-size: 0.95rem;" onkeydown="if(event.key==='Enter'){addIntro()}">
+                        </div>
+                        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                            <button onclick="addIntro()" class="form-btn" style="padding: 0.6rem 1.5rem; font-size: 0.95rem;">Add</button>
+                            <button onclick="loadIntros(true)" class="form-btn" style="padding: 0.6rem 1.5rem; font-size: 0.95rem; background: #f2f3f4; color: #313335;">Refresh</button>
+                        </div>
+                        <div id="introStatus" style="font-size: 0.85rem; color: #676868; font-style: italic; margin-top: 0.5rem;"></div>
+                        <div id="introCards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; margin-top: 1rem;"></div>
                     </div>
+
                 </div>
             </div>
 
@@ -1963,6 +1986,75 @@
                 input.value = '';
             }
         }
+
+        // Introductions (shared via Apps Script when INTROS_URL is set; local-only otherwise)
+        const INTROS_URL = 'PASTE_INTROS_SCRIPT_URL_HERE';
+        const introsShared = INTROS_URL.indexOf('PASTE') !== 0;
+
+        function renderIntros(entries) {
+            const wrap = document.getElementById('introCards');
+            wrap.innerHTML = '';
+            entries.forEach(e => {
+                const card = document.createElement('div');
+                card.style.cssText = 'background: linear-gradient(135deg, #e7f1fe 0%, #d3ebe7 100%); border-left: 4px solid #0a52a9; border-radius: 6px; padding: 0.85rem;';
+                const name = document.createElement('div');
+                name.style.cssText = 'font-weight: 700; color: #001f3f;';
+                name.textContent = e.name;
+                const meta = document.createElement('div');
+                meta.style.cssText = 'font-size: 0.9rem; color: #676868;';
+                meta.textContent = [e.hometown, e.passion].filter(Boolean).join(' • ');
+                card.appendChild(name);
+                card.appendChild(meta);
+                wrap.appendChild(card);
+            });
+        }
+
+        function localIntros() {
+            try { return JSON.parse(localStorage.getItem('bryc-intros') || '[]'); }
+            catch (e) { return []; }
+        }
+
+        async function loadIntros(manual) {
+            if (introsShared) {
+                try {
+                    const res = await fetch(INTROS_URL);
+                    const data = await res.json();
+                    renderIntros(data.entries || []);
+                    document.getElementById('introStatus').textContent = '';
+                } catch (e) {
+                    renderIntros(localIntros());
+                    if (manual) document.getElementById('introStatus').textContent = "Couldn't reach the shared list — showing this device's entries.";
+                }
+            } else {
+                renderIntros(localIntros());
+                document.getElementById('introStatus').textContent = 'Entries save on this device only.';
+            }
+        }
+
+        async function addIntro() {
+            const name = document.getElementById('introName').value.trim();
+            const hometown = document.getElementById('introHometown').value.trim();
+            const passion = document.getElementById('introPassion').value.trim();
+            if (!name) return;
+
+            const entry = { name: name, hometown: hometown, passion: passion };
+            const local = localIntros();
+            local.push(entry);
+            localStorage.setItem('bryc-intros', JSON.stringify(local));
+
+            document.getElementById('introName').value = '';
+            document.getElementById('introHometown').value = '';
+            document.getElementById('introPassion').value = '';
+
+            if (introsShared) {
+                try {
+                    await fetch(INTROS_URL, { method: 'POST', body: new URLSearchParams(entry) });
+                } catch (e) { /* stays in local copy */ }
+            }
+            loadIntros(false);
+        }
+
+        window.addEventListener('load', () => loadIntros(false));
 
         let points = 0;
         let currentTriviaIndex = 0;
