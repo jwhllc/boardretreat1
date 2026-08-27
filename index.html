@@ -1130,6 +1130,31 @@
         }
 
         /* Placeholder */
+        .fb-vote-btn {
+            flex: 1;
+            padding: 0.85rem;
+            border: 2px solid #bfc4c8;
+            border-radius: 6px;
+            background: white;
+            font-family: 'Proxima Nova', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .fb-vote-btn:hover {
+            border-color: #087d65;
+        }
+        .fb-vote-btn.selected-up {
+            background: #d3ebe7;
+            border-color: #087d65;
+            color: #087d65;
+        }
+        .fb-vote-btn.selected-down {
+            background: #f8d7da;
+            border-color: #d9534f;
+            color: #d9534f;
+        }
         .placeholder {
             background: linear-gradient(135deg, #d3ebe7 0%, rgba(211, 235, 231, 0.3) 100%);
             padding: 2rem;
@@ -2040,6 +2065,61 @@
                 </tbody>
             </table>
             </div>
+
+            <div style="background: linear-gradient(135deg, #e7f1fe 0%, rgba(211, 235, 231, 0.3) 100%); border-radius: 8px; padding: 1.5rem 2rem; margin-top: 1.5rem; border-left: 4px solid #0a52a9;">
+                <h4 style="margin-top: 0; margin-bottom: 0.25rem; color: #001f3f;">Give Feedback on a Prospect</h4>
+                <p style="font-size: 0.9rem; color: #676868; margin-bottom: 1.25rem;">Share your read on anyone from the list above. Josh gets notified right away.</p>
+                <form id="prospectFeedbackForm" onsubmit="submitProspectFeedback(event)">
+                    <div class="form-group">
+                        <label for="fbProspect">Prospect *</label>
+                        <select id="fbProspect" name="prospect" required>
+                            <option value="">Select a prospect...</option>
+                            <option>Laurie Aronson</option>
+                            <option>Chris Ciesielski</option>
+                            <option>Rudy Comeaux</option>
+                            <option>Josh Descant</option>
+                            <option>Cami Geisman</option>
+                            <option>Joseph Hollins</option>
+                            <option>Lee Ann Lockridge</option>
+                            <option>Chris McGhee</option>
+                            <option>Adonica Pelichet Duggan</option>
+                            <option>Winifred Reilly</option>
+                            <option>Tess Rodriguez</option>
+                            <option>Sissy Stephens</option>
+                            <option>Quintin Taylor</option>
+                            <option>JR Whaley</option>
+                            <option>Travis Woodard</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Your take *</label>
+                        <div style="display: flex; gap: 1rem;">
+                            <button type="button" class="fb-vote-btn" data-vote="up" onclick="selectVote(this)">👍 Support</button>
+                            <button type="button" class="fb-vote-btn" data-vote="down" onclick="selectVote(this)">👎 Hesitant</button>
+                        </div>
+                        <input type="hidden" id="fbVote" name="vote" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fbNote">Note (optional)</label>
+                        <textarea id="fbNote" name="note" style="height: 70px;" placeholder="Any context you want to share..."></textarea>
+                    </div>
+
+                    <div class="form-group" style="display: flex; align-items: center; gap: 0.5rem;">
+                        <input type="checkbox" id="fbAnon" style="width: auto;" onchange="toggleFbName()">
+                        <label for="fbAnon" style="margin-bottom: 0; font-weight: 400;">Submit anonymously</label>
+                    </div>
+
+                    <div class="form-group" id="fbNameGroup">
+                        <label for="fbName">Your name</label>
+                        <input type="text" id="fbName" name="submitterName" placeholder="So Josh knows who to follow up with">
+                    </div>
+
+                    <button type="submit" class="form-btn">Submit Feedback</button>
+                    <div class="form-message" id="fbFormMessage"></div>
+                </form>
+            </div>
             </div>
 
             <div class="form-container">
@@ -2592,6 +2672,74 @@
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Add Prospect';
+            }
+        }
+
+        // Board prospect feedback form
+        const FEEDBACK_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzenmFRXtO7gfKCGGeH6Fc_-cfLIknLgRU8CjEPzolQt-2DmCq0j21aGxx7ITK7mVvaJQ/exec';
+
+        function selectVote(btn) {
+            document.querySelectorAll('.fb-vote-btn').forEach(b => b.classList.remove('selected-up', 'selected-down'));
+            const vote = btn.getAttribute('data-vote');
+            btn.classList.add(vote === 'up' ? 'selected-up' : 'selected-down');
+            document.getElementById('fbVote').value = vote;
+        }
+
+        function toggleFbName() {
+            const anon = document.getElementById('fbAnon').checked;
+            document.getElementById('fbNameGroup').style.display = anon ? 'none' : 'block';
+            document.getElementById('fbName').value = '';
+        }
+
+        async function submitProspectFeedback(event) {
+            event.preventDefault();
+
+            const form = document.getElementById('prospectFeedbackForm');
+            const formMessage = document.getElementById('fbFormMessage');
+            const submitBtn = event.target.querySelector('button[type="submit"]');
+
+            if (!document.getElementById('fbVote').value) {
+                formMessage.textContent = '✗ Please select thumbs up or down.';
+                formMessage.classList.remove('success');
+                formMessage.classList.add('error');
+                return;
+            }
+
+            if (FEEDBACK_WEB_APP_URL.indexOf('PASTE') === 0) {
+                formMessage.textContent = '✗ Form endpoint not set up yet — see Josh.';
+                formMessage.classList.remove('success');
+                formMessage.classList.add('error');
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+
+            try {
+                const params = new URLSearchParams(new FormData(form));
+                params.set('anonymous', document.getElementById('fbAnon').checked ? 'Yes' : 'No');
+                const response = await fetch(FEEDBACK_WEB_APP_URL, { method: 'POST', body: params });
+                const result = await response.json();
+
+                if (result.success) {
+                    formMessage.textContent = '✓ Feedback sent — thank you!';
+                    formMessage.classList.remove('error');
+                    formMessage.classList.add('success');
+                    form.reset();
+                    document.querySelectorAll('.fb-vote-btn').forEach(b => b.classList.remove('selected-up', 'selected-down'));
+                    document.getElementById('fbNameGroup').style.display = 'block';
+                } else {
+                    formMessage.textContent = '✗ Something went wrong. Please try again.';
+                    formMessage.classList.remove('success');
+                    formMessage.classList.add('error');
+                }
+            } catch (error) {
+                formMessage.textContent = '✗ Error submitting. Check your connection and try again.';
+                formMessage.classList.remove('success');
+                formMessage.classList.add('error');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Feedback';
             }
         }
 
