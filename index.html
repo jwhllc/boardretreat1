@@ -1464,30 +1464,30 @@
                 <div class="budget-clarity-label">CURRENT POSITION • AS OF AUG 26, 2026</div>
                 <div style="display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; margin-bottom: 0.5rem;">
                     <div>
-                        <div class="budget-clarity-amount" style="margin-bottom: 0.25rem;">$2.39M</div>
+                        <div class="budget-clarity-amount" style="margin-bottom: 0.25rem;" data-count-to="2.39" data-count-prefix="$" data-count-suffix="M" data-count-decimals="2">$0M</div>
                         <div style="font-size: 0.9rem; opacity: 0.85;">Liquid • Chase (after debt) $716K + Reserves $1.67M</div>
                     </div>
                     <div>
-                        <div class="budget-clarity-amount" style="margin-bottom: 0.25rem;">$3.71M</div>
+                        <div class="budget-clarity-amount" style="margin-bottom: 0.25rem;" data-count-to="3.71" data-count-prefix="$" data-count-suffix="M" data-count-decimals="2">$0M</div>
                         <div style="font-size: 0.9rem; opacity: 0.85;">Total • incl. Endowment $1.32M</div>
                     </div>
                 </div>
                 <div class="budget-clarity-meta">
                     <div class="budget-meta-item">
                         <div class="budget-meta-label">Avg. Monthly Burn</div>
-                        <div class="budget-meta-value">~$255K</div>
+                        <div class="budget-meta-value" data-count-to="255" data-count-prefix="~$" data-count-suffix="K" data-count-decimals="0">~$0K</div>
                     </div>
                     <div class="budget-meta-item">
                         <div class="budget-meta-label">Chase-Only Runway</div>
-                        <div class="budget-meta-value">2.8 mo</div>
+                        <div class="budget-meta-value" data-count-to="2.8" data-count-suffix=" mo" data-count-decimals="1">0 mo</div>
                     </div>
                     <div class="budget-meta-item">
                         <div class="budget-meta-label">Liquid Runway</div>
-                        <div class="budget-meta-value">9.3 mo</div>
+                        <div class="budget-meta-value" data-count-to="9.3" data-count-suffix=" mo" data-count-decimals="1">0 mo</div>
                     </div>
                     <div class="budget-meta-item">
                         <div class="budget-meta-label">Runway incl. Endowment</div>
-                        <div class="budget-meta-value">14.5 mo</div>
+                        <div class="budget-meta-value" data-count-to="14.5" data-count-suffix=" mo" data-count-decimals="1">0 mo</div>
                     </div>
                 </div>
             </div>
@@ -2193,6 +2193,36 @@
             }
         }
 
+        // Generic count-up animation for [data-count-to] elements
+        function animateCountUp(el, duration) {
+            const target = parseFloat(el.getAttribute('data-count-to'));
+            const prefix = el.getAttribute('data-count-prefix') || '';
+            const suffix = el.getAttribute('data-count-suffix') || '';
+            const decimals = parseInt(el.getAttribute('data-count-decimals') || '0', 10);
+            const start = performance.now();
+            duration = duration || 1400;
+
+            function frame(now) {
+                const progress = Math.min((now - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                const current = target * eased;
+                el.textContent = prefix + current.toFixed(decimals) + suffix;
+                if (progress < 1) {
+                    requestAnimationFrame(frame);
+                } else {
+                    el.textContent = prefix + target.toFixed(decimals) + suffix;
+                }
+            }
+            requestAnimationFrame(frame);
+        }
+
+        let financialsCounted = false;
+        function startFinancialsCounters() {
+            if (financialsCounted) return;
+            financialsCounted = true;
+            document.querySelectorAll('#financials [data-count-to]').forEach(el => animateCountUp(el));
+        }
+
         let points = 0;
         let currentTriviaIndex = 0;
         let triviaAnswered = false;
@@ -2283,6 +2313,9 @@
 
             window.scrollTo({ top: 0, behavior: 'smooth' });
 
+            if (tabName === 'financials') {
+                setTimeout(startFinancialsCounters, 300);
+            }
         }
 
         // Collapsible
