@@ -688,6 +688,47 @@
             color: #087d65;
         }
 
+        /* Compact BHS house-icon markers */
+        .timeline-event.mini .timeline-content {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            padding: 0.5rem 1rem;
+            border-left: none;
+            border-right: none;
+            background: linear-gradient(135deg, #f2f3f4 0%, rgba(211, 235, 231, 0.25) 100%);
+        }
+        .timeline-event:nth-child(odd).mini .timeline-content {
+            margin-left: auto;
+        }
+        .timeline-house-badge {
+            position: relative;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #087d65, #0aa27f);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .timeline-house-num {
+            position: absolute;
+            bottom: -4px;
+            right: -4px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #e07b00;
+            color: white;
+            font-size: 0.65rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+        }
+
         .timeline-title {
             font-size: 1.1rem;
             font-weight: 700;
@@ -1559,6 +1600,14 @@
             <p class="intro-text" style="font-weight: 600; color: #001f3f; margin-bottom: 0.5rem;">The goal: end the year with 12 months of cash between fundraising and reserves — not including the endowment.</p>
             <p style="font-weight: 700; font-size: 1.2rem; color: #e07b00; margin-bottom: 2rem;">We need major fundraising wins.</p>
 
+            <div style="background: linear-gradient(135deg, #d3ebe7 0%, rgba(211, 235, 231, 0.4) 100%); border-left: 4px solid #087d65; border-radius: 8px; padding: 1.25rem 1.5rem; margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <div>
+                    <div style="font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; color: #087d65;">TOTAL PROSPECT PIPELINE POTENTIAL</div>
+                    <div id="pipelinePotentialNote" style="font-size: 0.85rem; color: #676868; margin-top: 0.25rem;">Sum of Realistic Ask across all prospects, as of Aug 26, 2026 — a snapshot, not live.</div>
+                </div>
+                <div id="pipelinePotentialAmount" style="font-size: 2.25rem; font-weight: 700; color: #087d65;">$175,850</div>
+            </div>
+
             <button class="form-btn" onclick="document.getElementById('supportersModal').classList.add('active')">View FY27 Current &amp; Expected Supporters</button>
             <p style="font-size: 0.85rem; color: #676868; margin-top: 0.5rem; margin-bottom: 2rem;">Or <a href="https://drive.google.com/file/d/1KEa2sV1IyV_mxTEN5VySGSUncZ8eUEr0/view?usp=sharing" target="_blank">open it in Google Drive</a>.</p>
 
@@ -1642,18 +1691,19 @@
             <div class="finance-item-wrapper">
                 <div class="finance-item-header">
                     <div class="finance-label"><strong>FY26</strong></div>
-                    <div class="finance-bar">
-                        <div class="finance-amount">Deficit: Continued growth</div>
+                    <div class="finance-bar strong">
+                        <div class="finance-amount">Surplus: $990.3K</div>
                     </div>
-                    <div class="finance-amount">~15 mo</div>
+                    <div class="finance-amount">Unaudited</div>
                 </div>
                 <button class="collapsible" onclick="toggleCollapse(event)">View Context</button>
                 <div class="collapsible-content">
-                    <p style="margin-bottom: 0.5rem;"><strong>Growth continues, runway tightens.</strong></p>
+                    <p style="margin-bottom: 0.5rem;"><strong>Return to surplus — stabilizing.</strong></p>
+                    <p style="font-size: 0.85rem; color: #a07800; font-style: italic; margin-bottom: 0.75rem;">Figures pulled from the FY26 P&amp;L by month — not yet final/audited.</p>
                     <ul style="margin: 0 0 0 1.25rem; line-height: 1.9;">
-                        <li>Continued the FY25 investments; staff, program, and operational costs grew with scale</li>
+                        <li>Total revenue $4.14M vs. total expenses $3.31M — net income of $990.3K</li>
+                        <li>Includes a one-time $192.4K Employee Retention Credit — not a repeatable source of revenue</li>
                         <li>Expected the Connor Group gift — it did not materialize; other major gifts came in below expectations</li>
-                        <li>Another deficit year; assets drawn down</li>
                     </ul>
                 </div>
             </div>
@@ -1665,7 +1715,7 @@
             <h2>FY27 Fundraising Plan</h2>
 
             <div style="background: #fdf3e7; border-left: 6px solid #e07b00; border-radius: 6px; padding: 1.25rem 1.5rem; margin-bottom: 1.5rem;">
-                <strong style="color: #c96a00;">The reality:</strong> Running consecutive deficits is not sustainable. We have ~9 months of liquid runway (~15 including endowment) before we need to make hard decisions about program scope and staffing. We need to create the urgency and strategy to close that gap.
+                <strong style="color: #c96a00;">The reality:</strong> Lucas has personally driven nearly every major gift we've closed, and he'll keep showing up wherever we need him. But relying on one person's direct asks, without a real grants pipeline behind it, is not sustainable as we grow. We need the board's help to build broader fundraising capacity and close the gap for good.
             </div>
 
             <p class="intro-text">
@@ -1673,18 +1723,45 @@
             </p>
 
             <h3>Board Member Expectations</h3>
-            <div style="background: linear-gradient(135deg, #e7f1fe 0%, rgba(211, 235, 231, 0.3) 100%); padding: 1.5rem 2rem; border-radius: 8px; border-left: 4px solid #0a52a9;">
-                <p style="margin-bottom: 0.75rem;"><strong>1. Make a financial contribution that is meaningful.</strong></p>
-                <p style="margin-bottom: 0.75rem;"><strong>2. Host a BRYC House gathering</strong> — a small gathering of 10–15 friends or colleagues for the purpose of learning about and supporting BRYC.</p>
-                <p style="margin-bottom: 0.75rem;"><strong>3. Attend one BRYC parlor meeting</strong> — fully coordinated by BRYC staff.</p>
-                <p style="margin-bottom: 0.75rem;"><strong>4. Assist in arranging 1-on-1 meetings</strong> with prospective donors.</p>
-                <p style="margin-bottom: 0;"><strong>Optional: Join the Prom Committee</strong> for BRYC's annual event.</p>
+            <button class="collapsible" onclick="toggleCollapse(event)">Tap to See Your 4 Commitments</button>
+            <div class="collapsible-content" style="background: white; padding: 0.5rem 1.5rem 1.5rem 1.5rem; border-left: 4px solid #0a52a9;">
+                <div style="display: flex; gap: 1rem; align-items: flex-start; padding: 1rem 0; border-bottom: 1px solid rgba(10, 82, 169, 0.15);">
+                    <div style="flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: #0a52a9; color: white; display: flex; align-items: center; justify-content: center; font-weight: 700;">1</div>
+                    <div style="padding-top: 0.25rem;"><strong>Make a financial contribution that is meaningful.</strong></div>
+                </div>
+                <div style="display: flex; gap: 1rem; align-items: flex-start; padding: 1rem 0; border-bottom: 1px solid rgba(10, 82, 169, 0.15);">
+                    <div style="flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: #0a52a9; color: white; display: flex; align-items: center; justify-content: center; font-weight: 700;">2</div>
+                    <div style="padding-top: 0.25rem;"><strong>Host a BRYC House gathering</strong> — a small gathering of 10–15 friends or colleagues for the purpose of learning about and supporting BRYC.</div>
+                </div>
+                <div style="display: flex; gap: 1rem; align-items: flex-start; padding: 1rem 0; border-bottom: 1px solid rgba(10, 82, 169, 0.15);">
+                    <div style="flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: #0a52a9; color: white; display: flex; align-items: center; justify-content: center; font-weight: 700;">3</div>
+                    <div style="padding-top: 0.25rem;"><strong>Attend one BRYC parlor meeting</strong> — fully coordinated by BRYC staff.</div>
+                </div>
+                <div style="display: flex; gap: 1rem; align-items: flex-start; padding: 1rem 0; border-bottom: 1px solid rgba(10, 82, 169, 0.15);">
+                    <div style="flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: #0a52a9; color: white; display: flex; align-items: center; justify-content: center; font-weight: 700;">4</div>
+                    <div style="padding-top: 0.25rem;"><strong>Assist in arranging 1-on-1 meetings</strong> with prospective donors.</div>
+                </div>
+                <div style="display: flex; gap: 1rem; align-items: flex-start; padding: 1rem 0;">
+                    <div style="flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: white; border: 2px dashed #087d65; color: #087d65; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.75rem;">+</div>
+                    <div style="padding-top: 0.25rem;"><strong style="color: #087d65;">Optional: Join the Prom Committee</strong> for BRYC's annual event.</div>
+                </div>
             </div>
 
             <h3 style="margin-top: 2.5rem;">Matching Challenges: Raise an Equal Amount in New or Lapsed Dollars</h3>
-            <div style="background: linear-gradient(135deg, #fdf3d7 0%, rgba(191, 144, 0, 0.08) 100%); padding: 1.5rem 2rem; border-radius: 8px; border-left: 4px solid #bf9000;">
-                <p style="margin-bottom: 0.75rem;"><strong>Lisa &amp; Tom Adamek:</strong> $150,000 <span style="color: #087d65; font-weight: 700;">(committed)</span></p>
-                <p style="margin-bottom: 0;"><strong>Rick Hartley:</strong> $100,000 <span style="color: #676868; font-weight: 700;">(probable)</span></p>
+            <button class="collapsible" onclick="toggleCollapse(event)">Tap to See the Match Pool</button>
+            <div class="collapsible-content" style="background: white; padding: 1.5rem; border-left: 4px solid #bf9000;">
+                <div style="text-align: center; margin-bottom: 1.25rem;">
+                    <div style="font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; color: #a07800;">TOTAL MATCH POOL</div>
+                    <div style="font-size: 2.5rem; font-weight: 700; color: #bf9000;">$250,000</div>
+                </div>
+                <div style="display: flex; height: 36px; border-radius: 6px; overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.1); margin-bottom: 1rem;">
+                    <div style="width: 60%; background: linear-gradient(90deg, #087d65, #0aa27f); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 0.9rem;">$150K</div>
+                    <div style="width: 40%; background: linear-gradient(90deg, #d3c48a, #bfaf72); display: flex; align-items: center; justify-content: center; color: #4a4020; font-weight: 700; font-size: 0.9rem;">$100K</div>
+                </div>
+                <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+                    <div><span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #087d65; margin-right: 0.4rem;"></span><strong>Lisa &amp; Tom Adamek:</strong> $150,000 <span style="color: #087d65; font-weight: 700;">(committed)</span></div>
+                    <div><span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #bfaf72; margin-right: 0.4rem;"></span><strong>Rick Hartley:</strong> $100,000 <span style="color: #676868; font-weight: 700;">(probable)</span></div>
+                </div>
             </div>
 
             <h3 style="margin-top: 3rem;">Fundraising Calendar</h3>
@@ -1705,6 +1782,20 @@
             </div>
             
             <div class="timeline">
+                <div class="timeline-event mini">
+                    <div class="timeline-marker" style="width: 14px; height: 14px;"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-house-badge">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 11L12 4l9 7" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            <div class="timeline-house-num">1</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.85rem; font-weight: 700; color: #001f3f;">BRYC House #1</div>
+                            <div style="font-size: 0.75rem; color: #676868;">Sept–Oct</div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="timeline-event">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
@@ -1723,12 +1814,54 @@
                     </div>
                 </div>
 
+                <div class="timeline-event mini">
+                    <div class="timeline-marker" style="width: 14px; height: 14px;"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-house-badge">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 11L12 4l9 7" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            <div class="timeline-house-num">2</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.85rem; font-weight: 700; color: #001f3f;">BRYC House #2</div>
+                            <div style="font-size: 0.75rem; color: #676868;">November</div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="timeline-event">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
                         <div class="timeline-date">December</div>
                         <div class="timeline-title">End-of-Year Push</div>
                         <div class="timeline-description">Physical mailer plus email appeal to close the calendar year.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-event mini">
+                    <div class="timeline-marker" style="width: 14px; height: 14px;"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-house-badge">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 11L12 4l9 7" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            <div class="timeline-house-num">3</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.85rem; font-weight: 700; color: #001f3f;">BRYC House #3</div>
+                            <div style="font-size: 0.75rem; color: #676868;">January</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-event mini">
+                    <div class="timeline-marker" style="width: 14px; height: 14px;"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-house-badge">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 11L12 4l9 7" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            <div class="timeline-house-num">4</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.85rem; font-weight: 700; color: #001f3f;">BRYC House #4</div>
+                            <div style="font-size: 0.75rem; color: #676868;">February</div>
+                        </div>
                     </div>
                 </div>
 
@@ -1747,6 +1880,20 @@
                         <div class="timeline-date">March (TBD)</div>
                         <div class="timeline-title">The Prom (Gala)</div>
                         <div class="timeline-description">Fancy event for all donors. Stewardship + major ask. Board committee required. Must be profitable.</div>
+                    </div>
+                </div>
+
+                <div class="timeline-event mini">
+                    <div class="timeline-marker" style="width: 14px; height: 14px;"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-house-badge">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 11L12 4l9 7" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            <div class="timeline-house-num">5</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.85rem; font-weight: 700; color: #001f3f;">BRYC House #5</div>
+                            <div style="font-size: 0.75rem; color: #676868;">April</div>
+                        </div>
                     </div>
                 </div>
 
@@ -1956,6 +2103,15 @@
         <!-- PROSPECT WORK TAB -->
         <div id="prospects" class="tab-content">
             <h2>Prospect Sourcing</h2>
+
+            <div style="background: linear-gradient(135deg, #d3ebe7 0%, rgba(211, 235, 231, 0.4) 100%); border-left: 4px solid #087d65; border-radius: 8px; padding: 1.25rem 1.5rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <div>
+                    <div style="font-size: 0.85rem; font-weight: 700; letter-spacing: 1px; color: #087d65;">TOTAL PROSPECT PIPELINE POTENTIAL</div>
+                    <div id="pipelinePotentialNote2" style="font-size: 0.85rem; color: #676868; margin-top: 0.25rem;">Sum of Realistic Ask across all prospects, as of Aug 26, 2026 — a snapshot, not live.</div>
+                </div>
+                <div id="pipelinePotentialAmount2" style="font-size: 2.25rem; font-weight: 700; color: #087d65;">$175,850</div>
+            </div>
+
             <div class="prospect-intro">
                 <strong>Your job today:</strong> Add at least 10 prospects to our list. These are people you know who might support BRYC. You decide their names, contact info, your confidence level, and next steps. During work time, you'll add them via the form below. We'll share out who you entered.
             </div>
@@ -2223,6 +2379,56 @@
             document.querySelectorAll('#financials [data-count-to]').forEach(el => animateCountUp(el));
         }
 
+        // Live pull: FY27 Prospect Pipeline Potential (Fundraising HQ, cell I1)
+        // Updates both the Financials copy and the Prospect Work copy together.
+        function bryPipelineCallback(response) {
+            try {
+                const row = response.table.rows[0];
+                const cell = row.c[0];
+                const raw = cell.v;
+                const formatted = cell.f || ('$' + Math.round(raw).toLocaleString());
+                const noteText = 'Sum of Realistic Ask across all prospects — live from Fundraising HQ, pulled just now.';
+                ['pipelinePotentialAmount', 'pipelinePotentialAmount2'].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.textContent = formatted;
+                });
+                ['pipelinePotentialNote', 'pipelinePotentialNote2'].forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.textContent = noteText;
+                });
+            } catch (e) {
+                // Leave fallback value in place
+            }
+            window.__bryPipelineLoaded = true;
+        }
+
+        function loadPipelinePotential() {
+            window.__bryPipelineLoaded = false;
+            const script = document.createElement('script');
+            script.src = 'https://docs.google.com/spreadsheets/d/1kv1hQb5XWzK5x0YxZvTYeD5bgFb00yXjmr8BOEc0Evs/gviz/tq?gid=1154395881&range=I1&tqx=out:json;responseHandler:bryPipelineCallback&t=' + Date.now();
+            script.onerror = function() { /* fallback value already showing */ };
+            document.head.appendChild(script);
+
+            // Safety timeout: if the callback never fires, leave the last known value as-is
+            setTimeout(function() {
+                if (!window.__bryPipelineLoaded) {
+                    const fallbackNote = 'Sum of Realistic Ask across all prospects, as of Aug 26, 2026 — live pull unavailable, showing snapshot.';
+                    ['pipelinePotentialNote', 'pipelinePotentialNote2'].forEach(id => {
+                        const el = document.getElementById(id);
+                        if (el) el.textContent = fallbackNote;
+                    });
+                }
+            }, 4000);
+        }
+        window.addEventListener('load', loadPipelinePotential);
+
+        // Re-pull whenever someone opens Financials or Prospect Work, so the number stays current through the day
+        function refreshPipelineOnTabOpen(tabName) {
+            if (tabName === 'financials' || tabName === 'prospects') {
+                loadPipelinePotential();
+            }
+        }
+
         let points = 0;
         let currentTriviaIndex = 0;
         let triviaAnswered = false;
@@ -2316,6 +2522,8 @@
             if (tabName === 'financials') {
                 setTimeout(startFinancialsCounters, 300);
             }
+
+            refreshPipelineOnTabOpen(tabName);
         }
 
         // Collapsible
