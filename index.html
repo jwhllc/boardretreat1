@@ -1398,7 +1398,7 @@
 
     <div class="container">
         <div class="tabs">
-            <button class="tab-btn active" onclick="switchTab(event, 'agenda')">Agenda</button>
+            <button class="tab-btn active" onclick="switchTab(event, 'followup')">Follow-Up</button>
             <button class="tab-btn" onclick="switchTab(event, 'financials')">Financials</button>
             <button class="tab-btn" onclick="switchTab(event, 'fy27-plan')">FY27 Plan</button>
             <button class="tab-btn" onclick="switchTab(event, 'board')">Board</button>
@@ -1407,122 +1407,8 @@
         </div>
 
         <!-- AGENDA TAB -->
-        <div id="agenda" class="tab-content active">
-            <h2>Thursday, August 27 Agenda</h2>
-            <p class="intro-text"><strong>Goal:</strong> The board is aligned on the FY27 fundraising plan and committed to their role in it.</p>
-
-            <div class="agenda-item">
-                <div class="agenda-time">8:30–9:00</div>
-                <div>
-                    <h3 style="margin-top: 0;">Arrival + Coffee &amp; Breakfast</h3>
-                    <p>Coffee and light breakfast as you arrive.</p>
-                </div>
-            </div>
-
-            <div class="agenda-item">
-                <div class="agenda-time">9:00–9:30</div>
-                <div>
-                    <h3 style="margin-top: 0;">Welcome</h3>
-                    <p>Brief orientation to materials and links. Board &amp; team introductions: name, hometown, role or passion. CEO Designate remarks — reminding ourselves why we're here.</p>
-                    <div style="background: white; border: 2px solid #087d65; border-radius: 8px; padding: 1.25rem; margin-top: 1rem;">
-                        <p style="font-weight: 700; color: #001f3f; margin-bottom: 0.75rem;">Introductions — type them in as we go</p>
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem; margin-bottom: 0.75rem;">
-                            <select id="introName" style="padding: 0.6rem; border: 2px solid #087d65; border-radius: 4px; font-family: 'Proxima Nova', sans-serif; font-size: 0.95rem; background: white;">
-                                <option value="">Who's up?</option>
-                                <optgroup label="Board">
-                                    <option>Lisa Adamek</option>
-                                    <option>Jessica Baghian</option>
-                                    <option>Karen Breaux</option>
-                                    <option>Regina Davis</option>
-                                    <option>Jonathan Earle</option>
-                                    <option>Carissa Graves</option>
-                                    <option>Dave Luecke</option>
-                                    <option>Mikki Mathews</option>
-                                    <option>Chaunda Mitchell</option>
-                                    <option>Natalie Robertson</option>
-                                    <option>Mike Rolfsen</option>
-                                    <option>Lauren Tarver-Tatman</option>
-                                    <option>Garrett Temple</option>
-                                </optgroup>
-                                <optgroup label="Team &amp; Guests">
-                                    <option>Lucas Spielfogel</option>
-                                    <option>Josh Howard</option>
-                                    <option>Myeisha Anderson</option>
-                                    <option>Elin Hawkinson</option>
-                                    <option>Judith Roberson</option>
-                                </optgroup>
-                            </select>
-                            <input type="text" id="introHometown" placeholder="Hometown" style="padding: 0.6rem; border: 2px solid #087d65; border-radius: 4px; font-family: 'Proxima Nova', sans-serif; font-size: 0.95rem;">
-                            <input type="text" id="introPassion" placeholder="Role or passion" style="padding: 0.6rem; border: 2px solid #087d65; border-radius: 4px; font-family: 'Proxima Nova', sans-serif; font-size: 0.95rem;" onkeydown="if(event.key==='Enter'){addIntro()}">
-                        </div>
-                        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
-                            <button onclick="addIntro()" class="form-btn" style="padding: 0.6rem 1.5rem; font-size: 0.95rem;">Add</button>
-                            <button onclick="loadIntros(true)" class="form-btn" style="padding: 0.6rem 1.5rem; font-size: 0.95rem; background: #f2f3f4; color: #313335;">Refresh</button>
-                        </div>
-                        <div id="introStatus" style="font-size: 0.85rem; color: #676868; font-style: italic; margin-top: 0.5rem;"></div>
-                        <div id="introCards" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; margin-top: 1rem;"></div>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="agenda-item">
-                <div class="agenda-time">9:30–9:35</div>
-                <div>
-                    <h3 style="margin-top: 0;">Alumni Moment</h3>
-                    <p>A testimonial on the BRYC experience and our core values.</p>
-                    <button class="collapsible" onclick="toggleCollapse(event)">Watch the Video</button>
-                    <div class="collapsible-content">
-                        <div style="position: relative; padding-bottom: 67.7%; height: 0; overflow: hidden; border-radius: 6px;">
-                            <iframe src="https://www.veed.io/embed/50a69d31-5640-4a08-b009-1cd64deb6b17" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" title="Shayla Hastings" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="agenda-item">
-                <div class="agenda-time">9:35–10:00</div>
-                <div>
-                    <h3 style="margin-top: 0;">FY27 Fundraising Goal</h3>
-                    <p>Connor Group update. Current financial position. FY24–FY26 revenue &amp; expense comparison. FY27 revenue sources and prospect projection.</p>
-                </div>
-            </div>
-
-            <div class="agenda-item">
-                <div class="agenda-time">10:00–11:00</div>
-                <div>
-                    <h3 style="margin-top: 0;">FY27 Fundraising Plan &amp; Discussion</h3>
-                    <p>Board member expectations. Matching challenge. FY27 fundraising calendar. Board fundraising cheat sheet. Committing to BRYC House months.</p>
-                </div>
-            </div>
-
-            <div class="agenda-item">
-                <div class="agenda-time">11:00–11:20</div>
-                <div>
-                    <h3 style="margin-top: 0;">Board Prospects Discussion</h3>
-                    <p>Who we're pursuing for the board — and who's missing from the list.</p>
-                </div>
-            </div>
-
-            <div class="agenda-item">
-                <div class="agenda-time">11:20–12:40</div>
-                <div>
-                    <h3 style="margin-top: 0;">Lunch &amp; List Building</h3>
-                    <p>Review all prospects. Add your name to prospects you're willing to solicit. Add new prospects — go through your phone, email, Capital Region 500. For each person you claim: a realistic amount, relevant context, and an action step.</p>
-                </div>
-            </div>
-
-            <div class="agenda-item">
-                <div class="agenda-time">12:40–1:00</div>
-                <div>
-                    <h3 style="margin-top: 0;">Closing Review</h3>
-                    <p>Share-out of claimed prospects and BRYC House commitments. Thank you.</p>
-                </div>
-            </div>
-        </div>
-
         <!-- FINANCIALS TAB -->
-        <div id="financials" class="tab-content">
+        <div id="financials" class="tab-content active">
             <h2>Fundraising Goal & Current Position</h2>
             
             <!-- BUDGET CLARITY -->
@@ -1815,8 +1701,8 @@
                             <div class="timeline-house-num">1</div>
                         </div>
                         <div>
-                            <div style="font-size: 0.85rem; font-weight: 700; color: #001f3f;">BRYC House #1</div>
-                            <div style="font-size: 0.75rem; color: #676868;">Sept–Oct</div>
+                            <div style="font-size: 0.85rem; font-weight: 700; color: #001f3f;">BRYC House #1 — Mike</div>
+                            <div style="font-size: 0.75rem; color: #676868;">Sept–Oct (targeting Oct)</div>
                         </div>
                     </div>
                 </div>
@@ -1824,9 +1710,9 @@
                 <div class="timeline-event">
                     <div class="timeline-marker"></div>
                     <div class="timeline-content">
-                        <div class="timeline-date">Friday, October 9</div>
+                        <div class="timeline-date">Thursday, October 16</div>
                         <div class="timeline-title">Parlor Breakfast</div>
-                        <div class="timeline-description">Host committed. ~30 current &amp; prospective donors. Casual, intimate, low-cost.</div>
+                        <div class="timeline-description">Hosted by JR Whaley. ~30 current &amp; prospective donors. Casual, intimate, low-cost.</div>
                     </div>
                 </div>
 
@@ -1847,7 +1733,7 @@
                             <div class="timeline-house-num">2</div>
                         </div>
                         <div>
-                            <div style="font-size: 0.85rem; font-weight: 700; color: #001f3f;">BRYC House #2</div>
+                            <div style="font-size: 0.85rem; font-weight: 700; color: #001f3f;">BRYC House #2 — Mikki</div>
                             <div style="font-size: 0.75rem; color: #676868;">November</div>
                         </div>
                     </div>
@@ -1870,7 +1756,7 @@
                             <div class="timeline-house-num">3</div>
                         </div>
                         <div>
-                            <div style="font-size: 0.85rem; font-weight: 700; color: #001f3f;">BRYC House #3</div>
+                            <div style="font-size: 0.85rem; font-weight: 700; color: #001f3f;">BRYC House #3 — Jonathan</div>
                             <div style="font-size: 0.75rem; color: #676868;">January</div>
                         </div>
                     </div>
@@ -1884,7 +1770,7 @@
                             <div class="timeline-house-num">4</div>
                         </div>
                         <div>
-                            <div style="font-size: 0.85rem; font-weight: 700; color: #001f3f;">BRYC House #4</div>
+                            <div style="font-size: 0.85rem; font-weight: 700; color: #001f3f;">BRYC House #4 — Carissa</div>
                             <div style="font-size: 0.75rem; color: #676868;">February</div>
                         </div>
                     </div>
@@ -1916,7 +1802,7 @@
                             <div class="timeline-house-num">5</div>
                         </div>
                         <div>
-                            <div style="font-size: 0.85rem; font-weight: 700; color: #001f3f;">BRYC House #5</div>
+                            <div style="font-size: 0.85rem; font-weight: 700; color: #001f3f;">BRYC House #5 — Natalie</div>
                             <div style="font-size: 0.75rem; color: #676868;">April</div>
                         </div>
                     </div>
@@ -2394,9 +2280,85 @@
             </div>
         </div>
 
+        <!-- FOLLOW-UP TAB -->
+        <div id="followup" class="tab-content">
+            <h2>Follow-Up &amp; Next Steps</h2>
+            <p class="intro-text">Great retreat. Here's what's confirmed and what each of us needs to do.</p>
+
+            <h3>Confirmed: BRYC House Series Hosts</h3>
+
+            <div class="plan-item">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 0.75rem;">
+                    <div style="padding: 1rem; background: #f2f3f4; border-radius: 6px; border-left: 4px solid #087d65;">
+                        <div style="font-weight: 600; color: #001f3f; margin-bottom: 0.25rem;">#1: Mike & Jeanette</div>
+                        <div style="font-size: 0.9rem; color: #676868;">Sept–Oct (ideally Oct)</div>
+                        <div style="font-size: 0.85rem; color: #b8440d; margin-top: 0.5rem; font-weight: 500;">🔶 Confirm date by Sept 15</div>
+                    </div>
+                    <div style="padding: 1rem; background: #f2f3f4; border-radius: 6px; border-left: 4px solid #087d65;">
+                        <div style="font-weight: 600; color: #001f3f; margin-bottom: 0.25rem;">#2: Mikki</div>
+                        <div style="font-size: 0.9rem; color: #676868;">November</div>
+                        <div style="font-size: 0.85rem; color: #6b8e23; margin-top: 0.5rem; font-weight: 500;">✓ Confirmed</div>
+                    </div>
+                    <div style="padding: 1rem; background: #f2f3f4; border-radius: 6px; border-left: 4px solid #087d65;">
+                        <div style="font-weight: 600; color: #001f3f; margin-bottom: 0.25rem;">#3: Jonathan</div>
+                        <div style="font-size: 0.9rem; color: #676868;">January</div>
+                        <div style="font-size: 0.85rem; color: #6b8e23; margin-top: 0.5rem; font-weight: 500;">✓ Confirmed</div>
+                    </div>
+                    <div style="padding: 1rem; background: #f2f3f4; border-radius: 6px; border-left: 4px solid #087d65;">
+                        <div style="font-weight: 600; color: #001f3f; margin-bottom: 0.25rem;">#4: Carissa</div>
+                        <div style="font-size: 0.9rem; color: #676868;">February</div>
+                        <div style="font-size: 0.85rem; color: #6b8e23; margin-top: 0.5rem; font-weight: 500;">✓ Confirmed</div>
+                    </div>
+                    <div style="padding: 1rem; background: #f2f3f4; border-radius: 6px; border-left: 4px solid #087d65;">
+                        <div style="font-weight: 600; color: #001f3f; margin-bottom: 0.25rem;">#5: Natalie</div>
+                        <div style="font-size: 0.9rem; color: #676868;">April</div>
+                        <div style="font-size: 0.85rem; color: #6b8e23; margin-top: 0.5rem; font-weight: 500;">✓ Confirmed</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 2.5rem;">Your Follow-Ups</h3>
+            <p style="font-size: 0.9rem; color: #676868; margin-bottom: 1rem;">Select your name to see your personalized action items based on your 4 commitments.</p>
+
+            <div style="margin-bottom: 1.5rem;">
+                <label for="boardMemberSelect" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #313335;">I'm:</label>
+                <select id="boardMemberSelect" onchange="updateBoardMemberFollowUps()" style="padding: 0.75rem; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem; font-family: 'Proxima Nova', sans-serif;">
+                    <option value="">— Select your name —</option>
+                    <option value="Lisa">Lisa Adamek</option>
+                    <option value="Jessica">Jessica Baghian</option>
+                    <option value="Karen">Karen Breaux</option>
+                    <option value="Regina">Regina Davis</option>
+                    <option value="Jonathan">Jonathan Earle</option>
+                    <option value="Carissa">Carissa Graves</option>
+                    <option value="Dave">Dave Luecke</option>
+                    <option value="Mikki">Mikki Mathews</option>
+                    <option value="Chaunda">Chaunda Mitchell</option>
+                    <option value="Natalie">Natalie Robertson</option>
+                    <option value="Mike">Mike Rolfsen</option>
+                    <option value="Lauren">Lauren Tarver-Tatman</option>
+                    <option value="Garrett">Garrett Temple</option>
+                </select>
+            </div>
+
+            <div id="boardMemberTasks" style="display: none;">
+                <h4 style="color: #001f3f; margin-bottom: 1rem;">Your 4 Commitments</h4>
+                <div id="tasksContainer"></div>
+            </div>
+
+            <h3 style="margin-top: 3rem;">Org-Level To-Dos</h3>
+            <p style="font-size: 0.9rem; color: #676868; margin-bottom: 1rem;">Josh & Lucas to track. Check things off as they close out.</p>
+
+            <div id="followupChecklist"></div>
+        </div>
+
         <!-- ATTACHMENTS TAB -->
         <div id="attachments" class="tab-content">
             <h2>Resources & References</h2>
+
+            <h3>Alumni Moment</h3>
+            <div style="position: relative; width: 100%; padding-bottom: 56.25%; margin-bottom: 2rem; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+                <iframe src="https://www.veed.io/embed/50a69d31-5640-4a08-b009-1cd64deb6b17" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" title="Shayla Hastings" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            </div>
             
             <h3>Spreadsheets & Data</h3>
             <a href="https://docs.google.com/spreadsheets/d/1kv1hQb5XWzK5x0YxZvTYeD5bgFb00yXjmr8BOEc0Evs/edit?usp=sharing" class="attachment-link" target="_blank">
@@ -2623,6 +2585,205 @@
                 loadPipelinePotential();
             }
         }
+
+        // Board member personalized follow-ups based on their 4 commitments
+        const boardMemberFollowUps = {
+            'Lisa': {
+                name: 'Lisa Adamek',
+                tasks: [
+                    { commitment: '1. Financial Contribution', task: 'Make your meaningful gift to leverage the matching challenge ($150K pool)' },
+                    { commitment: '2. Host a BRYC House', task: 'You\'re not hosting, but consider supporting one of the hosts logistically' },
+                    { commitment: '3. Attend Parlor Meeting', task: 'Plan to attend the October 16 parlor breakfast' },
+                    { commitment: '4. Cultivate 1-on-1s', task: 'Follow up with prospects you identified at the retreat' }
+                ]
+            },
+            'Jessica': {
+                name: 'Jessica Baghian',
+                tasks: [
+                    { commitment: '1. Financial Contribution', task: 'Make your meaningful gift' },
+                    { commitment: '2. Host a BRYC House', task: 'You\'re not hosting, but consider supporting one of the hosts' },
+                    { commitment: '3. Attend Parlor Meeting', task: 'Plan to attend October 16 parlor breakfast' },
+                    { commitment: '4. Cultivate 1-on-1s', task: 'Follow up with prospects you identified at the retreat' }
+                ]
+            },
+            'Karen': {
+                name: 'Karen Breaux',
+                tasks: [
+                    { commitment: '1. Financial Contribution', task: 'Make your meaningful gift' },
+                    { commitment: '2. Host a BRYC House', task: 'You\'re not hosting, but consider supporting one of the hosts' },
+                    { commitment: '3. Attend Parlor Meeting', task: 'Plan to attend October 16 parlor breakfast' },
+                    { commitment: '4. Cultivate 1-on-1s', task: 'Follow up with prospects you identified at the retreat' }
+                ]
+            },
+            'Regina': {
+                name: 'Regina Davis',
+                tasks: [
+                    { commitment: '1. Financial Contribution', task: 'Make your meaningful gift' },
+                    { commitment: '2. Host a BRYC House', task: 'You\'re not hosting, but consider supporting one of the hosts' },
+                    { commitment: '3. Attend Parlor Meeting', task: 'Plan to attend October 16 parlor breakfast' },
+                    { commitment: '4. Cultivate 1-on-1s', task: 'Follow up with prospects you identified at the retreat' }
+                ]
+            },
+            'Jonathan': {
+                name: 'Jonathan Earle',
+                tasks: [
+                    { commitment: '1. Financial Contribution', task: 'Make your meaningful gift' },
+                    { commitment: '2. Host a BRYC House', task: 'You\'re hosting in January — Josh will coordinate dates and logistics with you' },
+                    { commitment: '3. Attend Parlor Meeting', task: 'Plan to attend October 16 parlor breakfast' },
+                    { commitment: '4. Cultivate 1-on-1s', task: 'Josh will meet with you to discuss prospects and cultivation strategy' }
+                ]
+            },
+            'Carissa': {
+                name: 'Carissa Graves',
+                tasks: [
+                    { commitment: '1. Financial Contribution', task: 'Make your meaningful gift' },
+                    { commitment: '2. Host a BRYC House', task: 'You\'re hosting in February — Josh will coordinate dates and logistics with you' },
+                    { commitment: '3. Attend Parlor Meeting', task: 'Plan to attend October 16 parlor breakfast' },
+                    { commitment: '4. Cultivate 1-on-1s', task: 'Lucas will meet with you to discuss prospects and cultivation strategy' }
+                ]
+            },
+            'Dave': {
+                name: 'Dave Luecke',
+                tasks: [
+                    { commitment: '1. Financial Contribution', task: 'Make your meaningful gift' },
+                    { commitment: '2. Host a BRYC House', task: 'You\'re not hosting, but consider supporting one of the hosts' },
+                    { commitment: '3. Attend Parlor Meeting', task: 'Plan to attend October 16 parlor breakfast' },
+                    { commitment: '4. Cultivate 1-on-1s', task: 'Follow up with prospects you identified at the retreat' }
+                ]
+            },
+            'Mikki': {
+                name: 'Mikki Mathews',
+                tasks: [
+                    { commitment: '1. Financial Contribution', task: 'Make your meaningful gift' },
+                    { commitment: '2. Host a BRYC House', task: 'You\'re hosting in November — Josh will coordinate dates and logistics with you' },
+                    { commitment: '3. Attend Parlor Meeting', task: 'Plan to attend October 16 parlor breakfast' },
+                    { commitment: '4. Cultivate 1-on-1s', task: 'Follow up with prospects you identified at the retreat' }
+                ]
+            },
+            'Chaunda': {
+                name: 'Chaunda Mitchell',
+                tasks: [
+                    { commitment: '1. Financial Contribution', task: 'Make your meaningful gift' },
+                    { commitment: '2. Host a BRYC House', task: 'You\'re not hosting, but consider supporting one of the hosts' },
+                    { commitment: '3. Attend Parlor Meeting', task: 'Plan to attend October 16 parlor breakfast' },
+                    { commitment: '4. Cultivate 1-on-1s', task: 'Follow up with prospects you identified at the retreat' }
+                ]
+            },
+            'Natalie': {
+                name: 'Natalie Robertson',
+                tasks: [
+                    { commitment: '1. Financial Contribution', task: 'Make your meaningful gift' },
+                    { commitment: '2. Host a BRYC House', task: 'You\'re hosting in April — Josh will coordinate dates and logistics with you' },
+                    { commitment: '3. Attend Parlor Meeting', task: 'Plan to attend October 16 parlor breakfast' },
+                    { commitment: '4. Cultivate 1-on-1s', task: 'Follow up with prospects you identified at the retreat' }
+                ]
+            },
+            'Mike': {
+                name: 'Mike Rolfsen',
+                tasks: [
+                    { commitment: '1. Financial Contribution', task: 'Make your meaningful gift' },
+                    { commitment: '2. Host a BRYC House', task: '🔶 PRIORITY: Confirm date with Jeanette by Sept 15. Josh will reach out to coordinate.' },
+                    { commitment: '3. Attend Parlor Meeting', task: 'Plan to attend October 16 parlor breakfast' },
+                    { commitment: '4. Cultivate 1-on-1s', task: 'Follow up with prospects you identified at the retreat' }
+                ]
+            },
+            'Lauren': {
+                name: 'Lauren Tarver-Tatman',
+                tasks: [
+                    { commitment: '1. Financial Contribution', task: 'Make your meaningful gift' },
+                    { commitment: '2. Host a BRYC House', task: 'You\'re not hosting, but consider supporting one of the hosts' },
+                    { commitment: '3. Attend Parlor Meeting', task: 'Plan to attend October 16 parlor breakfast' },
+                    { commitment: '4. Cultivate 1-on-1s', task: 'Follow up with prospects you identified at the retreat' }
+                ]
+            },
+            'Garrett': {
+                name: 'Garrett Temple',
+                tasks: [
+                    { commitment: '1. Financial Contribution', task: 'Make your meaningful gift' },
+                    { commitment: '2. Host a BRYC House', task: 'You\'re not hosting, but consider supporting one of the hosts' },
+                    { commitment: '3. Attend Parlor Meeting', task: 'Plan to attend October 16 parlor breakfast' },
+                    { commitment: '4. Cultivate 1-on-1s', task: 'Follow up with prospects you identified at the retreat' }
+                ]
+            }
+        };
+
+        function updateBoardMemberFollowUps() {
+            const select = document.getElementById('boardMemberSelect');
+            const selected = select.value;
+            const tasksDiv = document.getElementById('boardMemberTasks');
+            const container = document.getElementById('tasksContainer');
+
+            if (!selected) {
+                tasksDiv.style.display = 'none';
+                return;
+            }
+
+            const member = boardMemberFollowUps[selected];
+            if (!member) return;
+
+            tasksDiv.style.display = 'block';
+            container.innerHTML = '';
+
+            member.tasks.forEach((item, i) => {
+                const taskBox = document.createElement('div');
+                taskBox.style.cssText = 'padding: 1rem; margin-bottom: 0.75rem; background: #f2f3f4; border-radius: 6px; border-left: 4px solid #087d65;';
+                
+                const commitment = document.createElement('div');
+                commitment.style.cssText = 'font-weight: 600; color: #001f3f; font-size: 0.95rem; margin-bottom: 0.5rem;';
+                commitment.textContent = item.commitment;
+
+                const task = document.createElement('div');
+                task.style.cssText = 'color: #313335; font-size: 0.95rem; line-height: 1.5;';
+                task.textContent = item.task;
+
+                taskBox.appendChild(commitment);
+                taskBox.appendChild(task);
+                container.appendChild(taskBox);
+            });
+        }
+
+        // Org-level Follow-Up checklist (persists per-device via localStorage)
+        const followupItems = [
+            'Confirm exact date with Mike & Jeanette for their BRYC House (by Sept 15)',
+            'Send October 16 parlor meeting host details to JR Whaley',
+            'Reconcile duplicate prospects from list-building day',
+            'Follow up on Matching Challenge: Lisa & Tom Adamek ($150K) and Rick Hartley ($100K)',
+            'Finalize the Sponsorship Opportunities menu',
+            'Send thank-you notes to retreat attendees',
+            'Schedule cultivation meetings with Jonathan and Carissa'
+        ];
+
+        function renderFollowupChecklist() {
+            const container = document.getElementById('followupChecklist');
+            if (!container) return;
+            let checked = {};
+            try { checked = JSON.parse(localStorage.getItem('bryc-followup-checked') || '{}'); } catch (e) {}
+
+            container.innerHTML = '';
+            followupItems.forEach((text, i) => {
+                const isChecked = !!checked[i];
+                const row = document.createElement('label');
+                row.style.cssText = 'display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.85rem 1rem; margin-bottom: 0.6rem; border-radius: 6px; cursor: pointer; background: ' + (isChecked ? '#d3ebe7' : '#f2f3f4') + '; transition: background 0.2s ease;';
+                const box = document.createElement('input');
+                box.type = 'checkbox';
+                box.checked = isChecked;
+                box.style.cssText = 'margin-top: 0.2rem; width: 18px; height: 18px; flex-shrink: 0;';
+                box.onchange = () => {
+                    let c = {};
+                    try { c = JSON.parse(localStorage.getItem('bryc-followup-checked') || '{}'); } catch (e) {}
+                    c[i] = box.checked;
+                    localStorage.setItem('bryc-followup-checked', JSON.stringify(c));
+                    renderFollowupChecklist();
+                };
+                const label = document.createElement('span');
+                label.textContent = text;
+                label.style.cssText = isChecked ? 'text-decoration: line-through; color: #676868;' : 'color: #313335;';
+                row.appendChild(box);
+                row.appendChild(label);
+                container.appendChild(row);
+            });
+        }
+        window.addEventListener('load', renderFollowupChecklist);
 
         let points = 0;
         let currentTriviaIndex = 0;
